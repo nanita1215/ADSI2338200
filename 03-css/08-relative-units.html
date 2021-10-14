@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative Units</title>
+    <link rel="stylesheet" href="css/main.css">
+    
+    <style>
+        /*px (pixel) -> relativa respecto de la resolución de la pantalla del usuario*/
+        html {
+            font-size: 16px;
+        }
+        /*em ->(No confundir con la etiqueta <em> de HTML) relativa respecto del tamaño de letra
+        empleado. Aunque no es una definición exacta, el valor de 1em se puede aproximar por la
+        anchura de la letra M ("eme mayúscula") del tipo y tamaño de letra que se esté utilizando.*/
+        h2.ems {
+           font-size: 2em; 
+        }
+        /*rem*/
+        h2.rems {
+            font-size: 3rem;
+        }
+        /*ex -> Relativa respecto de la altura de la letra x ("equis minúscula") del tipo y tamaño de letra que
+        se esté utilizando.*/
+        h2.exs {
+            font-size: 4ex;
+        }
+        /*|° PiXeles °| / |°vh°| / |° vw °|*/
+        section {
+            background-color: lightsalmon;
+            margin: 0 auto;
+            padding: 10px;
+            height: 70vh;
+            width: 60vw;
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1> <a href="./">🔴</a> Relative Units</h1>
+        </header>
+        <section>
+           <h2 class="ems">Lorem, ipsum dolor (2em)</h2>
+           <h2 class="rems">Lorem, ipsum dolor (2rem)</h2>
+           <h2 class="exs">Lorem, ipsum dolor (2ex)</h2>
+        </section>
+    </main>
+</body>
+</html>
