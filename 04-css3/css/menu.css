@@ -2,14 +2,17 @@
 body{
     background: linear-gradient(to top,rgb(255, 153, 0),rgb(137, 222, 255));
     font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     color: #08313b;
-    height: 100vh;
+    margin: 0px;
+    min-height: 100vh;
 }
 main{
-    margin: 20px auto;
-    width: 380px;
+    border-radius: 6px;
+    padding: 20px;
+    
 }
-main h1{
+main header h1{
     font-weight: 600;
     font-style: italic;
     text-align: center;
