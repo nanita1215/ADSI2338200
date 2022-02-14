@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600&display=swap');
+body{
+    background: linear-gradient(to top,rgb(255, 153, 0),rgb(137, 222, 255));
+    font-family: 'Poppins', sans-serif;
+    color: #08313b;
+    height: 100vh;
+}
+main{
+    margin: 20px auto;
+    width: 380px;
+}
+main h1{
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+    border-bottom: 3px solid #08313b;
+    padding-bottom: 10px;
+}
+main nav.menu{
+    list-style: none;
+}
+main nav.menu li a:link,
+main nav.menu li a:visited{
+    background-color: rgb(4, 79, 102);
+    border-radius:  0px 20px 20px 0px;
+    display: block;
+    color: rgb(255, 174, 0);
+    margin-bottom: 25px;
+    padding: 10px;
+    position: relative;
+    text-decoration: none;
+    text-indent: 40px;
+    transition: all 0.6s ease-in;
+}
+main nav.menu li a span{
+    background-color: rgb(0, 61, 80);
+    border-radius: 50%;
+    border: 4px solid rgb(4, 79, 102);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    display: block;
+    padding: 20px;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: -10px;left: -20px;
+    text-indent: -6px;
+    transition: all 0.6s ease-in;
+}
+main nav.menu li a:hover span{
+   transform: rotate(-20deg);
+   color: black;
+   background-color: rgb(255, 174, 0);
+}
+main nav.menu li a:hover{
+    background-color: rgb(255, 174, 0);
+    color: black;
+    transform: scale(1.2);
+    text-indent: 45px;
+}
