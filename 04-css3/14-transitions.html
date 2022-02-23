@@ -12,6 +12,7 @@
             height: 200px;
             margin: 2.4rem auto;
             width: 200px;
+            /* filter ;*/
             }
         .transt1 {
             transition: transform 0.5s ease-in;
@@ -26,27 +27,28 @@
             transform: rotate(360deg);
         }
         .transt3 {
-            transition: transform 0.5s, width: 0.2s, height: 0.5 0.5;
+            transition: transform 0.5s, width 0.5s, height 0.5 0.5;
         }
         .transt3:hover {
-            transform: rotate(360deg);
-            width: 500px;
-            height: 300px;
+            transform: rotate(240deg) scale(0.6);
+            height: 400px;
         }
         .transt4 {
-            transition: transform 0.5s ease-in;
+            transition: all 1s ease-in-out;
         }
         .transt4:hover {
-            transform: scale(1.4);
+            background-image: url(imgs/Kirby_Star_Allies_-_Kirby.png);
         }
-        .transt5 {
-            transition: transform 0.5s ease-in;
+        figure.kirby.transt5 {
+            background-image: none !important;
+            background-color: #f0000050;
+            transition: background-color 1s, width 0.5s 1s;
         }
-        .transt5:hover {
-            transform: scale(1.4);
+        figure.kirby.transt5:hover {
+            background-image: none;
+            background-color: #da5fa6ce;
+            width: 500px;
         }
-
-        
     </style>
 </head>
 <body>
@@ -59,7 +61,7 @@
             <figure class="kirby transt1"></figure>
             <h2>transition: transform: 1s ease-out</h2>
             <figure class="kirby transt2"></figure>
-            <h2>transition: transform: 0.5s, width 0.5s, height 0.5s 0.5s</h2>
+            <h2>transition: transform: 0.5s, height 0.5s 0.5s</h2>
             <figure class="kirby transt3"></figure>
             <h2>transition: all 2s ease-in-out</h2>
             <figure class="kirby transt4"></figure>

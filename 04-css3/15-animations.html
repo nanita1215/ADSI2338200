@@ -6,6 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animations</title>
     <link rel="stylesheet" href="css/master.css">
+    <style>
+        figure.garden {
+            background: url(imgs/garden.jpg) no-repeat center/cover;
+            height: 400px;
+            margin: 1rem auto;
+            overflow: hidden; /* oculta lo que este fuera*/
+            position: relative;
+            width: 580px;
+        }
+        figure.garden div.dove {
+            border: 2px solid red;
+            background: url(imgs/dove.png) no-repeat center/contain;
+            height: 80px;
+            position: absolute;
+            left: -100px;
+            width: 80px;
+            animation: animDove 15s linear infinite ;
+        }
+        @keyframes animDove {
+            0% {
+                left: -100px;
+                top: 0px;
+                transform: rotateY(0deg) scale(0.8);
+            }
+            51% { 
+                left: 280px;
+                top: 300px;
+                transform: rotateY(180deg) scale(0.8);
+            }
+            70% {
+                left: 280px;
+                top: 300px;
+                transform: rotateY(180deg) scale(0.8);
+            }
+            100% {
+                left: -100px;
+                top: 200px;
+                transform: rotateY(180deg) scale(4);
+            }
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -13,7 +54,10 @@
             <h1><a href="index.html">⬅️</a>Animations</h1>
         </header>
         <section>
-            <h2>Animations</h2>
+            <h2>Example</h2>
+            <figure class="garden">
+                <div class="dove"></div>
+            </figure>
         </section>
     </main>
 </body>
