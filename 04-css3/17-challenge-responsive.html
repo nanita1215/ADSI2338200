@@ -4,17 +4,192 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge Responsive </title>
-    <link rel="stylesheet" href="css/master.css">
+    <title>Challenge Responsive Design (Media Queries)</title>
+    	<style>
+		* {
+			transition: all 0.5s;
+		}
+		body {
+			font: 16px Arial;
+		}
+		main {
+			margin: 0px auto;
+			width: 1280px;
+		}
+		header div.logo {
+			background: url(imgs/opm-logo.png) no-repeat center;
+			background-size: cover;
+			height: 280px;
+		}
+		section.boxes {
+			margin-top: 40px;
+			border: solid red 2px;
+		}
+		section.boxes div {
+			display: inline-block;
+			height: 280px;
+			margin-right: 28px;
+			position: relative;
+			width: 280px;
+		}
+		section.boxes div:first-child {
+			margin-left: 28px;
+		}
+		section.boxes div:last-child {
+			margin-right: 0px;
+		}
+		section.boxes div:nth-child(1n) {
+			background: url(imgs/opm1.jpg) no-repeat center;
+			background-size: cover;
+		}
+		section.boxes div:nth-child(2n) {
+			background: url(imgs/opm2.jpg) no-repeat center;
+			background-size: cover;
+		}
+		section.boxes div p {
+			background-color: #504e4d;
+			color: #a19d9a;
+			bottom: 0px;
+			font-size: 1.4em;
+			height: 20px;
+			margin: 0px;
+			padding: 20px;
+			position: absolute;
+			text-align: center;
+			width: 240px;
+			transition: all 0.4s;
+		}
+		section.boxes div:hover {
+			cursor: grab;
+		}
+		section.boxes div:hover p {
+			height: 60px;
+		}
+		footer {
+			margin-top: 40px;
+		}
+		footer article {
+			border: 1px dotted #21232480;
+			height: 300px;
+			position: relative;
+			margin: 40px 18px;
+		}
+		footer article figure {
+			background: url(imgs/opm3.jpg) no-repeat;
+			background-size: cover;
+			height: 280px;
+			margin: 0px;
+			width: 280px;
+		}
+		footer article.art1 figure {
+			background-position: right center;
+			margin: 10px auto;
+		}
+		footer article figure,
+		footer article div {
+			display: inline-block;
+			vertical-align: top;			
+		}
+		footer article div {
+			margin-left: 28px;
+			width: 600px;
+		}
+		footer article div h2 {
+			color: #161616da;
+			font-size: 2.3em;
+			
+		}
+		footer article div p {
+			color: #0c101180;
+			line-height: 1.2em;
+			text-align: justify;
+		}
+		/* =============================================== */
+		@media (max-width: 1290px) {
+			main {
+				width: 680px;
+			}
+			header div.logo {
+				background-size: 115%;
+			}
+			section.boxes div {
+				margin: 25px;
+			}
+			footer article div {
+				width: 280px;
+			}
+			footer article div h2 {
+				font-size: 1.4em;
+			}
+			footer article div p {
+				overflow: scroll;
+				height: 180px;
+			}
+		}
+		/*  ================================================= */
+		@media (max-width: 690px) {
+			main {
+				width: 480px;
+			}
+			section.boxes div {
+				display: block;
+				margin: 28px auto !important;
+			}
+			footer article {
+				height: 560px;
+				margin: 40px auto;
+				width: 280px;
+			}
+			footer article figure,
+			footer article div {
+				display: block;
+			}
+			footer article div {
+				margin-left: 0px;
+				width: 280px;
+			}
+		}
+	</style>
 </head>
 <body>
-    <main>
-        <header>
-            <h1><a href="index.html">⬅️</a>Challenge Responsive</h1>
-        </header>
-        <section>
-            <h2>Subtitle</h2>
-        </section>
-    </main>
+	<main>
+		<header>
+			<div class="logo"></div>
+		</header>
+		<section class="boxes">
+			<div class="box1">
+				<p>OPM <small>(season 1)</small></p>
+			</div>
+			<div class="box2">
+				<p>OPM <small>(season 2)</small></p>
+			</div>
+			<div class="box3">
+				<p>OPM <small>(season 3)</small></p>
+			</div>
+			<div class="box4">
+				<p>OPM <small>(season 4)</small></p>
+			</div>
+		</section>
+		<footer>
+			<article class="art1">
+				<figure></figure>
+				<div class="content">
+					<h2> SAITAMA SENSEI </h2>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quo debitis incidunt repellendus fuga culpa ab delectus enim! Perspiciatis fugiat ad doloremque quae vero odit temporibus, recusandae, asperiores quia, architecto aliquid. Impedit distinctio accusantium sequi eaque quas aspernatur dignissimos quisquam, magni rem laudantium facilis! Animi aliquam distinctio sed omnis dolores.
+					</p>
+				</div>
+			</article>
+			<article class="art2">
+				<figure></figure>
+				<div class="content">
+					<h2> GENOS </h2>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nihil blanditiis minus qui iure quo maiores praesentium provident veritatis natus facilis mollitia corporis consectetur incidunt, reprehenderit omnis ipsa exercitationem ullam. Voluptas autem esse quaerat expedita, eos illo, odit pariatur veniam delectus doloremque nobis nulla non inventore eveniet! Necessitatibus, iusto quia?
+					</p>
+				</div>
+			</article>
+		</footer>
+	</main>
 </body>
 </html>
