@@ -26,7 +26,6 @@ header h1 {
 nav {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     overflow-y: auto; /* que se active el scroll del contenido */
     height: 560px;
     align-items: center;

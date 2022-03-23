@@ -61,10 +61,10 @@
         }
         ]
 
-        links.forEach(item => renderLink(item.url, item.text))
+        links.forEach(renderLink)
 
-        function renderLink(url, text) {
-            menu.innerHTML += "<li><a href= '"+url+"'><i><i> "+text+" </a></li>"
+        function renderLink(item, index) {
+            menu.innerHTML += "<li><a href= '"+item.url+"'><i> "+(index+1)+"</i> "+item.text+" </a></li>"
         
         }
     </script>
