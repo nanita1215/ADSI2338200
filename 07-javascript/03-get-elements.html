@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Element(s)</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Get Element(s)</h1>
+        </header>
+        <section>
+            <h3 id="year"></h3>
+            <ul>
+                <li>Bulbasaur</li>
+                <li>Squirtle</li>
+                <li>Charmander</li>
+            </ul>
+            <h3 id="nli"></h3> 
+        </section>
+        
+    </main>
+    <script>
+        //getElementById
+        let year = document.getElementById ('year')
+        let nli = document.getElementById ('nli')
+        let ndate =new Date
+        year.innerText = "Currently Year \n " + ndate.getFullYear()
+
+        //getElemensByTagName
+        let lis = document.getElementsByTagName('li')
+        nli.innerText = 'There are: ' + lis.length + ' list elements' + 
+                        ' list elements \n ' + ' Last element value is \n' + 'Last element value ' +
+                        lis[2].textContent
+        let 
+
+
+    </script>
+</body>
+</html>

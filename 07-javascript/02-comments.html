@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Comments</h1>
+        </header>
+        <section>
+            <h3 id="today"></h3>
+        </section>
+        
+    </main>
+    <script>
+        // this is a comment line
+        /* this is a 
+        comment 
+        multi line
+        */ 
+        let today = document.getElementById('today') // Create a variable 
+        let ndate = new Date // ndate is a Date Type;
+        console.log(ndate)
+        today.innerText = 'TODAY:  ' +  ndate.getDate() + '/' + 
+                            (ndate.getMonth()+1) + '/' + 
+                            ndate.getFullYear()
+    </script>
+</body>
+</html>

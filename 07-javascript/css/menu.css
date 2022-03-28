@@ -1,64 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600&display=swap');
+body{
     background: url(../images/java.jpg) no-repeat center;
     background-size: cover;
+    color: rgba(255, 255, 255, 0.616);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'poppins', sans-serif;
-    font-weight: 400;
     min-height: 100vh;
-
 }
-main {
-    background-color: #00000063;
+main{
+    background-color: #00000062;
     border-radius: 40px;
-    border: 2px solid #aa0;
+    border: 2px solid #ffff00;
     height: 700px;
-    width: 400px;
+    width: 420px;
 }
-header h1 {
-    color: #aa0;
+header h1{
+    color: #ffff00;
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
 }
-nav {
+h2, h3, h4{ 
+    text-align: center;
+    border-bottom: 2px dotted #ffffff99;
+    padding-bottom: 5px;
+    margin: 0px 40px;
+}
+header {
+    position: relative;
+}
+header h1{
+    color: #ffff00;
+    text-align: center;
+    font-size: 2rem;
+}
+header a:link,
+header a:visited{
+    color:#ff8800;
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    float: left;
+    border-radius: 50%;
+    transition: all 0.3s ease-in;
+}
+header a:hover{
+    transform: translateX(-7px) scale(1.1);
+    background-color: black;
+    border-radius: 50%;
+    border: solid 2px #ffff00;
+}
+nav{
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* que se active el scroll del contenido */
+    overflow-y: auto;
     height: 560px;
-    align-items: center;
     gap: 1rem;
+    align-items: center;
 }
 nav li {
     list-style: none;
 }
 nav li a:link,
-nav li a:visited {
-    background-color: #aaaa0080;
+nav li a:visited{
+    background-color: rgb(248, 248, 0);
     border-radius: 20px;
+    color: #000;
     display: flex;
-    color: #333;
     padding: 10px;
     text-decoration: none;
-    width: 260px;
-    transition: background 0.2s ease-in;
+    width: 240px;
 }
-nav li a i {
-    background-color: #000;
+nav li a i{
+    background-color: rgb(0, 0, 0);
     border-radius: 20px;
-    color: #fff;
+    color: #ffff007c;
     display: flex;
     justify-content: center;
-    font-style: normal; /* para que no quede en cursiva */ 
     align-items: center;
     height: 20px;
-    margin-right: 10px;
     width: 20px;
-    transition: transform 0.2s ease-in;
+    margin-right: 10px;
+    transition: transform 0.2s 0.2s ease-in;
 }
-nav li a: hover {
-    background-color: #aaaa00ff
-
+nav li a:hover {
+    background-color: #ffff00;
 }
