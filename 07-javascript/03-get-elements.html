@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Element(s)</title>
+    <title>Get Elemments</title>
     <link rel="stylesheet" href="css/menu.css">
+    <style>
+        p{
+            padding-left: 20px;
+        }
+        button {
+            margin-top: 28px;
+            border: none;
+            padding: 10px;
+        }
+        </style>
 </head>
 <body>
     <main>
@@ -15,34 +25,57 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                   </svg>
             </a>
-            <h1>Get Element(s)</h1>
+            <h1>Get Elemments</h1>
         </header>
         <section>
             <h3 id="year"></h3>
+
             <ul>
-                <li>Bulbasaur</li>
+                <li>Bulbasur</li>
                 <li>Squirtle</li>
                 <li>Charmander</li>
+                <li>Pikachu</li>
             </ul>
-            <h3 id="nli"></h3> 
+            <h3 id="nli"></h3>
+            <p class="paragraph"> lorem ipsum dolor</p>
+            <p class="paragraph"> lorem ipsum dolor</p>
+            <p class="paragraph"> lorem ipsum dolor</p>
+            <h3 id="np"></h3>
+
+            <button class="btn first">Button 1</button>
+            <button class="btn">Button 2</button>
+            <button class="btn">Button 3</button>
+            
         </section>
-        
+        </nav>
+        <script>
+            //query selector
+            //get elementByid
+            let np=document.getElementById('np')
+            let nli=document.getElementById('nli')
+            let year=document.getElementById('year')
+            let ndate=new Date();
+            year.innerText="Current Date : \n"+ ndate.getFullYear()
+            //Get ElementsByTagName
+            let lis=document.getElementsByTagName('li')
+            nli.innerText='There are: '+lis.length+ 
+            ' list elements\n'+
+            'last element value is: '+
+            lis[lis.length-1].textContent
+            //Get ElementsByName
+            let nps=document.getElementsByClassName('paragraph')
+            nps[nps.length-1].style.color='red';
+            np.innerText='There are: '+nps.length+' 
+                        <p> whit class paragraph'
+            //Query selector(s)
+            let btn = document.querySelector('button.first')
+            let btns = document.querySelectorAll('button.btn')
+
+            btn.style.marginLeft = '120px'
+            btns[1].style.backgroundColor = '#aa0'
+
+
+        </script>
     </main>
-    <script>
-        //getElementById
-        let year = document.getElementById ('year')
-        let nli = document.getElementById ('nli')
-        let ndate =new Date
-        year.innerText = "Currently Year \n " + ndate.getFullYear()
-
-        //getElemensByTagName
-        let lis = document.getElementsByTagName('li')
-        nli.innerText = 'There are: ' + lis.length + ' list elements' + 
-                        ' list elements \n ' + ' Last element value is \n' + 'Last element value ' +
-                        lis[2].textContent
-        let 
-
-
-    </script>
 </body>
 </html>

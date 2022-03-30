@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Element(s)</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        small { 
+            color: #aa0;
+        }
+        h1 {
+            margin-top: 60px ;
+            margin-bottom: 40px;
+        }
+        h3 {
+            margin-bottom: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Variables</h1>
+        </header>
+        <section>
+            <h3>Type String:            <small id="ts"></small> </h3>
+            <h3>Type Number:            <small id="tn"></small> </h3>
+            <h3>Type Boolean:           <small id="tb"></small> </h3>
+            <h3>Type Null:              <small id="tnu"></small></h3>
+            <h3>Type Undefinded:        <small id="tu"></small></h3>
+            <h3>Array:                  <small id="ta"></small> </h3>
+            <h3>Type Object:            <small id="to"></small> </h3>
+
+        </section>
+
+        <script>
+            // Ids
+            var ts = document.getElementById('ts')
+            var tn = document.getElementById('tn')
+            var tb = document.getElementById('tb')
+            var tnu = document.getElementById('tnu')
+            var tu = document.getElementById('tu')
+            var ta = document.getElementById('ta')
+            var to = document.getElementById('to')
+
+            // Type String 
+            const string1 = 'Hello ' 
+            const string2 = 'World'
+            const stringr = string1 + string2
+            ts.innerText = stringr
+
+            // Type Number 
+            const number1 = 45.98
+            const number2 = 23
+            const numberr = (number1 + parseInt(number2)).toPrecision(4)
+            tn.innerText = numberr
+
+            //Type Boolean
+            const vbool = (45<=10)
+            tb.innerText = vbool
+            
+            // Type Null 
+            const vnull = null
+            tnu.innerText = '' + vnull
+
+            // Type Undefined 
+            const vundef = undefined
+            tu.innerText = vundef
+
+            // Type Array 
+            const emojis = ['🐣' , '💥' , '🥂' , '❣']
+            ta.innerHTML = emojis 
+
+            // Type Object 
+            const hashira = {
+                name: 'Kyojuro Rengoku',
+                element: 'Fire',
+                age: 23
+            }
+            to.innerText = hashira.name
+
+        </script>        
+    </main>
+</body>
+</html>
