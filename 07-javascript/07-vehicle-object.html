@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Object</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        main{
+            background: url(images/3.\ darkmode.svg) no-repeat center;
+            border: none;
+            transition: all 0.5s ease-in;
+        }
+        main.darkMode {
+            background: url(images/vehicle/);
+        }
+        header a:link,
+        header a:visited {
+            color: #E9BA12;
+            top: 40px;
+            left: 14px;
+        }
+        
+        section { 
+            position: relative;
+        }
+        main.darkmode section button.btnDarkMode{
+            background: url(images/
+        }
+        section button.btnDarkMode {
+            position: absolute;
+            text-indent: -9999px;
+            width: 45px;
+            height: 45px;
+            left: 348px;
+            top: 33px;
+            background: url(images/darkmode.svg) no-repeat;
+            border: none;
+            cursor: pointer;
+        }
+        section button.btnDarkMode:hover {
+            transform: scale(1.2) rotate(45deg)
+        }
+        section ul.attributes {
+           position: absolute;
+           list-style: none;
+           top: 200px;
+           left: -20px;
+           /* flex */ 
+           display: flex;
+           justify-content: center;
+           gap: 21px;
+           flex-direction: row;
+        }
+        section ul.attributes li{
+            color: #fff;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-align: center;
+            width: 80px;
+        }
+        figure.landscape{
+            background-color: #E9BA12;
+            border-radius: 20px;
+            height: 255px;
+            position: absolute;
+            left: -14px;
+            top: 280px;
+            width: 368px;            
+        }
+        nav.changeVehicle { 
+            border: solid 2px red;
+            
+            position: absolute;
+            top: 400px;
+            left: 25px;
+            
+            /* flex */ 
+            display: flex;
+            flex-direction: row;
+            align-items: fle;
+            justify-content: space-between;
+            width: 370px;
+            height: 200px;
+        }
+        nav.changeVehicle button {
+            border: none;
+            cursor: pointer;            
+            height: 56px;
+            text-indent: -9999px;
+            transition: transform 0.2s ease;
+            width: 56px;
+        }
+        nav.changeVehicle button.prev {
+            background: url(images/prev.svg) no-repeat;
+        }
+        nav.changeVehicle button.next {
+            background: url(images/next.svg) no-repeat;
+        }
+        nav.changeVehicle button.prev:hover {
+            transform: translateX(-10px);
+        }
+        nav.changeVehicle button.next:hover {
+            transform: translateX(10px);
+        }
+        nav.controls{
+            position: absolute;
+            left: 45px;
+            top: 351px;
+            width: 346px;
+            /* flex*/
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+        nav.controls button{
+            border: none;
+            height: 65px;
+            text-indent: -9999px;
+            transition: transform 0.2s ease;
+            width: 66px;
+        }
+        nav.controls button.btnStart{
+            background: url(images/playmode.svg) no-repeat center;
+        }
+        nav.controls button.btnForward{
+            background: url(images/nextmode.svg) no-repeat center;
+        }
+        nav.controls button.btnStop{
+            background: url(images/stopmode.svg) no-repeat center;
+        }
+        nav.controls button.btnBackward{
+            background: url(images/prevmode.svg) no-repeat center;
+        }
+        nav.controls button.btnTurnOff{
+            background: url(images/nonemode.svg) no-repeat center;
+        }
+        nav.controls button:hover{
+            transform: scale(1.55) rotate(90deg);
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            
+            
+        </header>
+        <section>
+            <button class="btnDarkMode">Dark Mode</button>
+            <ul class="attributes">
+                <li class="brand"></li>
+                <li class="refer"></li>
+                <li class="model"></li>
+                <li class="color"></li>
+            </ul>
+            <figure class="landscape">                
+            </figure>
+            <nav class="changeVehicle">
+            <button class="prev">Prev</button>
+            <button class="next">Next</button>
+        </nav>
+        <nav class="controls">
+            <button class="btnStart">Start</button>
+            <button class="btnForward">Forward</button>
+            <button class="btnStop">Stop</button>
+            <button class="btnBackward">Backward</button>
+            <button class="btnTurnOff">Turn Off</button>
+        </nav>  
+        </section>
+
+    </main>    
+    <script>
+        // Elements
+
+        const main = document.querySelector('main')
+
+        // Buttons
+
+        const btnDarkMode = document.querySelector('button.btnDarkMode')
+
+        // Attributes 
+
+        const brand = document.querySelector('li.brand')
+        const refer = document.querySelector('li.refer')
+        const model = document.querySelector('li.model')
+        const color = document.querySelector('li.color')
+
+        // Object 
+
+        const vehicle = {
+
+            // Attributes
+            attributes:[
+                
+                    {brand: 'Toyota', refer: 'Yaris', model: 2020, color: 'Black' image: ''},
+                    {brand: 'Renault', refer: 'Clio', model: 2018, color: 'Red' image: ''},
+                    {brand: 'Ford', refer: 'Fiesta', model: 2016, color: 'Green' image: ''},
+                    {brand: 'Fiat', refer: '500', model: 2008, color: 'Blue' image: ''}
+                
+            ],
+
+            //Methods
+
+            showAttributes: function () {
+                
+                brand.innerText = this.attributes[0].brand
+                refer.innerText = this.attributes[0].refer
+                model.innerText = this.attributes[0].model
+                color.innerText = this.attributes[0].color
+            },
+            darkMode: function () {
+                main.classList.toggle('darkmode')
+            },
+            start: function () {
+                alert ('Start')
+            },
+            forward: function () {
+                alert ('Forward')
+            },
+            stop: function () {
+                alert ('Stop')
+            },
+            backward: function () {
+                alert ('Backward')
+            },
+            turnOff: function () {
+                alert ('TurnOff')
+            }
+        }
+
+        // - - -
+        
+        vehicle.showAttributes ()
+
+        // Actions
+
+        btnDarkMode.oneclick = () => {
+            vehicle.darkMode()
+        }
+
+
+    </script>
+</body>
+</html>
