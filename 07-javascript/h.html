@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Vehicle JS</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /*  */
+        section.container {
+            max-height: 760px;
+        }
+        /* Skin - - - - - -  */
+        div.skin {
+            background: url(imgs/skin.png) no-repeat;
+            height: 748px;
+            margin: 0 auto;
+            position: relative;
+            transition: all 0.5s ease-in;
+            width: 402px;
+            z-index: 2;
+        }
+        div.skinback {
+            height: 748px;
+            margin: 0 auto;
+            position: relative;
+            top: -748px;
+            transition: all 0.5s ease-in;
+            width: 402px;
+            z-index: 1;
+        }
+
+        /* Attributes - - - - - -  */
+        section.attributes {
+            position: relative;
+            left: 20px;
+            padding: 0;
+            top: 130px;
+        }
+        section.attributes h4 {
+            color: #a99731;
+            font-size: 24px;
+            font-family: 'Poppins';
+            font-weight: 300;
+            margin: 0;
+            position: absolute;
+        }
+        section.attributes h4#txt-reference {
+            left: 192px;
+        }
+        section.attributes h4#txt-model {
+            top: 92px;
+        }
+        section.attributes h4#txt-color {
+            left: 192px;
+            top: 92px;
+        }
+        /* Button Dark Mode - - - - - -  */
+        button {
+            border: none;
+            display: block;
+            text-indent: 9999px;
+            transition: all 0.2s ease-in;
+        }
+        button:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+        button#bt-dark {
+            background: url(imgs/bt-dark.png) no-repeat;
+            height: 48px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 48px;
+        }
+        /* Methods - - - - - -  */
+        section.controls {
+            padding: 0;
+            position: relative;
+            left: 18px;
+            top: 660px;
+        }
+        section.controls button {
+            height: 76px;
+            display: inline-block;
+            vertical-align: text-top;
+            margin-left: -5px;
+            width: 76px;
+        }
+        section.controls button#bt-on {
+            background: url(imgs/bt-on.png) no-repeat;
+        }
+        section.controls button#bt-off {
+            background: url(imgs/bt-off.png) no-repeat;
+        }
+        section.controls button#bt-stop {
+            background: url(imgs/bt-stop.png) no-repeat;
+        }
+        section.controls button#bt-fw {
+            background: url(imgs/bt-fw.png) no-repeat;
+        }
+        section.controls button#bt-bw {
+            background: url(imgs/bt-bw.png) no-repeat;
+        }
+        /* Landscape */
+        section.landscape {
+            height: 340px;    
+            padding: 0; 
+            position: absolute;
+            bottom: 138px;
+            left: 14px;
+            overflow: hidden;
+            width: 376px;
+            z-index: 1;
+        }
+        section.landscape div {
+            position: absolute;
+        }
+        section.landscape div.sky {
+            background: url(imgs/sky.png) repeat-x;
+            height: 342px; 
+            width: 749px;    
+        } 
+        section.landscape div.sea {
+            background: url(imgs/sea.png) repeat-x;
+            top: 172px;
+            height: 91px; 
+            width: 749px;    
+        } 
+        section.landscape div.road {
+            background: url(imgs/road.png) repeat-x;
+            top: 262px;
+            height: 79px; 
+            width: 749px;    
+        } 
+        /* Dark Mode - - - - - -  */
+        div.skin.dark {
+            background: url(imgs/skin-dark.png) no-repeat;
+        }
+        div.skin.dark button#bt-dark {
+            background: url(imgs/bt-light.png) no-repeat;
+        }
+        div.skin.dark section.attributes h4 {
+            opacity: 0.8;
+            color: #fff;
+        }
+        div.skin.dark figure#van {
+            background: url(imgs/van-dark.png) no-repeat;
+        }
+        div.skin.dark + div.skinback section.landscape div.sky {
+            background: url(imgs/sky-dark.png) repeat-x;
+        }
+        div.skin.dark + div.skinback section.landscape div.sea {
+            background: url(imgs/sea-dark.png) repeat-x;
+        }
+        /* van  - - - - - -  */
+        figure#van {
+            background: url(imgs/van.png) no-repeat;
+            height: 243px;
+            position: absolute;
+            left: 38px;
+            top: 400px;
+            width: 243px;
+            z-index: 3;
+        }
+        figure#van.on {
+            animation: animOn 0.2s infinite;
+        }
+        @keyframes animOn {
+            0%, 100% { top: 400px; }
+            50%      { top: 396px; }
+        }
+        /* Parallax  - - - - - -  */
+        section.landscape.forward div.sky {
+            animation: animParallax 60s linear infinite;
+        }
+        section.landscape.forward div.sea {
+            animation: animParallax 30s linear infinite;
+
+        }
+        section.landscape.forward div.road {
+            animation: animParallax 4s linear infinite;
+
+        }
+        @keyframes animParallax {
+            0%   { background-position: 0px 0px; }
+            100% { background-position: -749px 0px; }
+        }
+
+        /* Paused */
+        section.landscape.pause div.sky,
+        section.landscape.pause div.sea,
+        section.landscape.pause div.road {
+            animation-play-state: paused;
+        }
+        /* Backward */
+        section.landscape.backward div.sky,
+        section.landscape.backward div.sea,
+        section.landscape.backward div.road {
+            animation-direction: reverse;
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1> <span><a href="index.html">&larr;</a></span> Object Vehicle JS</h1>
+        </header>
+        <section class="container">
+            <div class="skin">
+                <button id="bt-dark">DM</button>
+                <section class="attributes">
+                    <h4 id="txt-brand"></h4>
+                    <h4 id="txt-reference"></h4>
+                    <h4 id="txt-model"></h4>
+                    <h4 id="txt-color"></h4>
+                </section>
+                <figure id="van"></figure>
+                <section class="controls">
+                    <button id="bt-on">ON</button>
+                    <button id="bt-off">OFF</button>
+                    <button id="bt-stop">STOP</button>
+                    <button id="bt-fw">FW</button>
+                    <button id="bt-bw">BW</button>
+                </section>
+            </div>
+            <div class="skinback">
+                <section class="landscape">
+                    <div class="sky"></div>
+                    <div class="sea"></div>
+                    <div class="road"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Variables
+        var tbrand     = document.getElementById('txt-brand');
+        var treference = document.getElementById('txt-reference');
+        var tmodel     = document.getElementById('txt-model');
+        var tcolor     = document.getElementById('txt-color');
+
+        var btdark    = document.getElementById('bt-dark');
+        var bton      = document.getElementById('bt-on');
+        var btoff     = document.getElementById('bt-off');
+        var btstop    = document.getElementById('bt-stop');
+        var btfw      = document.getElementById('bt-fw');
+        var btbw      = document.getElementById('bt-bw');
+
+        var van       = document.getElementById('van');
+        var skin      = document.querySelector('div.skin');
+        var landscape = document.querySelector('section.landscape');
+        var dmode     = false;
+        var engine    = false;
+        var move      = false;
+
+        var vehicle = {
+            // Attributes
+            brand: 'Volkswagen',
+            reference: 'Van',
+            model: 1978,
+            color: 'AquaDark',
+
+            // Methods
+            showAttributes: function() {
+                tbrand.innerText     = this.brand;
+                treference.innerText = this.reference;
+                tmodel.innerText     = this.model;
+                tcolor.innerText     = this.color;
+            },
+            darkmode: function() {
+                if (dmode == false) {
+                    skin.classList.add('dark');
+                    dmode = true;
+                } else {
+                    skin.classList.remove('dark');
+                    dmode = false;
+                }
+            },
+            on: function() {
+                if(engine == false) {
+                    van.classList.add('on');
+                    engine = true;
+                }
+            },
+            off: function() {
+                if(engine == true && move == false) {
+                    van.classList.remove('on');
+                    landscape.classList.remove('forward');
+                    landscape.classList.remove('backward');
+                    landscape.classList.remove('pause');
+                    engine = false;
+                }
+            },
+            stop: function() {
+                if(move == true) {
+                    landscape.classList.add('pause');
+                    move = false;
+                }
+            },
+            forward: function() {
+                if(engine == true && move == false) {
+                    landscape.classList.add('forward');
+                    landscape.classList.remove('pause');
+                    landscape.classList.remove('backward');
+                    move = true;
+                }
+            },
+            backward: function() {
+                if(engine == true && move == false) {
+                    landscape.classList.add('forward');
+                    landscape.classList.add('backward');
+                    landscape.classList.remove('pause');
+                    move = true;
+                }
+            },
+        }
+        // Events
+        vehicle.showAttributes();
+
+        btdark.onclick = function() {
+            vehicle.darkmode();
+        }
+        bton.onclick = function() {
+            vehicle.on();
+        }
+        btoff.onclick = function() {
+            vehicle.off();
+        }
+        btstop.onclick = function() {
+            vehicle.stop();
+        }
+        btfw.onclick = function() {
+            vehicle.forward();
+        }
+        btbw.onclick = function() {
+            vehicle.backward();
+        }
+    </script>
+    
+</body>
+</html>
