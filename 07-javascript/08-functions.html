@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods Object</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        h4{
+            margin-top: 10px;
+            color: #aa0;
+            font-size: 1.4rem;
+        }
+        strong{ color: #aa0;}
+        div.form{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px; /* separar */ 
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path fill-rule="evenod" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Functions</h1>
+        </header>
+        <section>
+            <h3>Without params/args</h3>
+            <h4 id="greeting"></h4>
+            <h3>with params/args</h3>
+            <div class="form">
+                <input type="number" id="num1" min="1" max = "99999999" placeholder="Number 1">
+                <strong>+</strong>
+                <input type="number" id="num2" min="1" max = "99999999" placeholder="Number 2">
+                <strong>=</strong>
+                <strong id="result"></strong>
+            </div>
+            <h3>Return Value</h3>
+            <h4 id="fulldate"></h4>
+
+        </section>        
+    </main>
+    <script>
+        // --- 
+        const greeting      = document.getElementById('greeting')
+        const number1       = document.getElementById('number1')
+        const number2       = document.getElementById('number2')
+        const result        = document.getElementById('result')
+        const fulldate      = document.getElementById('fulldate')
+
+        // function without parameters /arguments --- 
+
+        function showGreeting(){
+            greeting.innerText = "Welcome: Guest ✌"
+        }
+        showGreeting() /* llamado a la funcion  */ 
+
+        // Function with parameteres / arguments 
+
+        function sumValues (n1, n2){
+            if (n1 != '' && n2 != '' ){
+                result.innerText = parseInt(n1) + parseInt(n2)
+            }
+        }
+        number1.oninput = () => {
+            sumValues(number1.value, number2.value)            
+        }
+        number2.oninput = () => {
+            sumValues(number1.value, number2.value)            
+        }
+
+        // Function return value 
+        let tdate = new Date
+        function showDate (){
+            return '' tdate.getHours() + ':' + tdate.getMinutes
+        }
+        fulldate.innerText = 'Time:' + showDate()
+    </script>
+</body>
+</html>
