@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meheader.calcta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>challenge Calculator</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        header h1{
+            font-size: 1.4rem;
+            line-height: 3.8rem;
+            
+        }
+        div.calculator {
+            /* border: 2px  solid red; */
+            margin: 40px auto;
+            width: 260px;            
+        }
+        header.display {
+            background: url(images/calc/display.svg) no-repeat center;
+            height: 59px;
+            position: relative;
+            width: 260px;
+        }
+        header.display input.value {
+            border: none;
+            background: none;
+            color: #0E5E59;
+            font-family: poppins;
+            font-size: 20px;
+            font-style: normal;
+            outline: none;            
+            position: absolute;
+            right: 10px;
+            text-align: right;
+            top: 16px;
+            width: 235px;
+        }
+        section.buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(63px, 1fr));
+            column-gap: 1px;
+            row-gap: 5px;
+            margin: 10px 0;            
+        }
+        section.buttons button {
+            border: none;
+            cursor: pointer;
+            height: 65px; 
+            width: 63px;
+            transition: transform 0.1s ease;
+        }
+        section.buttons button:hover {
+            transform: scale(1.15) skew(5deg);
+        }
+        button.btn-clear {
+            background: url(images/Calc/clear.svg) no-repeat center;
+        }
+        button.btn-back {
+            background: url(images/Calc/back.svg) no-repeat center;
+        }
+        button.btn-pow {
+            background: url(images/Calc/pow.svg) no-repeat center;
+        }
+        button.btn-mod {
+            background: url(images/Calc/mod.svg) no-repeat center;
+        }
+        button.btn-1 {
+            background: url(images/Calc/1.svg) no-repeat center;
+        }
+        button.btn-2 {
+            background: url(images/Calc/2.svg) no-repeat center;
+        }
+        button.btn-3 {
+            background: url(images/Calc/3.svg) no-repeat center;
+        }
+        button.btn-prod {
+            background: url(images/Calc/prod.svg) no-repeat center;
+        }
+        button.btn-4 {
+            background: url(images/Calc/4.svg) no-repeat center;
+        }
+        button.btn-5 {
+            background: url(images/Calc/5.svg) no-repeat center;
+        }
+        button.btn-6 {
+            background: url(images/Calc/6.svg) no-repeat center;
+        }
+        button.btn-subs {
+            background: url(images/Calc/subs.svg) no-repeat center;
+        }
+        button.btn-7 {
+            background: url(images/Calc/7.svg) no-repeat center;
+        }
+        button.btn-8 {
+            background: url(images/Calc/8.svg) no-repeat center;
+        }
+        button.btn-9 {
+            background: url(images/Calc/9.svg) no-repeat center;
+        }
+        button.btn-add {
+            background: url(images/Calc/add.svg) no-repeat center;
+        }
+        button.btn-div {
+            background: url(images/Calc/div.svg) no-repeat center;
+        }
+        button.btn-0 {
+            background: url(images/Calc/0.svg) no-repeat center;
+        }
+        button.btn-dot {
+            background: url(images/Calc/dot.svg) no-repeat center;
+        }
+        button.btn-equal {
+            background: url(images/Calc/equal.svg) no-repeat center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Challenge calculator</h1>
+        </header>
+        <section>
+            <div class="calculator">
+                <header class="display">
+                    <input class="value"></input>          
+                    <input type="text" class="value" readonly>          
+                </header>
+                <section class="buttons">
+                    <button class="btn-clear">  </button>
+                    <button class="btn-back">   </button>
+                    <button class="btn-pow">    </button>
+                    <button class="btn-mod">    </button>
+                    <button class="btn-1">      </button>
+                    <button class="btn-2">      </button>
+                    <button class="btn-3">      </button>
+                    <button class="btn-prod">   </button>
+                    <button class="btn-4">      </button>
+                    <button class="btn-5">      </button>
+                    <button class="btn-6">      </button>
+                    <button class="btn-subs">   </button>
+                    <button class="btn-7">      </button>
+                    <button class="btn-8">      </button>
+                    <button class="btn-9">      </button>
+                    <button class="btn-add">    </button>
+                    <button class="btn-div">    </button>
+                    <button class="btn-0">      </button>
+                    <button class="btn-dot">    </button>
+                    <button class="btn-equal">  </button>
+                </section>
+            </div>
+
+        </section>
+        
+    </main>
+    <script>
+        // Display 
+        const disValue      = document.querySelector('input.value')
+
+        // Buttons
+        const btnClear      = document.querySelector('button.btn-clear')
+        const btnBack       = document.querySelector('button.btn-back')
+        const btnPow        = document.querySelector('button.btn-pow')
+        const btnMod        = document.querySelector('button.btn-mod')
+        const btn1          = document.querySelector('button.btn-1')
+        const btn2          = document.querySelector('button.btn-2')
+        const btn3          = document.querySelector('button.btn-3')
+        const btnProd       = document.querySelector('button.btn-prod')
+        const btn4          = document.querySelector('button.btn-4')
+        const btn5          = document.querySelector('button.btn-5')
+        const btn6          = document.querySelector('button.btn-6')
+        const btnsubs       = document.querySelector('button.btn-subs')
+        const btn7          = document.querySelector('button.btn-7')
+        const btn8          = document.querySelector('button.btn-8')
+        const btn9          = document.querySelector('button.btn-9')
+        const btnAdd        = document.querySelector('button.btn-add')
+        const btnDiv        = document.querySelector('button.btn-div')
+        const btn0          = document.querySelector('button.btn-clear')
+        const btnDot        = document.querySelector('button.btn-clear')
+        const btnEqual      = document.querySelector('button.btn-clear')
+
+        // Actions
+        btn1.onclick = () => {
+            if(validateLength()){
+                disValue.value += '1'
+            }
+        }
+        btn2.onclick = () => {
+            if(validateLength()){
+                disValue.value += '2'
+            }
+        }
+        btn3.onclick = () => {
+            if(validateLength()){
+                disValue.value += '3'
+            }
+        }
+        btn4.onclick = () => {
+            if(validateLength()){
+                disValue.value += '4'
+            }
+        }
+        btnClear.onclick = () => {
+            disValue.value = ''
+        }
+
+
+        // Functions
+        function validateLength () {
+            if(disValue.value.length < 34) { 
+                return true
+            }
+            else {
+                return false 
+            }
+            alert()
+        }
+
+
+    </script>
+</body>
+</html>
