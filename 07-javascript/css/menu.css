@@ -1,77 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600&display=swap');
 body{
-    background: url(../images/java.jpg) no-repeat center;
-    background-size: cover;
-    color: rgba(255, 255, 255, 0.616);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'poppins';
+    background:         url(../images/java.jpg) no-repeat center;
+    background-size:    cover;
+    color:              rgba(255, 255, 255, 0.616);
+    display:            flex;
+    justify-content:    center;
+    align-items:        center;
+    min-height:         100vh;
+    font-family:        'poppins';
 }
 main{
     background-color: #00000062;
-    border-radius: 40px;
-    border: 2px solid #ffff00;
-    height: 700px;
-    width: 420px;
+    border-radius:      40px;
+    border:             2px solid #ffff00;
+    height:             700px;
+    width:              420px;
 }
 header h1{
-    color: #ffff00;
-    text-align: center;
-    font-size: 2.4rem;
+    color:           #ffff00;
+    text-align:      center;
+    font-size:       2.4rem;
 }
 h2, h3, h4{ 
-    text-align: center;
-    border-bottom: 2px dotted #ffffff99;
-    padding-bottom: 5px;
-    margin: 0px 40px;
+    text-align:      center;
+    border-bottom:   2px dotted #ffffff99;
+    padding-bottom:  5px;
+    margin:          0px 40px;
 }
 header {
-    position: relative;
+    position:        relative;
 }
 header h1{
-    color: #ffff00;
-    text-align: center;
-    font-size: 2rem;
+    color:           #ffff00;
+    text-align:      center;
+    font-size:       2rem;
 }
 header a:link,
 header a:visited{
-    color:#ff8800;
-    display: block;
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    float: left;
-    border-radius: 50%;
-    transition: all 0.3s ease-in;
+    color:          #ff8800;
+    display:        block;
+    position:       absolute;
+    height:         50px;
+    width:          50px;
+    float:          left;
+    border-radius:  50%;
+    transition:     all 0.3s ease-in;
 }
 header a:hover{
-    transform: translateX(-7px) scale(1.1);
+    transform:      translateX(-7px) scale(1.1);
     background-color: black;
-    border-radius: 50%;
-    border: solid 2px #ffff00;
+    border-radius:  50%;
+    border:         solid 2px #ffff00;
 }
 nav{
-    display: flex;
+    display:        flex;
     flex-direction: column;
-    overflow-y: auto;
-    height: 560px;
-    gap: 1rem;
-    align-items: center;
+    overflow-y:     auto;
+    height:         560px;
+    gap:            1rem;
+    align-items:    center;
 }
 nav li {
-    list-style: none;
+    list-style:     none;
 }
 nav li a:link,
 nav li a:visited{
     background-color: rgb(248, 248, 0);
     border-radius: 20px;
-    color: #000;
-    display: flex;
-    padding: 10px;
+    color:       #000;
+    display:        flex;
+    padding:        10px;
     text-decoration: none;
-    width: 240px;
+    width:          240px;
 }
 nav li a i{
     background-color: rgb(0, 0, 0);
