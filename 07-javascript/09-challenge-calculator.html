@@ -331,11 +331,7 @@
             deleteLastValue()
         }
         btnEqual.onclick = () => {
-            var operacion   = display.value;
-            if(operacion.trim() != "")
-            operacion       = operacion.replace("^", "**");
-            operacion       = eval(operacion)
-            display.value   = operacion
+            display.value = eval(display.value)
             
         }
 
