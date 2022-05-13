@@ -37,24 +37,11 @@
             top:            16px;
             width:          235px;
         }
-        header.display input.answer {
-            border:         solid red 2px;
-            background:     none;
-            color:         #0E5E59;
-            font-family:    'poppins';
-            font-size:      20px;
-            font-style:     normal;
-            outline:        none;            
-            position:       absolute;
-            right:          -10px;
-            text-align:     right;
-            top:            2px;
-            width:          235px;
-        }
         section.buttons {
             display:                grid;
             grid-template-columns:  repeat(auto-fit, minmax(63px, 1fr));
             column-gap:             1px;
+            justify-content:        center;
             row-gap:                5px;
             margin:                 10px 0;            
         }
@@ -70,7 +57,7 @@
             transform: scale(1.15) skew(5deg);
         }
         button.btn-clear {
-            background: url(images/Calc/clear.svg) no-repeat center;
+            background: url(images/Calc/c.svg) no-repeat center;
         }
         button.btn-back {
             background: url(images/Calc/back.svg) no-repeat center;
@@ -190,8 +177,7 @@
         const btnsOperators = document.querySelectorAll('button[data-opr]')
 
         // Logic Value 
-        var answer = document.querySelector('input.answer')
-        var operStatus = false
+        var operStatus      = false
         
         // Activate Click All Numbers & Operators (activar el clic en todos los botones)
         for (let i = 0; i < btnsNumbers.length; i++) {
@@ -212,16 +198,16 @@
         // Events     
         document.onkeyup = (evt) => {
             console.log(evt.keyCode)
-            // alert(evt.keyCode)
+            alert(evt.keyCode)
             // 0 - 9        => 48,49,50,51,52,53,54,55,56,57,58,59
             // BackSpace    => keyCode:8
             // Enter        => keyCode:13
             // Delete       => keyCode:46
-            // +            => keyCode:53
-            // -            => keyCode:187
-            // .            => keyCode:189
-            // /            => keyCode:190
-            // /            => keyCode:191
+            // +            => keyCode:107-187
+            // -            => keyCode:109-189
+            // .            => keyCode:110-190
+            // /            => keyCode:111-
+            // %            => keyCode:191
             // ^            => keyCode:219
             // *            => keyCode:221
             
@@ -345,15 +331,16 @@
             deleteLastValue()
         }
         btnEqual.onclick = () => {
-            alert()
-            equal()
+            var operacion   = display.value;
+            if(operacion.trim() != "")
+            operacion       = operacion.replace("^", "**");
+            operacion       = eval(operacion)
+            display.value   = operacion
+            
         }
 
         // Functions
 
-        function equal() {
-            display.value.innerText = eval(answer.innerText)
-        }
         function clearDisplay() {
             display.value   = ''
             operStatus      = false
