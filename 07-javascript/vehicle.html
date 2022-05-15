@@ -8,16 +8,25 @@
     <link rel="stylesheet" href="css/menu.css">
     <style>
         main{
-            background:         url(images/Vehicle/bg-light4.svg) no-repeat center;
+            background:         url(images/Vehicle/lightmod.svg) no-repeat center;
             border:             none;
            transition:          all 0.5s ease-in;
         }
         /*DarkMode*/
         main.darkmode section button.btDarkMode{
-            background:         url(images/Vehicle/bt-light.svg) no-repeat center;
+            background:         url(images/Vehicle/bt-light.svg) no-repeat center; /* fondo claro */ 
+            cursor:             pointer;
+            text-indent:        -9999px;
+            position:           absolute;
+            border:             none;
+            width:              50px;
+            height:             50px;
+            left:               343px;
+            top:                32px;
+            transition:         transform 0.4s ease;
         }
         main.darkmode{
-            background:         url(images/Vehicle/bt-dark.svg) no-repeat center;
+            background:         url(images/Vehicle/dark.svg) no-repeat center; /* fondo oscuro */
         }
         main.darkmode section ul.attributes li{
             color:              rgb(0, 0, 0);
@@ -29,7 +38,7 @@
             color:              #FADF38;
             top:                25px;
         }
-        /*----*/
+        /*----*/    
         header a:link,
         header a:visited{
             background:         #000;
@@ -42,15 +51,15 @@
             position:           relative;
         }
         section button.btDarkMode{
-            background:         url(images/Vehicle/bt-DarkMode2.svg);
+            background:         url(images/Vehicle/bt-dark.svg) no-repeat center;
             cursor:             pointer;
             text-indent:        -9999px;
             position:           absolute;
             border:             none;
             width:              50px;
             height:             50px;
-            left:               358px;
-            top:                28px;
+            left:               343px;
+            top:                32px;
             transition:         transform 0.4s ease;
         }
         section button.btDarkMode:hover{
@@ -58,50 +67,53 @@
         }
         /*attributes*/
         section ul.attribute{
+            font-size:          large;
+            font-weight:        700;
             position:           absolute;
             list-style:         none;
         }
         section ul li.brand{
             position:           absolute;
-            top:                110px;
-            left:               90px;
+            top:                150px;
+            left:               85px;
         }
         section ul li.reference{
             position:           absolute;
-            top:                110px;
-            left:               335px;
+            top:                155px;
+            left:               285px;
         }
         section ul li.model{
             position:           absolute;
-            top:                175px;
-            left:               90px;
+            top:                215px;
+            left:               110px;
         }
         section ul li.color{
             position:           absolute;
-            top:                175px;
-            left:               300px;
+            top:                205px;
+            left:               285px;
         }
         section ul.attribute li{
             text-align:         center;
-            color:              #FADF38;
+            color:              #867c39;
         }
 
         /*Image*/
-        figure.landscape{            
+        figure.landscape{    
+                
             position:           absolute;
             width:              370px;
             height:             275px;
             left:               -20px;
-            top:                235px;
+            top:                273px;
             
             border-radius: 20px;
         }
         figure.landscape div{
             position:           absolute;
-            height:             280px;
-            width:              370px;
+            height:             260px;
+            width:              371px;
             border-radius:      20px;
-            border:             5px solid #FADF38;
+            border:             5px solid #fadf38;
 
         }
         /*Move Parallax*/
@@ -134,7 +146,7 @@
             background:         url(images/Vehicle/daysky.svg) repeat-x;
         }
         figure.landscape div.layer02{
-            background:         url(images/Vehicle/daymountain.svg).svg) repeat-x;
+            background:         url(images/Vehicle/daymountain.svg) repeat-x;
         }
         figure.landscape div.layer01{
             background:         url(images/Vehicle/daystreet.svg) repeat-x;
@@ -145,13 +157,13 @@
         }
         /*DarkMode Parallax*/
         main.darkmode figure.landscape div.layer03{
-            background:         url(images/Vehicle/Noche.svg) repeat-x;     
+            background:         url(images/Vehicle/darksky.svg) repeat-x;     
         }
         main.darkmode figure.landscape div.layer02{
-            background:         url(images/Vehicle/Ciudad-Noche.svg) repeat-x;   
+            background:         url(images/Vehicle/daymountain.svg) repeat-x;   
         }
         main.darkmode figure.landscape div.layer01{
-            background:         url(images/Vehicle/Carretera-light\ \(1\).svg) repeat-x;
+            background:         url(images/Vehicle/darkstreet.svg) repeat-x;
         }
         @keyframes animLayers{
             0%   {background-position: 0;}
@@ -220,7 +232,7 @@
         nav.controls{
             height:             80px;
             position:           absolute;
-            top:                580px;
+            top:                610px;
             left:               10px;
             width:              400px;
             /*Flex*/
@@ -330,7 +342,7 @@
         //Attributes
         attributes : [
             { brand: 'Yamaha',     reference: ' FZ25',     model: 2020,     color: 'Black-Mate',     image: 'images/vehicle/carro-01'},
-            { brand: 'Ducati',     reference: 'Ducati',    model: 2018,     color: 'Yellow',         image: 'images/moto-2.png'},
+            { brand: 'Ducati',     reference: 'Ducati',    model: 2018,     color: 'Yellow',         image: 'images/vehicle/carro02'},
             { brand: 'HONDA',      reference: 'TT',        model: 2012,     color: 'Black',          image: 'images/moto-3.png'},
             { brand: 'BMW',        reference: 'FZ25',      model: 2022,     color: 'Black-Mate',     image: 'images/moto-4.png'},
     ],
