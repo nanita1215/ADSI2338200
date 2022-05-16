@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        input, button {
+            border:             none;
+            border-radius:      20px;
+            margin:             10px auto;
+            display:            block;
+            padding:            10px;
+            width:              200px;
+        }
+        button {
+            background-color:   #aa0;
+            width:              220px;
+            color:              aliceblue;
+            font-family:        Poppins;
+            font-size:          0.8rem;
+            cursor:             pointer;
+        }
+        hr {
+            border:             1px solid #aa0;
+            margin-top:         20px;
+        }
+        h3 {
+            background-color:   #aa0;
+            margin:             0 auto;
+            padding:            10px;
+            border:             dotted;
+            height:             25px;
+        } 
+        </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Example</h1>
+        </header>
+        <section>
+            <h3>How much is it: 4*5/2 </h3>
+            <input type="number" class="answer">
+            <button>Validate</button>
+            <hr>
+            <h3 class="alert"></h3>
+        </section>
+        </nav>
+    </main>
+    <script>
+        //variables y constantes
+        const answer        = document.querySelector('input')
+        const btnAnswer     = document.querySelector('button')
+        var msjH3           = document.querySelector('h3.alert')
+        //acciones
+        btnAnswer.onclick=()=>{
+            let val=answer.value
+            if (val != '') {
+                if (parseInt(val) === 10) {
+                    alert('Congratulations: Its correct')
+                }else {
+                    alert('Sorry: Its incorrect')
+                }
+            }else {
+                alert('please, enter an answer!')
+            }
+        }
+        //------------------
+        var today = new Date
+        switch (today.getDay()) {
+            case 1:
+                msjH3.innerText=('Monday 😥')
+                break;
+            case 2:
+                msjH3.innerText=('Tuesday 😪')
+                break;
+            case 3:
+                msjH3.innerText=('Wednesday 😐')
+                break;
+            case 4:
+                msjH3.innerText=('Thursday 😅')
+                break;
+            case 5:
+                msjH3.innerText=('Friday 😁')
+                break;
+            default:
+                msjH3.innerText=('Weekend 😎')
+                break;
+        }
+
+    </script>
+</body>
+</html>
