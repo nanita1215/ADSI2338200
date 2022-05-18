@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Conditionals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        html {
+            font-size: 16px;
+        }
+        figure.conditional {
+            background:             linear-gradient(to top, rgba(245, 107, 166, 1), rgba(235, 189, 208, 1));
+            background-color:       #CC617D ;
+            border:                 1px solid #f3f2f2;
+            border-radius:          16px;
+            height:                 640px;
+            margin:                 20px auto;
+            position:               relative;
+            width:                  360px;
+        }
+        figure.conditional h2,
+        figure.conditional h4 {
+            font-family:            Montserrat;
+            font-style:             normal;
+            letter-spacing:         -0.04em;
+            position:               absolute;
+        }
+
+        figure.conditional h2 {
+            background:             none;
+            color:                  #302e2e;
+            font-weight:            600;
+            font-size:              36px;
+            text-align:             center;
+            top:                    -2px;
+        }
+        figure.conditional h4 {
+            color:                  #4b5369;
+            font-weight:            500;
+            font-size:              20px;
+        }
+        figure.conditional h4.lgender {
+            top:                    100px;
+            left:                   85px;
+        }
+        figure.conditional input[type=checkbox] {
+            cursor:                 pointer;
+            -webkit-appearance:     none;
+            position:               absolute;
+            height:                 207px;
+            top:                    222px;
+            width:                  160px;
+            transition:             all 0.2s ease-in;
+        }
+        figure.conditional input[type=checkbox]:hover {
+            transform:              scale(1.1);
+            transition: transform: 0.5s, height 0.5s 0.5s
+        }
+        figure.conditional input#c-male {
+            background:             transparent url(images/conditionals/male.svg) no-repeat center;
+            /* left:                   48px;    */
+            top: 130px;
+        }
+        figure.conditional input#c-male:checked {
+            background:             transparent url(images/conditionals/hombre\activo.svg) no-repeat center; 
+        }
+        figure.conditional input#c-female {
+            background:             transparent url(images/conditionals/female.svg) no-repeat center;
+            left:                   180px;
+            top:                    130px;
+            border:                 solid 2px red;
+        }
+        figure.conditional input#c-female:checked {
+            background:             transparent url(imgs/conditionals/MUJER\ activo.svg) no-repeat center;
+        }
+        figure.conditional h4.lfullname {
+            top:                    330px;
+            left:                   38px;
+        }
+        figure.conditional h4.lbirthdate {
+            top:                    420px;
+            left:                   35px;
+        }
+        figure.conditional input[type=text],
+        figure.conditional input[type=date] {
+            border:                 none;
+            height:                 60px;
+            color:                  #3a3635;
+            font-weight:            500;
+            font-size:              20px;
+            font-family:            Montserrat;
+            font-style:             normal;
+            letter-spacing:         -0.04em;
+            left:                   45px;
+            text-indent:            50px;
+            outline:                none;
+            position:               absolute;
+            width:                   400px;
+        }
+        figure.conditional input[type=text] {
+            background:             transparent url(images/conditionals/name.svg) no-repeat center;
+            top:                    380px;
+            left:                   -19px;
+        }
+        figure.conditional input[type=date] {
+            background:             transparent url(images/conditionals/birth.svg) no-repeat center;
+            top:                    480px;
+            left:                   -19px;
+            text-indent:            47px;
+        }
+        figure.conditional button {
+            background:             #070606;
+            background:             url(images/Conditionals/validate.svg) no-repeat center;
+            border-radius:          50px;
+            border:                 none;
+            /* color:                  rgba(139, 127, 127, 0);             */
+            /* font-style:             normal; */
+            font-weight:            500;
+            font-size:              24px;
+            line-height:            29px;
+            letter-spacing:         -0.04em;
+            height:                 70px;
+            left:                   -24px;
+            position:               absolute;
+            top:                    537px;
+            text-transform:         uppercase;
+            width:                  400px;
+            transition:             all 0.2s ease-in;
+        }
+        figure.conditional button:hover {
+            cursor:                 pointer;
+            transform:              scale(1.1);
+        }
+        figure.conditional img#vgender {
+            position:               absolute;
+            top:                    42px;
+            left:                   160px;
+        }
+        figure.conditional.interface:last-child h4 {
+            text-align:             center;
+            top:                    188px;
+            left:                   50%;
+            transform:              translateX(-50%);
+        }
+        figure.conditional h4.pink {
+            color:                  #723f69;
+        }
+        figure.conditional h4.blue {
+            color:                  #1a1b1b;
+        }
+        figure.conditional div.message {
+            
+            background-repeat:      no-repeat;
+            background-position:    center 100px;
+            border-radius:          20px;
+            height:                 200px;
+            left:                   20px;
+            position:               absolute;
+            top:                    290px;
+            width:                  440px;
+        }
+        figure.conditional div.message.red {
+            background-color:       #b1adad;
+            background-image:       url(imgs/conditionals/tanqueee.svg);
+        }
+        figure.conditional div.message.green {
+            background-color:       #c3e6c3;
+            background-image:       url(imgs/conditionals/i-peace.svg);
+        }
+        main section figure.conditional.interface h3 {
+            background-color:       transparent;
+            color:                  #fff;
+            font-family:            Montserrat;
+            font-style:             normal;
+            font-weight:            500;
+            font-size:              34px;
+            line-height:            41px;
+            text-align:             center;
+            letter-spacing:         -0.04em;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1> <span><a href="index.html">&larr;</a></span> Challenge Conditionals</h1>
+        </header>
+        <section>
+            <figure class="conditional interface">
+                <h2>Please fill in the true information </h2>
+                <h4 class="lgender">Choose your gender:</h4>
+                <input type="checkbox" id="c-male">
+                <input type="checkbox" id="c-female">
+                <h4 class="lfullname">Nombre completo:</h4>
+                <input type="text" id="fullname">
+                <h4 class="lbirthdate">Fecha de nacimiento:</h4>
+                <input type="date" id="birthdate" placeholder="mm/dd/yyyy">
+                <button id="btnv">Verify</button>
+            </figure>
+            <figure class="conditional interface">
+                <img id="vgender" src="">
+                <h4 class="" id="vfullname"></h4>
+                <div class="message">
+                    <h3 id="vmessage"></h3>
+                </div>
+                <button id="btnb">Back</button>
+            </figure>
+        </section>
+    </main>
+
+    <script>
+        // Variables
+        const circles    = document.querySelectorAll('input[type=checkbox]');
+        const btnv       = document.getElementById('btnv'); 
+        const btnb       = document.getElementById('btnb'); 
+        const interfaces = document.getElementsByClassName('interface');
+        var   gender     = null;
+        var   fullname   = document.getElementById('fullname'); 
+        var   birthdate  = document.getElementById('birthdate'); 
+        var   age        = null;
+        var   vgender    = document.getElementById('vgender'); 
+        var   vfullname  = document.getElementById('vfullname'); 
+        var   message    = document.querySelector('.message');
+        var   vmessage   = document.getElementById('vmessage'); 
+
+        // Actions
+        interfaces[1].style.display = "none";
+
+        // Events
+        for (let i = 0; i < circles.length; i++) {
+            circles[i].onclick = function() {
+                if(this.checked) {
+                    circles[0].checked = false;
+                    circles[1].checked = false;
+                    this.checked = true;
+                }
+            }
+        }
+        btnv.onclick = function() {
+            // Check Gender
+            if ((circles[0].checked || 
+                circles[1].checked) &&
+                fullname.value.length > 0 &&
+                birthdate.value.length > 0) {
+                if (circles[0].checked) {
+                    gender = 'Male';
+                } else {
+                    gender = 'Female';
+                }
+                age = calculateAge(new Date(birthdate.value.substring(5,7) + "/" + birthdate.value.substring(8,10) + "/" + birthdate.value.substring(0,4)));
+                interfaces[0].style.display = "none";
+                interfaces[1].style.display = "block";
+                takeDecision();
+            } else {
+                alert("Please fill in the following fields: \n-Gender\n-Fullname\n-Birthdate");
+            }  
+        }
+        btnb.onclick = function() {
+            interfaces[0].style.display = "block";
+            interfaces[1].style.display = "none";
+            circles[0].checked = false;
+            circles[1].checked = false;
+            fullname.value  = "";
+            birthdate.value = "";
+        }
+        // Functions
+        function calculateAge(birthday) {
+            var ageDifMs = Date.now() - birthday.getTime();
+            var ageDate = new Date(ageDifMs);
+            return Math.abs(ageDate.getUTCFullYear() - 1970);
+        }
+        function takeDecision() {
+            if (gender == 'Female') {
+                vgender.setAttribute('src', 'images/conditionals/female.svg');
+                vfullname.classList.remove('blue');
+                vfullname.classList.add('pink');
+                vfullname.innerText = fullname.value;
+                message.classList.remove('red');
+                message.classList.add('green');
+                vmessage.innerText = 'You do not have to go to the wear';
+            } else {
+                if (age >= 18) {
+                    vgender.setAttribute('src', 'images/conditionals/male.svg');
+                    vfullname.classList.remove('pink');
+                    vfullname.classList.add('blue');
+                    vfullname.innerText     = fullname.value;
+                    message.classList.remove('green');
+                    message.classList.add('red');
+                    vmessage.innerText  = 'You have to go to the wear!';
+                } else {
+                    vgender.setAttribute('src', 'images/conditionals/male.svg');
+                    vfullname.classList.remove('pink');
+                    vfullname.classList.add('blue');
+                    vfullname.innerText     = fullname.value;
+                    message.classList.remove('red');
+                    message.classList.add('green');
+                    vmessage.innerText  = 'You do not have to go to the wear!';
+                }
+            }
+        }
+    </script>    
+</body>
+</html>
