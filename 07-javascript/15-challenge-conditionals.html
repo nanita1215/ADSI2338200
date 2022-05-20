@@ -7,14 +7,14 @@
     <title>Challenge Conditionals</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
         html {
             font-size: 16px;
         }
         figure.conditional {
-            background:             linear-gradient(to top, rgba(245, 107, 166, 1), rgba(235, 189, 208, 1));
+            background:             linear-gradient(to top, #8A6653, #EBBDD0);
             background-color:       #CC617D ;
             border:                 1px solid #f3f2f2;
             border-radius:          16px;
@@ -25,7 +25,7 @@
         }
         figure.conditional h2,
         figure.conditional h4 {
-            font-family:            Montserrat;
+            font-family:            'Shadows Into Light', cursive;;
             font-style:             normal;
             letter-spacing:         -0.04em;
             position:               absolute;
@@ -58,8 +58,8 @@
             transition:             all 0.2s ease-in;
         }
         figure.conditional input[type=checkbox]:hover {
-            transform:              scale(1.1);
-            transition: transform: 0.5s, height 0.5s 0.5s
+            /* transform:              scale(1.1);*/
+            transition:             transform: 0.5s, height 0.5s 0.5s
         }
         figure.conditional input#c-male {
             background:             transparent url(images/conditionals/male.svg) no-repeat center;
