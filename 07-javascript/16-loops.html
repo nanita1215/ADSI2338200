@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        section {
+            overflow-y:         auto;
+            height:             560px;
+        }
+        p {
+            text-align:         center;
+
+        }
+        ul {
+            padding:            0;
+            list-style:         none;
+            display:            flex;
+            justify-content:    center;
+            gap: 2px;
+        }
+        ul li {
+            background:         yellow;
+            color:              black;
+            height:             20px;
+            padding:            8px;
+            text-align:         center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Loops</h1>
+        </header>
+        <section>
+            <h2>loop (for)</h2>
+            <p>print even numbers drom 0 to 20</p>
+            <ul class="evenValues"></ul>
+            <!-- ----------------- -->
+
+            <h2>loop (forin)</h2>
+            <p>print object properties</p>
+            <ul class="propsValues"></ul>
+            <!-- ----------------- -->
+
+            <h2>loop (While)</h2>
+            <p>print multiples of 5 from 0 to 25</p>
+            <ul class="multValues"></ul>
+            <!-- ----------------- -->
+
+            <h2>loop (Do While)</h2>
+            <p>print factorial (N!) of 5</p>
+            <ul class="factValues"></ul>
+            <!-- ----------------- -->
+            <h2>(break)</h2>
+            <p>Fibonacci (10 = 89)</p>
+            <ul class="fibValues"></ul>
+        </section>
+        </nav>
+    </main>
+    <script>
+        // var or const
+         // Elements
+        const evalues   = document.querySelector('.evenValues')
+        const props     = document.querySelector('.propsValues')
+        const mults     = document.querySelector('.multValues')
+        const facts     = document.querySelector('.factValues')
+        const fibsValues = document.querySelector('.fibValues')
+
+        // Object
+        const series={
+            title:      'Demon Slayer',
+            season:     2,
+            caps:       16,
+            year:       22,
+        }
+        // Loop (for)
+        for (let i=0; i<=10; i++) {
+            if((i%2)==0){
+            evalues.innerHTML+="<li>"+i+"</li>"
+            }
+        }
+        // Loop (forin)
+        for (let serie in series) {
+            props.innerHTML+="<li>"+serie+": "+series[serie]+"</li>"
+        }
+        // Loop (while)
+        let i = 0
+        while (i<=25) {
+            if((i%5)==0){
+                mults.innerHTML+= "<li>"+i+"</li>"
+            }
+            i++
+        }   
+        // Loop (do while)
+        let index = 1
+        let nfac = 5
+        let fact = 1
+        let nums = 5
+        do {
+            fact *= index
+            if (index < nfac) {
+                nums += " X " + (nfac - index)
+            }
+            if (index == nfac) {
+                facts.innerHTML += "<li>" + nums + " = " + fact + "</li>"
+            }
+            index++
+        } while (index <= nfac)
+        // break
+        let act     = 1
+        let prev    = 0
+        let sum     = 0
+        for (let i = 0; i <= 20; i++){
+            sum = act + prev 
+            prev = act 
+            act = sum
+            fibsValues.innerHTML += "<li>" + sum + "</li>"
+            if ( i == 9 ){
+                break
+            }
+        }
+        
+    </script>
+</body>
+</html>
