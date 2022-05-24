@@ -5,62 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Menu HTML 4</title>
-    <link rel="stylesheet" href="css/menu.css">
-</head>
-<body>
-    <main>
-        <header>
-            <h1>Main Menu (HTML-4)</h1>
-        </header>
-        <nav class="menu">
-            <li>
-                <a href="01-document.html">     <span>01</span> document</a>
-            </li>
-            <li>
-                <a href="02-text.html">         <span>02</span> text</a>
-            </li>
-            <li>
-                <a href="03-anchors.html">      <span>03</span> anchors</a>
-            </li>
-            <li>
-                <a href="04-script.html">       <span>04</span> script</a>
-            </li>
-            <li>
-                <a href="05-link.html">         <span>05</span> link</a>
-            </li>
-            <li>
-                <a href="06-lists.html">        <span>06</span> lists</a>
-            </li>
-            <li>
-                <a href="07-images.html">       <span>07</span> images</a>
-            </li>
-            <li>
-                <a href="08-tables.html">       <span>08</span> tables</a>
-            </li>
-            <li>
-                <a href="09-challengetables.html"><span>09</span> challengetables</a>
-            </li>
-            <li>
-                <a href="10-form.html">         <span>10</span> form</a>
-            </li>
-            <li>
-                <a href="11-graphics.html">     <span>11</span> graphics</a>
-            </li>
-            <li>
-                <a href="12-audio.html">        <span>12</span> audio</a>
-            </li>
-            <li>
-                <a href="13-video.html">        <span>13</span> video</a>
-            </li>
-            <li>
-                <a href="14-estructure.html">   <span>14</span> estructure</a>
-            </li>
-            <li>
-                <a href="15-semantic.html">     <span>15</span> semantic</a>
-            </li>
-            
-        </nav>
-    </main>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+       body {
+           font-family:        'poppins';
+           background:         -webkit-linear-gradient(#999, #ddd);
+           background:          url(/images/html.jpg) ;
+       }
+       h1{
+           background-color:   rgb(77, 52, 122);
+           text-align:         center;
+           border-radius:      20px;
+       }
+        h1:hover{
+        background-color:      rgb(19, 22, 51);
+        transition:            background 0.2s ease-in;
+        color:                 #fff;
+        cursor:                 pointer;
+       }
+       nav {
+           
+           display:            flex;
+           flex-direction:     column;  
+                          
+           gap:                10px;   
+           margin:             40px auto;
+           width:              400px ;    
+          
+       }
+       nav a:link,
+       nav a:visited {
+           background-color:   rgb(50, 163, 183);
+           border-radius:      20px;
+           color:              rgb(255, 255, 255);
+           text-decoration:    none;
+           text-align:         left;
+           padding:            10px;            
+           transition:         background 0.2s ease-in;
+       }
+       nav a:hover{
+           background-color: #e73838dd;
+       }      
+   </style>
     
+
+</head>
+<body>    
+    <nav>
+        <h1><a href="../index.html">⬅️</a> HTML Menu</h1>
+                <a href="01-document.html">     <span>01 -        </span> document</a>
+                <a href="02-text.html">         <span>02 -        </span> text</a>
+                <a href="03-anchors.html">      <span>03 -        </span> anchors</a>
+                <a href="04-script.html">       <span>04 -        </span> script</a>           
+                <a href="05-link.html">         <span>05 -        </span> link</a>        
+                <a href="06-lists.html">        <span>06 -        </span> lists</a>           
+                <a href="07-images.html">       <span>07 -        </span> images</a>           
+                <a href="08-tables.html">       <span>08 -        </span> tables</a>            
+                <a href="09-challengetables.html"><span>09 -      </span> challengetables</a>           
+                <a href="10-form.html">         <span>10 -        </span> form</a>          
+                <a href="11-graphics.html">     <span>11 -        </span> graphics</a>           
+                <a href="12-audio.html">        <span>12 -        </span> audio</a>           
+                <a href="13-video.html">        <span>13 -        </span> video</a>            
+                <a href="14-estructure.html">   <span>14 -        </span> estructure</a>            
+                <a href="15-semantic.html">     <span>15 -        </span> semantic</a>            
+        </nav>    
 </body>
 </html>
