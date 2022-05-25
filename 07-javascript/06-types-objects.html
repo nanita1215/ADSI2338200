@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types Objects</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="icon" href="images/JavaScript-logo.ico">
+    <style>
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        li{
+            border: 1px solid #fadf38;
+            border-radius: 4px;
+            padding: 4px;
+            margin: 8px 40px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+            </a>
+            <h1>Types Objects</h1>
+        </header>
+        <section>
+            <ul class="objects"></ul>
+        </section>
+    </main>
+    <script>
+        const objects = document.querySelector('ul.objects')
+        const td1 = new String
+        const td2 = new Number
+        const td3 = new Boolean
+        const td4 = new Array
+        const td5 = new Object
+        const td6 = new Date
+        let content = ''
+
+        content  = "<li> Type: "+ td1.constructor.name + "</li>"
+        content += "<li> Type: "+ td2.constructor.name + "</li>"
+        content += "<li> Type: "+ td3.constructor.name + "</li>"
+        content += "<li> Type: "+ td4.constructor.name + "</li>"
+        content += "<li> Type: "+ td5.constructor.name + "</li>"
+        content += "<li> Type: "+ td6.constructor.name + "</li>"
+
+        objects.innerHTML = content
+    </script>
+</body>
+</html>
