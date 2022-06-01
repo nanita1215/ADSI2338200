@@ -7,37 +7,58 @@
     <title>Generation 2 Pokemons</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+        }
          ul.list {
-            display:                grid;
+             border: 2px red solid;
+            background:             url(/07-javascript/images/pokedex/bg.svg) no-repeat center;
+            background-size:        cover;
+            position: absolute;
+            display:                -moz-grid-group;
             justify-content:        center;
-            grid-template-columns:  1fr 1fr 1fr 1fr;
-            grid-column-gap:        10px;
-            grid-row-gap:           10px;
-            justify-items:          stretch;
-            align-items:            stretch;
+            grid-template-columns:  30fr 30fr 30fr 30fr;
+            grid-column-gap:        110px;
+            grid-row-gap:           11px;            
+            align-items:            center;
+            justify-content:        center;
             padding:                0;
             list-style:             none;
+            overflow-x:             hidden;
+            overflow-y:             scroll; 
+            min-height:             30%;  
+            left:                   220px; 
+            height:                 700px;   
+            min-height:             90vh;    
+            width:                  350px; 
+            
         }
         ul.list li {
+            border: solid black 2px;
             border-radius: 20px;
             background:             url(/07-javascript/images/pokedex/Rectangle\ 14.svg);
             background-color:       #171d21;
             color:                  azure;
-            display:                grid;
-            flex-direction:         column;
+            display: flexbox;
+            flex-direction: column;
+            width: 170px;
+            height: 133px;            
             font-family:            'Poppins', sans-serif;
             font-size:              1.2rem;
             justify-content:        center;
-            align-items:            center;
+            align-items:            baseline;
             text-align:             center;
             transition:             all 0.2s ease-in;
         }
         ul.list li:hover {
+            border: 2px solid #fff;
             background-color:       #114f7b;
             color:                  #fff;
             cursor:                 pointer;
         }
         section.modal {
+            border: solid 2px red;
             position:               fixed;
             display:                flex;
             flex-direction:         column;
@@ -52,6 +73,8 @@
             min-height:             100vh;
         }
         section.modal div {
+            border: #171d21 solid 20px;
+            border-radius: 15px;
             background:             url(/07-javascript/images/pokedex/pk.svg);
             background-color:       #0009;
             display:                flex;
