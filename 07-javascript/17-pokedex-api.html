@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generation 2 Pokemons</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,300&display=swap');
         *{
             margin: 0;
             padding: 0;
         }
          ul.list {
-             border: 2px red solid;
-            background:             url(/07-javascript/images/pokedex/bg.svg) no-repeat center;
-            background-size:        cover;
-            position: absolute;
-            display:                -moz-grid-group;
-            justify-content:        center;
-            grid-template-columns:  30fr 30fr 30fr 30fr;
+             background: url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;
+            
+            position: relative;
+            display: flexbox;
+            justify-content:        space-between;
+            grid-template-columns:  1fr 1fr 30fr 30fr;
             grid-column-gap:        110px;
             grid-row-gap:           11px;            
             align-items:            center;
@@ -32,36 +31,32 @@
             height:                 700px;   
             min-height:             90vh;    
             width:                  350px; 
+            align-content: flex-end;
             
         }
         ul.list li {
-            border: solid black 2px;
             border-radius: 20px;
             background:             url(/07-javascript/images/pokedex/Rectangle\ 14.svg);
-            background-color:       #171d21;
-            color:                  azure;
-            display: flexbox;
-            flex-direction: column;
-            width: 170px;
-            height: 133px;            
-            font-family:            'Poppins', sans-serif;
-            font-size:              1.2rem;
-            justify-content:        center;
-            align-items:            baseline;
+            color:                  rgb(27, 5, 5);
+            width:                  170px;
+            height:                 133px;     
+            font-family:            'Comic Neue', cursive;
+            font-size:              1.1rem;
+            justify-content:        space-between;            
             text-align:             center;
             transition:             all 0.2s ease-in;
         }
         ul.list li:hover {
-            border: 2px solid #fff;
+            
             background-color:       #114f7b;
             color:                  #fff;
             cursor:                 pointer;
         }
         section.modal {
-            border: solid 2px red;
+            
             position:               fixed;
             display:                flex;
-            flex-direction:         column;
+            flex-direction:         column-reverse;
             justify-content:        center;
             font-family:            'Poppins', sans-serif;
             align-items:            center;
@@ -70,13 +65,13 @@
             left:                   0;
             width:                  100%;
             background-color:       #000c;
-            min-height:             100vh;
+            
         }
         section.modal div {
-            border: #171d21 solid 20px;
+            
             border-radius: 15px;
             background:             url(/07-javascript/images/pokedex/pk.svg);
-            background-color:       #0009;
+            
             display:                flex;
             flex-direction:         column;
             align-items:            center;
