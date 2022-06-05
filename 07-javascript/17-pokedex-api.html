@@ -8,67 +8,68 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,300&display=swap');
         *{
-            margin: 0;
-            padding: 0;
+            background:             url(/07-javascript/images/pokedex/fondo.svg) no-repeat center;
+            margin:                 2px;
+            padding:                2px;
+            top:                    100px;
+            
         }
         ul {
-            display: grid;
+            position:               absolute;
+            display:                grid;
+           
         }
          ul.list {
-            background: url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;
-            position: relative;
-            
-            justify-content:        space-around;
-            grid-template-columns:  1fr 1fr;
-            grid-column-gap:        5px;
-            grid-row-gap:           10px;            
-            align-items:            center;
-            justify-content:        center;
-            padding:                0;
+             display:               grid;    
+             grid-template-columns: 1fr 1fr;
+             grid-column-gap:       10px;
+             grid-row-gap:          10px;
+             justify-items:         stretch;
+             align-items:           stretch;
+             padding:               0;
+             list-style:            none;
+            background:             url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;
+            position:               relative;        
+            margin:                 5px;
             list-style:             none;
             overflow-x:             hidden;
-            overflow-y:             scroll; 
-            min-height:             30%;  
-            left:                   220px; 
-            height:                 700px;   
-            min-height:             90vh;    
+            overflow-y:             scroll;              
+            left:                   200px; 
+            height:                 720px;                
             width:                  350px;     
         }
         ul.list li {
-            border-radius: 20px;
+            border-radius:          10px;
             background:             url(/07-javascript/images/pokedex/Rectangle\ 14.svg);
-            color:                  rgb(27, 5, 5);
+            color:                  rgb(117, 83, 83);
             width:                  170px;
-            height:                 133px;     
+            height:                 150px;     
             font-family:            'Comic Neue', cursive;
             font-size:              1.1rem;
             justify-content:        space-between;            
             text-align:             center;
             transition:             all 0.2s ease-in;
+            position:               relative;
+            top: 2px;
+            bottom: 2px;
         }
         ul.list li:hover {
-            
-            background-color:       #858c91;
             color:                  #fff;
             cursor:                 pointer;
         }
         section.modal {            
             position:               fixed;
             display:                flex;
-            flex-direction:         column-reverse;
+            flex-direction:         column;
             justify-content:        center;
             font-family:            'Poppins', sans-serif;
             align-items:            center;
             color:                  #fff;
             top:                    0;
             left:                   0;
-            width:                  100%;
-            background-color:       #000c;
-            
+            width:                  100%;    
         }
-        section.modal div {
-            
-            border-radius: 15px;
+        section.modal div {       
             background:             url(/07-javascript/images/pokedex/pk.svg);
             flex-direction:         column;
             align-items:            center;
