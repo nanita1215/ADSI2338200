@@ -11,15 +11,17 @@
             margin: 0;
             padding: 0;
         }
+        ul {
+            display: grid;
+        }
          ul.list {
-             background: url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;
-            
+            background: url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;
             position: relative;
-            display: flexbox;
-            justify-content:        space-between;
-            grid-template-columns:  1fr 1fr 30fr 30fr;
-            grid-column-gap:        110px;
-            grid-row-gap:           11px;            
+            
+            justify-content:        space-around;
+            grid-template-columns:  1fr 1fr;
+            grid-column-gap:        5px;
+            grid-row-gap:           10px;            
             align-items:            center;
             justify-content:        center;
             padding:                0;
@@ -30,9 +32,7 @@
             left:                   220px; 
             height:                 700px;   
             min-height:             90vh;    
-            width:                  350px; 
-            align-content: flex-end;
-            
+            width:                  350px;     
         }
         ul.list li {
             border-radius: 20px;
@@ -48,12 +48,11 @@
         }
         ul.list li:hover {
             
-            background-color:       #114f7b;
+            background-color:       #858c91;
             color:                  #fff;
             cursor:                 pointer;
         }
-        section.modal {
-            
+        section.modal {            
             position:               fixed;
             display:                flex;
             flex-direction:         column-reverse;
@@ -71,8 +70,6 @@
             
             border-radius: 15px;
             background:             url(/07-javascript/images/pokedex/pk.svg);
-            
-            display:                flex;
             flex-direction:         column;
             align-items:            center;
             justify-content:        center;
