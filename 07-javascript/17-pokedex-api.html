@@ -5,21 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generation 2 Pokemons</title>
+    <link rel="stylesheet" href="css/menu.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,300&display=swap');
-        *{
+        
+
+        
+        main {
+            display: grid;
+            
+            height: 700px;
+            width: 420px;
+            
             background:             url(/07-javascript/images/pokedex/fondo.svg) no-repeat center;
-            margin:                 2px;
-            padding:                2px;
-            top:                    100px;
+            justify-content: center;
             
         }
-        ul {
-            position:               absolute;
-            display:                grid;
-           
-        }
-         ul.list {
+        
+        .list {
              display:               grid;    
              grid-template-columns: 1fr 1fr;
              grid-column-gap:       10px;
@@ -29,16 +33,17 @@
              padding:               0;
              list-style:            none;
             background:             url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;
-            position:               relative;        
+                    
             margin:                 5px;
             list-style:             none;
             overflow-x:             hidden;
-            overflow-y:             scroll;              
+            overflow-y:             scroll;             
+            
             left:                   200px; 
-            height:                 720px;                
+            height:                 500px;                
             width:                  350px;     
         }
-        ul.list li {
+        .list li {
             border-radius:          10px;
             background:             url(/07-javascript/images/pokedex/Rectangle\ 14.svg);
             color:                  rgb(117, 83, 83);
@@ -53,25 +58,31 @@
             top: 2px;
             bottom: 2px;
         }
-        ul.list li:hover {
+        .list li:hover {
             color:                  #fff;
             cursor:                 pointer;
         }
-        section.modal {            
+        section.modal {       
+            margin-top: 100px;  
+            margin: 0px auto;   
+            /* background: rgba(255, 255, 255); */
             position:               fixed;
             display:                flex;
             flex-direction:         column;
             justify-content:        center;
             font-family:            'Poppins', sans-serif;
             align-items:            center;
-            color:                  #fff;
+            
             top:                    0;
             left:                   0;
-            width:                  100%;    
+            width:                  100%;  
         }
         section.modal div {       
             background:             url(/07-javascript/images/pokedex/pk.svg);
             flex-direction:         column;
+            background-color: #fff;
+            top: 100px;
+            border-radius: 15px;
             align-items:            center;
             justify-content:        center;
             padding:                2rem;
@@ -79,63 +90,75 @@
         section.modal.hide {
             display:                none;
         }
+        ::-webkit-scrollbar{
+            width: 10px;
+        }
     </style>
 </head>
 <body>
-    <ul class="list"></ul>
-    <section class="modal hide">
-    </section>
-    <script>
-        const list = document.querySelector('.list')
-        var pkinfo = ''
-        const modal = document.querySelector('.modal')
-
-        async function allPokemons() {
-            for (let i = 152; i <= 251; i++) {
-                const res     = await fetch('https://pokeapi.co/api/v2/pokemon/'+i);
-                const pokemon = await res.json();
-                list.innerHTML += "<li data-pk='" + i + "'> " + pokemon.name + " (" + pokemon.id + ") <img src='https://www.serebii.net/swordshield/pokemon/small/" + i +".png'> </li>"
-                if (i == 251) {
-                    addClickEvents()
-                }
-            }
-        }
-        function addClickEvents() {
-            const elms = document.querySelectorAll('.list li')
-            for (let i = 0; i < elms.length; i++) {
-                elms[i].onclick = function() {
-                    showPokemon(this.dataset.pk)
-                }
-            }
-        }
-        async function showPokemon(pk) {
-            let rsi  = await fetch('https://pokeapi.co/api/v2/pokemon/'+pk);
-            let pki  = await rsi.json();
-            let pkt1 = pki.types[0].type.name
-
-        
-            if(pki.types.length > 1) {
-                let pkt2 = pki.types[1].type.name
-                pkinfo   = "<div><h2> Number: " + pki.id + "</h2><h2> Name: " 
-                                           + pki.name + "</h2>" 
-                                           + "</h3><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h3> Type 1: "
-                                           + pkt1 + "<h3> Type 2: " 
-                                           + pkt2 + "</h3><h3> HP: " 
-                                           + pki.stats[0].base_stat + "</h3></div>"
-            } else {
-                pkinfo   = "<div><h2> Number: " + pki.id + "</h2><h2> Name: " 
-                                           + pki.name + "</h2>" 
-                                           + "</h2><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h2> Type 1: "
-                                           + pkt1 + "<h3> Hp: " 
-                                           + pki.stats[0].base_stat + "</h3></div>"
-            }
-            modal.innerHTML = pkinfo
-            modal.classList.toggle('hide')
-        }
-        modal.onclick = function() {
-            modal.classList.toggle('hide')
-        }
-        allPokemons()
-    </script>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+        </header>
+        <ul class="list"></ul>
+        <section class="modal hide">
+        </section>
+    </main>
 </body>
+<script>
+    const list = document.querySelector('.list')
+    var pkinfo = ''
+    const modal = document.querySelector('.modal')
+
+    async function allPokemons() {
+        for (let i = 152; i <= 251; i++) {
+            const res     = await fetch('https://pokeapi.co/api/v2/pokemon/'+i);
+            const pokemon = await res.json();
+            list.innerHTML += "<li data-pk='" + i + "'> " + pokemon.name + " (" + pokemon.id + ") <img src='https://www.serebii.net/swordshield/pokemon/small/" + i +".png'> </li>"
+            if (i == 251) {
+                addClickEvents()
+            }
+        }
+    }
+    function addClickEvents() {
+        const elms = document.querySelectorAll('.list li')
+        for (let i = 0; i < elms.length; i++) {
+            elms[i].onclick = function() {
+                showPokemon(this.dataset.pk)
+            }
+        }
+    }
+    async function showPokemon(pk) {
+        let rsi  = await fetch('https://pokeapi.co/api/v2/pokemon/'+pk);
+        let pki  = await rsi.json();
+        let pkt1 = pki.types[0].type.name
+
+    
+        if(pki.types.length > 1) {
+            let pkt2 = pki.types[1].type.name
+            pkinfo   = "<div><h2> Number: " + pki.id + "</h2><h2> Name: " 
+                                       + pki.name + "</h2>" 
+                                       + "</h3><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h3> Type 1: "
+                                       + pkt1 + "<h3> Type 2: " 
+                                       + pkt2 + "</h3><h3> HP: " 
+                                       + pki.stats[0].base_stat + "</h3></div>"
+        } else {
+            pkinfo   = "<div><h2> Number: " + pki.id + "</h2><h2> Name: " 
+                                       + pki.name + "</h2>" 
+                                       + "</h2><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h2> Type 1: "
+                                       + pkt1 + "<h3> Hp: " 
+                                       + pki.stats[0].base_stat + "</h3></div>"
+        }
+        modal.innerHTML = pkinfo
+        modal.classList.toggle('hide')
+    }
+    modal.onclick = function() {
+        modal.classList.toggle('hide')
+    }
+    allPokemons()
+</script>
 </html>
