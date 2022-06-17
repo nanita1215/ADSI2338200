@@ -3,8 +3,8 @@
 <g clip-path="url(#clip0_37_2)">
 <rect width="420" height="700" rx="20" fill="url(#paint0_diamond_37_2)" fill-opacity="0.7"/>
 <rect width="420" height="700" rx="20" fill="black" fill-opacity="0.3"/>
-<rect x="-34" y="566" width="171.849" height="180" fill="url(#pattern0)"/>
-<rect x="468.874" y="110.934" width="171.849" height="180" transform="rotate(165.922 468.874 110.934)" fill="url(#pattern1)"/>
+<rect x="124" y="245" width="171.849" height="180" fill="url(#pattern0)"/>
+<line x1="268.5" y1="425" x2="268.5" y2="698" stroke="black"/>
 </g>
 <rect x="1.5" y="1.5" width="417" height="697" rx="18.5" stroke="black" stroke-width="3"/>
 </g>
@@ -20,9 +20,6 @@
 <feBlend mode="normal" in2="shape" result="effect1_innerShadow_37_2"/>
 </filter>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_37_2" transform="translate(-0.0237154) scale(0.00737627 0.00704225)"/>
-</pattern>
-<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_37_2" transform="translate(-0.0237154) scale(0.00737627 0.00704225)"/>
 </pattern>
 <radialGradient id="paint0_diamond_37_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(210 350) rotate(90) scale(350 210)">

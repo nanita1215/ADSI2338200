@@ -8,53 +8,57 @@
     <link rel="stylesheet" href="css/menu.css">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,300&display=swap');
-        
-
-        
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,300&display=swap');              
         main {
-            display: grid;
-            
-            height: 700px;
-            width: 420px;
-            
-            background:             url(/07-javascript/images/pokedex/fondo.svg) no-repeat center;
-            justify-content: center;
-            
+            display:                grid;            
+            height:                 700px;
+            width:                  420px;            
+            background:             url(/07-javascript/images/pokedex/fondo\ \(2\).png) no-repeat center;
+            /* background: #000; */
+            justify-content:        center;            
+        }        
+        img.stats{
+            margin: 0 auto;
+            border: 2px solid rgb(26, 20, 20);
+            height: 200px;
+            width: 200px;
+            margin-left: 50px;
+            margin-top: 30px;
+            border-radius: 15px;
+            background: rgb(156, 151, 151);
         }
-        
         .list {
              display:               grid;    
              grid-template-columns: 1fr 1fr;
-             grid-column-gap:       10px;
-             grid-row-gap:          10px;
-             justify-items:         stretch;
-             align-items:           stretch;
+             grid-column-gap:       5px;
+             grid-row-gap:          5px;
+             justify-items:         center;
+             align-items:           center;
              padding:               0;
              list-style:            none;
-            background:             url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;
-                    
-            margin:                 5px;
+            /* background:             url(/07-javascript/images/pokedex/pkgo.svg) navy no-repeat center ;                    */
+            margin-top:             80px;
             list-style:             none;
             overflow-x:             hidden;
-            overflow-y:             scroll;             
-            
+            overflow-y:             scroll;                         
             left:                   200px; 
-            height:                 500px;                
+            height:                 570px;                
             width:                  350px;     
         }
         .list li {
             border-radius:          10px;
-            background:             url(/07-javascript/images/pokedex/Rectangle\ 14.svg);
-            color:                  rgb(117, 83, 83);
-            width:                  170px;
-            height:                 150px;     
+            background:             rgb(105, 104, 107);
+            color:                  rgb(19, 17, 17);
+            width:                  150px;
+            height:                 140px;     
             font-family:            'Comic Neue', cursive;
             font-size:              1.1rem;
             justify-content:        space-between;            
             text-align:             center;
             transition:             all 0.2s ease-in;
+            font-style: normal;
             position:               relative;
+            
             top: 2px;
             bottom: 2px;
         }
@@ -71,8 +75,7 @@
             flex-direction:         column;
             justify-content:        center;
             font-family:            'Poppins', sans-serif;
-            align-items:            center;
-            
+            align-items:            center;            
             top:                    0;
             left:                   0;
             width:                  100%;  
@@ -80,12 +83,16 @@
         section.modal div {       
             background:             url(/07-javascript/images/pokedex/pk.svg);
             flex-direction:         column;
-            background-color: #fff;
-            top: 100px;
+            background-color: rgb(255, 255, 255);
+            color: rgb(15, 12, 9);
+            margin-top: 120px;
             border-radius: 15px;
             align-items:            center;
-            justify-content:        center;
+            /* justify-content:        center; */
             padding:                2rem;
+            height: 550px;
+            width: 300px;
+            
         }
         section.modal.hide {
             display:                none;
@@ -142,14 +149,14 @@
             let pkt2 = pki.types[1].type.name
             pkinfo   = "<div><h2> Number: " + pki.id + "</h2><h2> Name: " 
                                        + pki.name + "</h2>" 
-                                       + "</h3><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h3> Type 1: "
+                                       + "</h3><img class='stats' src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h3> Type 1: "
                                        + pkt1 + "<h3> Type 2: " 
                                        + pkt2 + "</h3><h3> HP: " 
                                        + pki.stats[0].base_stat + "</h3></div>"
         } else {
             pkinfo   = "<div><h2> Number: " + pki.id + "</h2><h2> Name: " 
                                        + pki.name + "</h2>" 
-                                       + "</h2><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h2> Type 1: "
+                                       + "</h2><img class='stats' src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h2> Type 1: "
                                        + pkt1 + "<h3> Hp: " 
                                        + pki.stats[0].base_stat + "</h3></div>"
         }
