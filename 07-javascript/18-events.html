@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        section{
+            overflow-y: auto;
+            height: 560px;
+        }
+       div.block{
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 10px 2rem 10px;
+       }
+       output {
+        color: #aa0;
+        font-size: 1.4rem;
+
+       }
+       button,input,select {
+        border: 2px solid #aa0;
+        font-family: "verdana";
+        border-radius: 10px;
+        background: #fff;
+        font-size: 0.8rem;
+        padding: 8px 16px;
+       }
+       input{
+        border: 2px solid red;
+        border-radius: 10px;
+        background: #fff;
+        font-family: "verdana";
+        font-size: 0.8rem;
+        padding: 8px 16px;
+
+       }
+       input{
+           width: 120px;
+       }
+       img {
+        transition: all 0.5s ease-in;
+       }
+    </style>
+</head>
+<body onload="welcome()">
+
+    <main>
+        <header>
+           <!-- entro a la pagina heroicons scrollbars -->
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+            </a>
+            <h1>events</h1>
+        </header>
+     <section>
+        <h2>page load</h2>
+        <div class="block">
+            <output class="msj-load">page no load</output>
+        </div>
+
+            <h2>Double Click</h2>
+            <div class="block">
+            <button class="btn--dblclick">double click me</button>
+            <output class="nums---dbcliks">0 clicks</output>
+        </div>
+        <h2>release key</h2>
+        <div class="block">
+            <input type="text" class="inp-keyup">
+            <output class="msj-keyup">null</output>
+        </div>
+        <h2>resize window</h2>
+        <div class="block">
+            <output class="msj-rezise">no resize</output>
+        </div>
+        <h2>change valuee</h2>
+        <div class="block">
+            <select class="slt-change">
+                <option value="" select disabled>select color</option>
+                <option value="#12429c99">reset</option>
+                <option value="#ff000066">red</option>
+                <option value="#00ff0033">green</option>
+                <option value="#0000ff99">blue</option>
+            </select>
+        </div>
+        <h2>mouse (over/out)</h2>
+        <div class="block">
+            <img src="images/kakao/ryan.png" class="img-kakao">
+        </div>
+     </section>
+            
+    </main>
+    <script>
+        // elements
+        const msj_load = document.querySelector(".msj-load")
+        const btn_dblclick = document.querySelector(".btn--dblclick")  
+        const nums_dbcliks = document.querySelector(".nums---dbcliks")  
+        const inp_keyup = document.querySelector(".inp-keyup")  
+        const msj_keyup = document.querySelector(".msj-keyup")  
+        const msj_rezise = document.querySelector(".msj-rezise")
+        const main_bg = document.querySelector("main")
+        const slt_change = document.querySelector(".slt-change")
+        const img_kakao =document.querySelector(".img-kakao")
+        contdbclicks = 0
+        // events
+
+        btn_dblclick.ondblclick = function()  {
+            contdbclicks++
+            nums_dbcliks.textContent = contdbclicks + "clicks"
+        }
+        inp_keyup.onkeyup = function(){
+            if (this.value.length < 8)
+            msj_keyup.value = this.value
+        
+        if (this.value.length == 0 ){
+            msj_keyup.value = null
+    }
+        }
+        slt_change.onchange = function(){
+            main_bg.style.backgroundColor = this.value
+        }
+    //   muestre resultado de cuanto es el px en la pagina
+        window.onresize = function() {
+            msj_rezise.textContent = "window width:" + window.outerWidth + "px"
+        }
+
+        img_kakao.onmouseout = function() {
+           this.src = "images/kakao/ryan.png" 
+        }
+        img_kakao.onmouseover = function() {
+           this.src = "images/kakao/kakao-transformado.png" 
+        }
+
+
+        function welcome(){
+            // alert("the page loaded successful!")
+            msj_load.textContent = "the page was loaded!"
+        }
+    </script>
+</body>
+</html>

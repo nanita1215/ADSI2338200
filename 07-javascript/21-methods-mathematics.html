@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods Mathematics</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        ::-webkit-scrollbar{
+            width: 10px;
+        }
+        section {
+            overflow-y: auto;
+            height: 560px;
+        }
+        button {
+            background-color: #fffc;
+            border: 4px solid #aa0;
+            border-radius: 10px;
+            cursor: pointer;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 20px auto;
+            width: 120px;
+        }
+        p {
+            margin-left: 2rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1> <span><a href="index.html">&larr;</a></span> Methods Mathematics</h1>
+        </header>
+        <section>
+            <h2>Math.random (Roll a Dice)</h2>
+            <button class="btn-dice">🍀</button>
+            <h2>random (zodiac sings)</h2>
+            <button class="btn-zodiac">⛎</button>
+            <h2>Min | Max</h2>
+            <p class="out-min"></p>
+            <p class="out-max"></p>
+            <h2>Math (round|ceil|floor</h2>
+            <p class="out-round"></p>
+            <p class="out-ceil"></p>
+            <p class="out-floor"></p>
+        </section>
+    </main>
+
+    <script>
+        //elementos
+        const btn_dice   = document.querySelector('.btn-dice')
+        const btn_zodiac = document.querySelector('.btn-zodiac')
+        const out_min    = document.querySelector('.out-min')
+        const out_max    = document.querySelector('.out-max')
+        const out_round  = document.querySelector('.out-round')
+        const out_ceil  = document.querySelector('.out-ceil')
+        const out_floor  = document.querySelector('.out-floor')
+
+
+        const zodiacs    = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♓','♒']
+
+        //eventos
+        btn_dice.addEventListener('click', function() {
+            let vdice = Math.ceil(Math.random() * 6)
+            this.textContent = vdice
+        })
+        btn_zodiac.addEventListener('click', function() {
+            let vzod = Math.round(Math.random() * zodiacs.length)
+            this.textContent = zodiacs[vzod]
+        })
+        // Min | Max
+        out_min.textContent = 'Min value' + Math.min(5, 16, -2, 8, 17, -7)
+        out_max.textContent = 'Max value' + Math.max(5, 16, -2, 8, 17, -7)
+
+        // Round | Ceil | Floor
+        let fvalue = 6.149
+        out_round.textContent = 'Math.round: ' + Math.round(fvalue)
+        out_ceil.textContent = 'Math.ceil: ' + Math.ceil(fvalue)
+        out_floor.textContent = 'Math.floor: ' + Math.floor(fvalue)
+    </script>   
+    
+</body>
+</html>
