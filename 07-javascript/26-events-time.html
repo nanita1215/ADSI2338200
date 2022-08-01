@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        section {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            position: relative;
+        }
+        input, button {
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            /* outline: none; */
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        button{
+            background-color: rgb(153, 237, 36);
+            cursor: pointer;
+        }
+        button:hover{
+            transform: scale(1.2);
+            background-color: rgb(232, 221, 18);
+        }
+        img.goku {
+            position: absolute;
+            top: 240px;
+            left: 150px
+        }
+        div.digital {
+            color: #aa0;
+            font-size: 5rem;
+            font-family: poppins;
+            margin-top: 180px;
+            
+        }
+    </style>
+</head>
+<body>
+    <main>
+        
+        <header>
+            <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                    </svg>
+                    
+            </a>
+            <h1>Events Time</h1>
+        </header>
+
+        <section>
+            <div class="control">
+                <input type="number" class="count-down" placeholder="Time In Seconds" min="0">
+                <button class="btn-count">Count Down</button>
+            </div>
+
+            <div class="control">
+                <input type="number" class="refresh-page" placeholder="Time In Seconds" min="0">
+                <button class="btn-refresh">Refresh Page</button>
+            </div>
+
+            <h3>Use the right and left arrow keys to move GOKU</h3>
+            <img src="images/coneja (1).png" alt="goku" class="goku">
+            <div class="digital"></div>
+
+        </section>
+        <script>
+        const count_down    = document.querySelector('.count-down')
+        const refresh_page  = document.querySelector('.refresh-page')
+        const btn_count     = document.querySelector('.btn-count')
+        const btn_refresh   = document.querySelector('.btn-refresh')
+        const goku          = document.querySelector('.goku')
+        const digital       = document.querySelector('.digital')
+
+        // Events Setinterval
+        btn_count.addEventListener('click', (e) => {
+            if (count_down.value.length > 0) {
+                let count = parseInt(count_down.value)
+                let s_int = setInterval(() => {
+                    count--
+                    if (count < 0) {
+                        clearInterval(s_int)
+                        alert('Time is over')
+                    } else {
+                        count_down.value = count
+                    }
+                    
+                },1000)
+                
+            }else{
+                alert('Plase, enter time in seconds')
+            }
+        })
+            
+                    // (setTimeout)
+            
+                    btn_refresh.addEventListener('click', (e) => {
+                        if (refresh_page.value.length > 0){
+                            let refresh = parseInt(refresh_page.value)
+                            let s_tout = setTimeout(() => {
+                                // window.location.replace('26-events-time.html')
+                                window.location.reload()
+                            }, refresh)
+                        } else {
+                            alert('Please, enter time in seconds!')
+                        }
+                    })
+
+                    // Digital clock 
+                    setInterval(() => {
+                        let currentTime     = new Date()
+                        let formattedTime   = currentTime.toLocaleTimeString()
+                        digital.textContent = formattedTime
+                        
+                    }, 1000);
+
+                    // Events Arrows key 
+                    var lpos = 150
+                    var tpos = 240
+
+                    window.addEventListener('keyup', (e) => {                       
+                        // console.log (e.keycode)
+                        console.log(e.keyCode)
+                        if (e.keyCode == 37) { // Left
+                            if (lpos >= 25) {                                
+                                lpos -= 25 
+                                goku.style.left = lpos + 'px'
+                                goku.style.transform = 'rotateY(0deg)'
+                            }                          
+
+                        }
+                        if (e.keyCode == 39) { // Right
+                            if (lpos <= 300){
+                                lpos += 25 
+                                goku.style.left = lpos + 'px'
+                                goku.style.transform = 'rotateY(180deg)'
+                            }
+                        }
+                        if (e.keyCode == 40) { // Down
+                            // alert('down')
+                            if (tpos <= 500){
+                                tpos += 25 
+                                goku.style.top = tpos + 'px'
+                                goku.style.transform = 'rotateY(0deg)'
+                            }
+                        }
+                        if (e.keyCode == 38) { // Up
+                            // alert('up')
+                            if (tpos > 0){
+                                tpos -= 25 
+                                goku.style.top = tpos + 'px'
+                                goku.style.transform = 'rotateY(10deg)'
+                            }
+                        }
+                    })
+        </script>
+    </main>    
+</body>
+</html>
