@@ -12,7 +12,7 @@
 </head>
 <style>
     h2 {
-        color: black;
+        color: rgb(198, 40, 187);
     }
     ul {
         margin: 0 0;
@@ -20,10 +20,10 @@
         justify-content: space-between;
         flex-wrap: wrap;
         width: auto;
-        height: 250px;
+        height: 200px;
     }
     div.option {
-        width: 80px;
+        width: 85px;
         height: 80px;
         margin: 10px;
         border-radius: 50px;
@@ -39,10 +39,14 @@
     }
     div.options h2 {
         margin: 0 auto;
+        font-family: 'poppins';
+        
     }
     div.options select {
         width: 150px;
         margin: 0 140px;
+        font-family: 'poppins';
+        background-color: #976bbf;
     }
     div.options input {
         width: 150px;
@@ -51,6 +55,7 @@
     button {
         margin: 0 auto;
         width: 150px;
+        
     }
 
     /* CSS */
@@ -110,7 +115,7 @@
         pointer-events:none;
     }
     .selected {
-        border: solid rgb(255, 167, 52) 1px;
+        border: solid rgb(54, 49, 148) 1px;
         transform: scale(1.2);
     }
     .sisi {
@@ -124,7 +129,7 @@
         flex-wrap: nowrap;
         gap: 25px;
         height: 70px;
-        width: 380px;
+        width: 340px;
         background: white;
         overflow-x: hidden;
         overflow-x: scroll;
@@ -160,7 +165,7 @@
         height: 610px;
         width: 420px;
         border-radius: 40px;
-        background: linear-gradient(to bottom, rgb(255, 235, 119) 80%, rgb(255, 0, 0));
+        background: linear-gradient(to bottom, rgb(13, 3, 13), rgb(139, 43, 148));
     }
 
 </style>
@@ -176,24 +181,24 @@
         </header>
         <section class="section">
             <ul>
-                <div class="option option-01" style="background: url(images/challengeArrays/coffee.svg);background-size: cover;"></div>
-                <div class="option option-02" style="background: url(images/challengeArrays/cupcake.svg);background-size: cover;"></div>
-                <div class="option option-03" style="background: url(images/challengeArrays/hotdog.svg);background-size: cover;"></div>
-                <div class="option option-04" style="background: url(images/challengeArrays/hamburger.svg);background-size: cover;"></div>
-                <div class="option option-05" style="background: url(images/challengeArrays/pizza.svg);background-size: cover;"></div>
-                <div class="option option-06" style="background: url(images/challengeArrays/taco.svg);background-size: cover;"></div>
+                <div class="option option-01" style="background: url(images/arrays/bugs.png);background-size: cover;"></div>
+                <div class="option option-02" style="background: url(images/arrays/coneja.png);background-size: cover;"></div>
+                <div class="option option-03" style="background: url(images/arrays/silvestre.png);background-size: cover;"></div>
+                <div class="option option-04" style="background: url(images/arrays/lucas.png);background-size: cover;"></div>
+                <div class="option option-05" style="background: url(images/arrays/marvin.png);background-size: cover;"></div>
+                <div class="option option-06" style="background: url(images/arrays/piolin.png);background-size: cover;"></div>
             </ul>
             <div class="options">
                 <br>
-                <h2 class="optionPosition">seleccione la posicion</h2>
+                <h2 class="optionPosition">Seleccione la posición</h2>
                 <br>
                 <select name="option_position" id="select">
-                    <option value="firsOne">primer elemento</option>
-                    <option value="lastOne">ultimo elemento</option>
-                    <option value="especificPosition">posicion especifica</option>
+                    <option value="firsOne">Primer elemento</option>
+                    <option value="lastOne">Último elemento</option>
+                    <option value="especificPosition">osicion especifica</option>
                 </select>
                 <br>
-                <h2>ingrese la posicion</h2>
+                <h2>Ingrese la posición</h2>
                  <input type="number" id="especific">
                  <br>
                  <div class="btns">
@@ -223,18 +228,18 @@
         
         const templateDivResult = templateResult.querySelector('.resultado')
 
-        let cloneResult = templateDivResult.cloneNode(true)
+        let cloneResult         = templateDivResult.cloneNode(true)
 
 
         var selectionIcon
-        var onselected = true
+        var onselected          = true
 
-        var arrayBgUrl = []
+        var arrayBgUrl          = []
         var pos
         var pos1
         var positionState
 
-        var objetoVis = ""
+        var objetoVis           = ""
 
         var pinselection = document.querySelectorAll('.option')
         pinselection.forEach(li => {

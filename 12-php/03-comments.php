@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Variables"?></title>
+    <title><?="Hello World"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -35,28 +35,22 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Variables</h1>";?>
-            <hr>
             <?php 
-					$alert1   = 'alert alert-success alert-dismissible fade show text-start';
-					$alert2   = 'alert alert-warning alert-dismissible fade show text-start';
-					$alert3   = 'alert alert-danger alert-dismissible fade show text-start';
-					$user1 = 1;
-					$user2 = 2;
-					$user3 = 3;
+                echo "<h1 class='mt-5'>Hello World!</h1><hr>";
+            ?>
+            <?php
+            // Definimos las clases del boton
+				$clases = "btn btn-lg btn-outline-primary";
+				/*
+					btn                = Boton
+					btn-lg              = Boton Grande
+					btn-block           = Boton Bloque
+					btn-outline-primary = Boton de borde Azul
+				*/
+				# Se imprime la variable $clases dentro de class
 				?>
-				<div class="<?php echo $alert1; ?>"> 
-					<strong>User <?php echo $user1; ?>: the information is correct</strong>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
-				</div>
-				<div class="<?php echo $alert2; ?>"> 
-					<strong>user <?php echo $user2; ?>: the information is incomplete</strong>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
-				</div>
-				<div class="<?php echo $alert3; ?>"> 
-					<strong>User <?php echo $user3; ?>: The information is incorrect</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
-				</div>
+				<a href="javascript:;" class="<?=$clases?>"> Esto es un Boton </a>
+
         </div>
     </div>
     </main>

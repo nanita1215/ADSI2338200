@@ -8,19 +8,22 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">PHP & Bootstrap 5</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
             <?php 
-            
-            echo "<h1 class='mt-5'>Hello World!</h1>";
-            
-            print('<p class="text-start text-muted lh-lg">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas culpa sint, expedita natus eaque tenetur quia qui cupiditate, exercitationem eos voluptates eligendi necessitatibus corrupti. Autem repudiandae facilis distinctio quidem sunt saepe aperiam, quam repellendus earum quas perferendis blanditiis eligendi, nostrum sit ut eveniet molestias soluta inventore dolorum velit suscipit? Accusantium tempora harum hic vitae molestias? Quos impedit delectus nulla iste, inventore voluptatem minus temporibus veniam dignissimos vel et tempore saepe cupiditate numquam quidem harum, sequi tempora autem exercitationem quasi quam. Fugiat vel suscipit placeat nulla est repellendus. Quidem, doloremque dolorem recusandae eaque vel eveniet doloribus ipsa quam error, quibusdam iste.
-
-            </p>')
-            
+                echo "<h1 class='mt-5'>Hello World!</1>";
+                phpinfo();
             ?>
+
         </div>
     </div>
     </main>
