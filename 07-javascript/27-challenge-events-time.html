@@ -1,26 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Methods Object</title>
-    <link rel="stylesheet" href="css/menu.css">
+	<meta charset="UTF-8">
+	<title>Reto (Eventos Tiempo)</title>
+	<style>
+		section.start {
+			background-color: rgba(92, 44, 120, 0.62);
+			position: fixed;
+			height: 100%;
+			top: 0px; left: 0px;
+			width: 100%;
+			z-index: 999;
+		}
+		section.start input{
+			border: none;
+			border-radius: 20px;
+			font-size:1em;
+			display: block;
+			top: 50%;
+			padding: 15px;
+			margin: 0px auto;
+			position: relative;
+			transform: translateY(-50%);
+			text-align: center;
+			text-transform: uppercase;
+			width: 270px;
+		}
+
+		section.start button{
+			background-color: #8A798A;
+			color: #fff;
+			border: none;
+			border-radius: 20px;
+			display: block;
+			font-size: 1em;
+			top: 52%; 
+			margin: 0px auto;
+			padding: 10px;
+			position: relative;
+			text-transform: uppercase;
+			transform: translateY(-50%);
+			width: 100px;
+		}
+		section.start button:hover{
+			background-color: #6E4D6E;
+			cursor: pointer;
+		}
+
+		/*main game*/
+		main.game {
+			margin: 20px auto;
+			width: 880px;
+		}
+		main.game header {
+			background: url(imgs/tiempo/title.png) no-repeat center;
+			height: 104px;
+		}
+		main.game aside {
+			height: 610px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		main.game aside.left {
+			width: 220px;
+		}
+		/* aside.left */
+		aside.left section {
+			margin-top: 24px;
+		}
+		aside.left section.info {
+			background: url(imgs/tiempo/time.png) no-repeat center;
+			height: 201px;
+			position: relative;
+			width: 201px;
+		}
+		aside.left section.info div {
+			position: absolute;
+			font: 2.5em Tahoma;
+			color: #000 ;
+			right: 30px;
+		}
+		aside.left section.info div#time  { top: 34px;   }
+		aside.left section.info div#score { top: 134px;  }
+
+		aside.left section.bestscores {
+			background: url(imgs/tiempo/best.png) no-repeat center;
+			height: 216px;
+			position: relative;
+			width: 205px;
+		}
+		aside.left section.bestscores ul.list {
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+			position: absolute;
+			top: 64px; left: 30px;
+			width: 170px;
+		}
+		aside.left section.bestscores ul.list p{
+			color: #156B73;
+			font: 1em Arial;
+			margin: 0px 0px 15px 0px;
+			text-transform: uppercase;
+		}
+		/* aside.right */
+		main.game aside.right {
+			margin-left: -5px;
+			width: 600px;
+		}
+		main.game aside.right section.table {
+			background: url(images/java.jpg) no-repeat center;
+			height: 600px;
+			position: relative;
+			margin-top: 24px;
+		}
+		section.table div#pig {
+			background: transparent url(images/arrays/bugs.png) no-repeat center;
+			height: 100px;
+			position: absolute;
+			top: 0px; left: 0px;
+			transition: all 0.1s;
+			width: 100px;
+		}
+		section.table div.food {
+			background: transparent no-repeat center;
+			height: 100px;
+			position: absolute;
+			top: 0px; left: 0px;
+			transition: all 0.1s;
+			width: 100px;
+			/* ------- */
+			animation: 1s animFood infinite;
+		}
+	
+		section.table div.food.helado {
+			background-image: url(images/events/bellota.png);
+		}
+		section.table div.food.ensalada {
+			background-image: url(images/events/bombon.png);
+		}
+		section.table div.food.hamburguesa {
+			background-image: url(images/events/burbuja.png);
+		}
+		section.table div.food.pizza {
+			background-image: url(images/events/mojojo.png);
+		}
+		section.table div.food.perro {
+			background-image: url(images/events/niña.png);
+		}
+		section.table div.food.pollo {
+			background-image: url(images/events/prof.png);
+		}
+		section.table div.food.postre {
+			background-image: url(images/events/secret.png);
+		}
+		section.table div.food.taco {
+			background-image: url(imgs/tiempo/taco.png);
+		}
+
+	</style>
 </head>
 <body>
-    <main>
-        <header>
-            <a href="index.html">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293z" clip-rule="evenodd"/>
-                  </svg>
-            </a>
-            <h1>Challenge3 Events Time</h1>
-        </header>
-        <section>
+	<section class="start">
+		<input type="text" id="player" placeholder="Nombre del jugador">
+		<button id="btnPlay">play</button>
+	</section>
+	<main class="game">
+		<header></header>
+		<aside class="left">
+			<section class="info">
+				<div id="time">60</div>
+				<div id="score">0</div>
+			</section>
+			<section class="bestscores">
+				<ul class="list">
+					<p id="mostrar"></p>
+				</ul>
+				
+			</section>	
+		</aside>
+		<aside class="right">
+			<section class="table">
+				<div id="pig"></div>
+				<div class="food"></div>
+				<div class="food"></div>
+				<div class="food"></div>}
 
-        </section>
-        
-    </main>
+			</section>
+		</aside>
+	</main>
+	<script>
+		// Variables
+		var pig     = document.getElementById('pig');
+		var time    = document.getElementById('time');
+		var foods   = document.getElementsByClassName('food');
+		var result  = document.getElementById('score');
+		var btnPlay = document.getElementById('btnPlay');
+		var ps      = [0, 100, 200, 300, 400, 500];
+		var food    = ['helado', 'ensalada', 'hamburguesa', 'pizza', 'perro', 'pollo', 'postre', 'taco'];
+		var psX     = 0;
+		var psY     = 0;
+		var score	= 0;
+		//initGame();
+
+		//Eventos
+		btnPlay.onclick = function (){
+			var player = document.getElementById('player').value;
+			if (player.length > 0) {
+				this.parentElement.style.display= "none";
+				initGame();
+			}else{
+				alert('debe ingresar el nombre del jugador');
+			}
+			var mostar =document.getElementById('mostrar').innerHTML = player;
+		}
+
+		// Funciones
+		function initGame() {
+			randomPig();
+			gameTime();
+			movePig();
+			var irf = setInterval(randomFood, 1000);
+
+		}
+
+		function randomPig() {
+			psX = randomPosition();
+			psY = randomPosition();
+			pig.style.top  = psY+"px";
+			pig.style.left = psX+"px";
+		}
+		function randomPosition() {
+			var rnd = Math.round(Math.random()*ps.length);
+			return ps[rnd];
+		}
+
+		function gameTime(){
+			var ct = 60;
+			var igt = setInterval(function(){
+				if (ct == 0) {
+					clearInterval(igt);
+					//EndGame
+					endGame();
+				} else{
+					time.innerHTML = ct;
+				}
+				ct--;	
+			} ,1000);
+		}
+
+		function movePig(){
+			document.onkeydown = function (evt) {
+				switch(evt.keyCode){
+					//Left
+					case 37:
+						//console.log("left")
+						if(psX > 0){
+							psX -= 100;
+							pig.style.left= psX+"px";
+						}
+						
+						break;
+					//up
+					case 38:
+						//console.log("up")
+						if(psY > 0){
+							psY -= 100;
+							pig.style.top= psY+"px";
+						}
+						break;
+					//right
+					case 39:
+						//console.log("right")
+						if(psX < 500){
+							psX += 100;
+							pig.style.left= psX+"px";
+						}
+						break;
+					//down
+					case 40:
+						//console.log("down")
+						if(psY < 500){
+							psY += 100;
+							pig.style.top= psY+"px";
+						}
+						break;				
+				}
+			}
+		}
+		function randomFood() {
+			for (var i=0; i<3; i++) {
+				var rfood = Math.round(Math.random()*food.length);
+				foods[i].className = 'food';
+				foods[i].classList.add(food[rfood]);
+				foods[i].style.top  = randomPosition()+"px";
+				foods[i].style.left = randomPosition()+"px";
+				collidesWith(pig, foods[i]);
+			}
+		function collidesWith (element1, element2) {
+			element1top    = element1.offsetTop;
+    		element1left   = element1.offsetLeft;
+    		element1right  = Number(element1.offsetLeft) + Number(element1.offsetWidth);
+    		element1bottom = Number(element1.offsetTop)  + Number(element1.offsetHeight);
+
+    		element2top    = element2.offsetTop;
+    		element2left   = element2.offsetLeft;
+   		 	element2right  = Number(element2.offsetLeft) + Number(element2.offsetWidth);
+    		element2bottom = Number(element2.offsetTop)  + Number(element2.offsetHeight);
+
+    		if (element1right  > element2left   && 
+    		  element1left   < element2right  && 
+       		  element1top    < element2bottom && 
+       		  element1bottom > element2top ) {
+    			score += 10;
+    			 result.innerHTML = score;
+        	}
+		}
+	}
+		function endGame(){
+			window.location.replace('30_reto_eventos_tiempo.html');
+		}
+
+	</script>
 </body>
 </html>

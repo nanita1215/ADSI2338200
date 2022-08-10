@@ -17,6 +17,9 @@ Repository in the technology Analysis and Development of Information Systems 233
 | 5. PUG        | HTML Preprocessor                 | [open folder](05-pug/)        |
 | 6. SASS       | CSS Preprocessor                  | [open folder](06-sass/)       |
 | 7. Javascript | Programming Language (Clien-Side) | [open folder](07-javascript/) |
+| 8. jQquery    | Library Javascript                | [open folder](08-jQuery/)     |
+| 12. PHP       | ServerProgramming Language        | [open folder](12-php/)        |
+
 
 ---
 
