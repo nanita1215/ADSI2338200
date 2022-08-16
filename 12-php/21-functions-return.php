@@ -11,7 +11,7 @@
     <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
       <div class="container-fluid">
         <div class="navbar-brand row">
-           <a class="navbar-brand col"  href="https://www.php.net/manual/es/intro-whatis.php">PHP </a><a class="navbar-brand col" href="https://getbootstrap.com/">& Bootstrap 5</a>
+           <a class="navbar-brand col"  href="https://www.php.net/manual/es/intro-whatis.php">PHP</a><a class="navbar-brand col" href="https://getbootstrap.com/">Bootstrap 5</a>
            <a class="col navbar-brand" href="/index.php">home</a>
         </div>
       </div>
@@ -19,22 +19,21 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Function-parameters</h1>";?>
+            <?php echo "<h1 class='mt-5'>Functions Return</h1>";?>
             <hr>
             <!-- Space to work -->
             <?php 
-					function show_info($name, $description) {
-						echo '<h1 class="display-5">'.$name.'</h1>';
-						echo '<p class="lead">'.$description.'</p>';
+					function show_name($name) {
+						return $name;
+					}
+					function show_result($n1, $n2) {
+						return $n1 * $n2;
 					}
 				?>
-				<div class="mt-4 p-4 bg-primary text-white rounded">
+				<div class="mx-4 p-4 bg-warning text-dark rounded">
 				  <div class="container">
-				    <?php 
-				    	$desc = "One punch man, consectetur adipisicing elit. Fuga amet nesciunt excepturi laboriosam doloremque quidem molestias accusamus voluptas.";
-				    	show_info('Saitama Sensei', $desc); 
-				    	show_info('Garou', "One punch man season 2"); 
-			    	?>
+				    <h1 class="display-4"><?php echo show_name('Hideo Kojima'); ?></h1>
+				    <p class="lead"> 23 * 15 = <?php echo show_result(23, 15); ?></p>
 				  </div>
 				</div>
         </div>
