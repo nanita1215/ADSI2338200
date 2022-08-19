@@ -4,69 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Challenge"?></title>
+    <title><?="Challenge Dates"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <div class="navbar-brand row">
-           <a class="navbar-brand col"  href="https://www.php.net/manual/es/intro-whatis.php">PHP</a><a class="navbar-brand col" href="https://getbootstrap.com/">Bootstrap 5</a>
-           <a class="col navbar-brand" href="/index.php">home</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">PHP & Bootstrap 5</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.php">&larr; Main Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">25- Challenge Dates</a>
+                </li>
+            </ul>
+            </div>
         </div>
-      </div>
     </nav>
     <main class="container">
-    <div class="row">
-        <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Challenge-dates</h1>";?>
-            <hr>
-            <!-- Space to work -->
-            <form action="" method="POST">
-					<div class="mb-3 text-start">
-						<label for="name" class="form-label">Enter you birthday:</label>
-						<input type="date" class="form-control" name="birthD" id="name">
-            <div class="invalid-feedback">  
-             Please Enter you birthday
-            </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <?php 
+                    echo "<h1 class='mt-5 text-center'>Challenge Dates</h1><hr>";
+                ?>
+                <form action="" method="POST">
+					<div class="mb-3">
+						<label for="birthdate"> Birth Date: </label>
+						<input type="date" id="birthdate" name="birthdate" class="form-control" placeholder="mm/dd/yyyy">
 					</div>
 					<div class="mb-3">
-						<input type="submit" class="btn btn-success" value="birthD">
+						<button type="submit" class="btn btn-outline-success"> Calculate Age </button>
 					</div>
 				</form>
-				<?php if ($_POST): ?>
-          <?php
-          // Usando diff y DateTime
-          echo "Usando diff y DateTime";
-  				$fecha_nacimiento = new DateTime($_POST['birthD']);
-          $hoy = new DateTime();
-          $edad = $hoy->diff($fecha_nacimiento);
-          // var_dump($edad);
-          ?>
-          <div class="alert alert-success">
-						<strong>Age:</strong> <?php echo $edad->y;?>
-						<hr>
-					</div>
+				<?php 
+					if($_POST) {
+						$day   = date('d', strtotime($_POST['birthdate']));
+						$month = date('m', strtotime($_POST['birthdate']));
+						$year  = date('Y', strtotime($_POST['birthdate']));
 
-          <?php
-          // Usando date_diff
-          echo "Usando date_diff";
-          $fecha_nacimiento = $_POST['birthD'];
-          $dia_actual = date("Y-m-d");
-          $edad_diff = date_diff(date_create($fecha_nacimiento), date_create($dia_actual));
-          // var_dump($edad);
-          ?>
-          <div class="alert alert-success">
-						<strong>Age:</strong> <?php echo $edad_diff->format('%y');?>
-						<hr>
-					</div>
-				<?php endif ?>
+						$born  = mktime(0, 0, 0, $month, $day, $year);
+						$today = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+
+						$years  = $today - $born;
+						$years  = ( ( ( ( $years / 60 ) / 60 ) / 24 ) / 365 );
+
+						echo '<div class="alert alert-success">
+								<div class="lead">
+									'.floor($years).' Years old
+								</div>
+							  </dia>';
+					}
+				?>
+            </div>
         </div>
-    </div>
-            
-        </div>
-    </div>
     </main>
+
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

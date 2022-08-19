@@ -6,26 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?="Conditional Switch"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">PHP & Bootstrap 5</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">PHP & Bootstrap 5</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.php">&larr; Main Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">11- Conditional Switch</a>
+                </li>
+            </ul>
+            </div>
+        </div>
     </nav>
     <main class="container">
-    <div class="row">
-        <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Conditional Switch</h1>";?>
-            <?php 
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <?php 
+                    echo "<h1 class='mt-5'>Conditional Switch</h1><hr>";
+                ?>
+                <?php 
 					$day = date('n');
 					switch ($day) {
 						case 1:
 							echo '<ul class="list-group">
-									  <li class="list-group-item list-group-item-secondary">First trimester</li>
+									  <li class="list-group-item list-group-item-secondary">First Trimester</li>
 									  <li class="list-group-item active">January</li>
 									  <li class="list-group-item">February</li>
 									  <li class="list-group-item">March</li>
@@ -75,7 +88,7 @@
 							echo '<ul class="list-group">
 									  <li class="list-group-item list-group-item-secondary">Third Trimester</li>
 									  <li class="list-group-item active">July</li>
-									  <li class="list-group-item">Agust</li>
+									  <li class="list-group-item">August</li>
 									  <li class="list-group-item">September</li>
 									</ul>';
 							break;	
@@ -83,7 +96,7 @@
 							echo '<ul class="list-group">
 									  <li class="list-group-item list-group-item-secondary">Third Trimester</li>
 									  <li class="list-group-item">July</li>
-									  <li class="list-group-item active">Agust</li>
+									  <li class="list-group-item active">August</li>
 									  <li class="list-group-item">September</li>
 									</ul>';
 							break;
@@ -91,7 +104,7 @@
 							echo '<ul class="list-group">
 								  <li class="list-group-item list-group-item-secondary">Third Trimester</li>
 								  <li class="list-group-item">July</li>
-								  <li class="list-group-item">Agust</li>
+								  <li class="list-group-item">August</li>
 								  <li class="list-group-item active">September</li>
 								</ul>';
 							break;
@@ -103,10 +116,10 @@
 							break;
 					}
 				?>
-            <hr>
+            </div>
         </div>
-    </div>
     </main>
+
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

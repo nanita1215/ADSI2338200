@@ -1,10 +1,11 @@
+?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Conditional If"?></title>
+    <title><?="Sessions"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fonts.css">
 </head>
@@ -21,7 +22,7 @@
                     <a class="nav-link" aria-current="page" href="index.php">&larr; Main Menu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">10- Conditional If</a>
+                    <a class="nav-link active" aria-current="page" href="#">30- Sessions</a>
                 </li>
             </ul>
             </div>
@@ -31,34 +32,32 @@
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <?php 
-                    echo "<h1 class='mt-5'>Conditional If</h1><hr>";
+                    echo "<h1 class='mt-5'>Sessions</h1><hr>";
                 ?>
-                <?php $day = date('D'); ?>
-				<?php if ($day == "Mon"): ?>
-					<span class="badge rounded-pill text-bg-danger">
-                        Today is Monday
-                    </span>
-				<?php elseif ($day == "Tue"): ?>
-					<span class="badge rounded-pill text-bg-danger">
-                        Today is Tuesday
-                    </span>
-				<?php elseif ($day == "Wed"): ?>
-					<span class="badge rounded-pill text-bg-danger">
-                        Today is Wednesday
-                    </span>
-				<?php elseif ($day == "Thu"): ?>
-					<span class="badge rounded-pill text-bg-danger">
-                        Today is Thursday
-                    </span>
-				<?php elseif ($day == "Fri"): ?>
-					<span class="badge rounded-pill text-bg-danger">
-                        Today is Friday
-                    </span>
-				<?php else: ?>
-					<span class="badge rounded-pill text-bg-success">
-                        Happy Weekend!
-                    </span>
-				<?php endif ?>
+                <div class="mt-4 p-5 bg-dark text-white rounded">
+					<?php 
+						if ($_POST) {
+							unset($_SESSION['visits']);
+							session_destroy();
+						}	
+					?>
+
+					<?php if (isset($_SESSION['visits'])): ?>
+						<?php $_SESSION['visits']++; ?>
+					<?php else: ?>
+						<?php $_SESSION['visits'] = 1; ?>
+					<?php endif ?>
+					<p class="lead">
+						<strong>
+							You have visited this page: 
+						</strong>
+						<?php echo $_SESSION['visits']; ?> 
+                        <?php echo ($_SESSION['visits'] == 1) ? "time" : "times"; ?>
+					</p>
+					<form action="" method="POST">
+						<input type="submit" value="Close Session" class="btn btn-danger" name="delete">
+					</form>
+				</div>
             </div>
         </div>
     </main>

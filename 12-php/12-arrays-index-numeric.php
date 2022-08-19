@@ -4,44 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Variables"?></title>
+    <title><?="Arrays Index Numeric"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-      <a class="navbar-brand"> <a class="navbar-brand" href="https://www.php.net/manual/es/intro-whatis.php">PHP </a><a class="navbar-brand" href="https://getbootstrap.com/">& Bootstrap 5</a></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">PHP & Bootstrap 5</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.php">&larr; Main Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">12- Arrays Index Numeric</a>
+                </li>
+            </ul>
+            </div>
+        </div>
     </nav>
     <main class="container">
-    <div class="row">
-        <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Array-index</h1>";?>
-            <!-- Space to work -->
-            <?php 
-					# Asignación de Índice automático
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <?php 
+                    echo "<h1 class='mt-5'>Arrays Index Numeric</h1><hr>";
+                ?>
+                <?php 
+					# Automatic Index Assignment
 					$cars = array('Volkswagen', 'Toyota', 'Renault');
-					# Asignación de Índice manual
+					# Manual Index Assignment
 					$cars[3] = 'Fiat';
 					$cars[4] = 'Mazda';
 					$cars[5] = 'Chevrolet';
 
-					// var_dump($cars);
+					//var_dump($cars);
 				?>
-				<div class="btn-group my-2">
-				<?php foreach ($cars as $car => $index): ?>
-					<button type="button" class="btn btn-dark">
-						<?php echo $car ?>
-					</button>
-				<?php endforeach ?>
+				<div class="btn-group mt-5">
+                    <?php foreach ($cars as $car): ?>
+                        <button type="button" class="btn btn-dark">
+                            <?php echo $car ?>
+                        </button>
+                    <?php endforeach ?>
 				</div>
-            <hr>
+            </div>
         </div>
-    </div>
     </main>
+
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

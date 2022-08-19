@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Functions"?></title>
+    <title><?="Functions with Return"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <div class="navbar-brand row">
-           <a class="navbar-brand col"  href="https://www.php.net/manual/es/intro-whatis.php">PHP</a><a class="navbar-brand col" href="https://getbootstrap.com/">Bootstrap 5</a>
-           <a class="col navbar-brand" href="/index.php">home</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">PHP & Bootstrap 5</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.php">&larr; Main Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">21- Functions with Return</a>
+                </li>
+            </ul>
+            </div>
         </div>
-      </div>
     </nav>
     <main class="container">
-    <div class="row">
-        <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Functions Return</h1>";?>
-            <hr>
-            <!-- Space to work -->
-            <?php 
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <?php 
+                    echo "<h1 class='mt-5'>Functions with Return</h1><hr>";
+                ?>
+                <?php 
 					function show_name($name) {
 						return $name;
 					}
@@ -30,15 +41,16 @@
 						return $n1 * $n2;
 					}
 				?>
-				<div class="mx-4 p-4 bg-warning text-dark rounded">
+				<div class="mt-4 p-5 bg-dark text-white rounded">
 				  <div class="container">
 				    <h1 class="display-4"><?php echo show_name('Hideo Kojima'); ?></h1>
 				    <p class="lead"> 23 * 15 = <?php echo show_result(23, 15); ?></p>
 				  </div>
 				</div>
+            </div>
         </div>
-    </div>
     </main>
+
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

@@ -69,6 +69,32 @@
 
                 <a href="20-functions-params.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">20</span> functions-params</a>
 
+                <a href="21-functions-return.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">21</span> functions-return</a>
+
+                <a href="22-forms-get.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">22</span> forms-get</a>
+
+                <a href="23-forms-post.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">23</span> forms-post</a>
+
+                <a href="24-date-time.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">24</span> functions-params</a>
+
+                <a href="25-challenge-dates.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">25</span> functions-params</a>
+
+                <a href="26-ssi.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">26</span> functions-params</a>
+
+                <a href="27-file-text.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">27</span> file-text</a>
+
+                <a href="28-upload-files.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">28</span> upload-files</a>
+
+                <a href="29-cookies.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">29</span> cookies</a>
+
+                <a href="30-sesions.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">30</span> sesions</a>
+
+                <a href="31-send-mail.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">31</span> send-mail</a>
+
+                <a href="32-exceptions.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">32</span> exceptions</a>
+
+
+
             </div>
         </div>
     </div>
