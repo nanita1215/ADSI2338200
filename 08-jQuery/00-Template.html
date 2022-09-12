@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+
+    <style>
+        .btn-orange {
+            background-color: #f0a309;
+            color: #fff;
+        }
+        .btn-orange:is(:hover, :focus) {
+            background-color: #f0a309;
+        }
+        figure {
+
+        }
+    </style>
 
 </head>
 <body>
@@ -18,8 +32,16 @@
                             <a class="breadcrumb-item" href="index.html">Main Menu </a>                            
                             <span class="breadcrumb-item active" aria-current="page">Template</span>
                         </nav>
-                        <h2 class="card-title">Template</h2>
-                        <section class="card-text">
+                        
+                        <section class="card-text my-5">
+                            <div class="controls">
+                                <button class="btn btn-sm btn-orange btnFirst">First</button>
+                                <button class="btn btn-sm btn-orange btnAutoPlay">Auto</button>
+                                <button class="btn btn-sm btn-orange btnLast">Last</button>
+
+                            </div>
+                            <div class="content my-5 d-flex align-items-center justify-content-between"></div>
+                            <button class="btn"><img src="images/next&prev/" alt=""></button>btn
 
                         </section>
                     </div>
@@ -30,7 +52,19 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            // alert('Installed')
+            $act = $('figure.active')
+
+            $('.btnFirst').click(function (e) {
+                e.preventDefault(
+                    $('figure').removeClass('active')
+                    $('figure').first(.addClass('active')
+                    $act = $('figure.active')
+                )
+            })
+        })
+
+        $('.btnNext').click(function(e) {
+            e.preventDefault()
         })
     </script>
 </body>

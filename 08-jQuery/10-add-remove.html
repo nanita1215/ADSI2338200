@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add-remove</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Set & Get</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text d-flex gap-3 justify-content-center">
+                        <div class="actions d-flex flex-column gap-1">
+                            <input type="text" placeholder="Enter Dragon name" class="form-control input-text">
+                            <div class="btn btn-dark btnAppend">Append</div>
+                            <div class="btn btn-dark btnPrepend">Prepend</div>
+                            <div class="btn btn-dark btnAfter">After</div>
+                            <div class="btn btn-dark btnBefore">Before</div>
+                        </div>
+                        <div class="content">
+                            <ol class="text-start list-group list-group-numbered" style="width: 240px;">
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">Caraxes <span class="btn btn-sm btn-danger btn-remove">&times</span></li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">Syrax <span class="btn btn-sm btn-danger btn-remove">&times</span></li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">Meleys <span class="btn btn-sm btn-danger btn-remove">&times</span></li>
+                            </ol>
+                            <button class="btn btn-danger form-control mt-2 btn-empty">Empty</button>
+                        </div>
+                    </section>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Remove
+            $('body').on('click', '.btn-remove', function(e){
+                e.preventDefault()
+                $(this).parent().remove()
+            })
+            // Empty
+            $('.btn-empty').click(function(e){
+                e.preventDefault()
+                $('ol').empty()
+            })
+
+            // Add append 
+            $('.btnAppend').click(function(e){
+                e.preventDefault()
+                if($('.input-text').val().length > 0){
+                    $drg = `<li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">${$('.input-text').val()}<span class="btn btn-sm btn-danger btn-remove">&times</span></li>`
+                    $('ol').append($drg)
+                    $('.input-text').val("")
+                }else{
+                    alert('Please enter the dragon name')
+                }
+            })
+            // Add prepend
+            $('.btnPrepend').click(function(e){
+                e.preventDefault()
+                if($('.input-text').val().length > 0){
+                    $drg = `<li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">${$('.input-text').val()}<span class="btn btn-sm btn-danger btn-remove">&times</span></li>`
+                    $('ol').prepend($drg)
+                    $('.input-text').val("")
+                }else{
+                    alert('Please enter the dragon name')
+                }
+            })
+
+            $('.btnAfter').click(function(e){
+                e.preventDefault(
+                    $('ol').after(`<ol class="text-start list-group list-group-numbered mt-2" style="width: 240px;">
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Spyro <span class="btn btn-sm btn-danger btn-remove">&times</span></li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Yoshi <span class="btn btn-sm btn-danger btn-remove">&times</span></li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Chimuelo <span class="btn btn-sm btn-danger btn-remove">&times</span></li>
+                            </ol>`)
+                )
+            }
+        })//end ready function
+    </script>
+</body>
+</html>

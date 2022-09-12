@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Get</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Set Get</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <div class="actions d-flex flex-row justify-content-center gap-1">
+                            <div class="set d-flex flex-column gap-1">
+                                <h3>SET</h3>
+                                <button class="btn btn-dark setText">Text</button>
+                                <button class="btn btn-dark setHTML">HTML</button>
+                                <button class="btn btn-dark setAttr">Attribute</button>
+                                <button class="btn btn-dark setValue">Value</button>
+                            </div>
+                            <div class="get  d-flex flex-column gap-1">
+                                <h3>GET</h3>
+                                <button class="btn btn-dark getText">Text</button>
+                                <button class="btn btn-dark getHTML">HTML</button>
+                                <button class="btn btn-dark getAttr">Attribute</button>
+                                <button class="btn btn-dark getValue">Value</button>
+                            </div>
+                        </div>
+                        <div class="elements mt-3 mx-auto" style="width: 400px;">
+                            <textarea class="form-control textContent" rows="5" placeholder="Enter Text or HTML"></textarea>
+                            <a href="http://www.starwars.com" target="_blank" class="btn btn-link linkContent">Open star wars webpage</a>
+                            <input type="text" class="form-control inputContent" value="">
+                        </div>
+
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            
+            // SET
+            $('.setText').click(function(e) {
+                e.preventDefault()
+                $('.textContent').text('Lorem ipsum dolor sit amet')
+            })
+
+            $('.setHTML').click(function(e) {
+                e.preventDefault()
+            $('.textContent').html('<h4>Star Wars</h4>')
+        })
+        
+        $('.setAttr').click(function(e) {
+            e.preventDefault()
+            $('.linkContent').attr('href', 'http://www.sena.edu.co')
+                                .text('Open sena Webpage')
+        })
+
+        $('.setValue').click(function(e) {
+                e.preventDefault()
+            $('.inputContent').val('Kylo Ren')            
+        })
+
+        // GET
+
+        $('.getText').click(function(e) {
+                e.preventDefault()
+            alert($('.active').text())         
+        })
+
+        $('.getHTML').click(function(e) {
+                e.preventDefault()
+            alert($('.actions').html())         
+        })
+
+        $('.getAttr').click(function(e) {
+                e.preventDefault()
+            alert($('.linkContent').attr('href'))         
+        })
+
+        $('.getValue').click(function(e) {
+                e.preventDefault()
+            alert($('.inputContent').val())         
+        })
+
+
+        })
+
+    </script>
+</body>
+</html>

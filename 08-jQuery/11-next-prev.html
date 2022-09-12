@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next & Prev</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+</head>
+<style>
+    .btn-ball {
+        background-color: #d9d9d9;
+        color: #000;
+    }
+    .btn-orange:is(:hover, :focus) {
+        background-color: #d9d9d9;
+
+    }
+    figure {
+        margin-bottom: 0;
+        filter: grayscale(1);
+        transition: all 0.5s ease-in;
+    }
+    figure figcaption {
+        opacity: 0;
+    }
+    figure.active {
+        filter: grayscale(0);
+        transform: scale(1.2);
+    }
+    figure.active figcaption {
+        opacity: 1;
+    }
+</style>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-9 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Next & Prev</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text my-5">
+                        <div class="controls">
+                            <button class="btn btn-sm btnFirst">First</button>
+                            <button class="btn btn-sm btnAutoPlay">Auto</button>
+                            <button class="btn btn-sm btnLast">Last</button>
+                        </div>
+                        <div class="content my-2 d-flex aling-items-center justify-content-between">
+                            <button class="btn btnPrev"><img src="images/nextprev/Ellipse 10.png"></button>
+                                <div class="carousel d-flex aling-items-center gap-3">
+                                    <figure class="active">
+                                        <img src="images/nextprev/vaporeon.png">
+                                        <figcaption>💧</figcaption>
+                                    </figure>
+                                    <figure>
+                                        <img src="images/nextprev/flareon.png">
+                                        <figcaption>🔥</figcaption>
+                                    </figure>
+                                    <figure>
+                                        <img src="images/nextprev/jolteon.png">
+                                        <figcaption>🌩️</figcaption>
+                                    </figure>
+                                    <figure>
+                                        <img src="images/nextprev/umbreon.png">
+                                        <figcaption>🌙</figcaption>
+                                    </figure>
+                                    <figure>
+                                        <img src="images/nextprev/espeon.png">
+                                        <figcaption>☀️</figcaption>
+                                    </figure>
+                                </div>
+                            <button class="btn btnNext"><img src="images/nextprev/Ellipse 11.png"></button>
+                        </div>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            currentActive()
+
+            $('.btnFirst').click(function (e) {
+                e.preventDefault()
+                removeActive()
+                $('figure').first().addClass('active')
+                currentActive()
+            })
+            $('.btnLast').click(function (e) {
+                e.preventDefault()
+                removeActive()
+                $('figure').last().addClass('active')
+                currentActive()
+            })
+            $('.btnNext').click(function (e) {
+                e.preventDefault()
+                removeActive()
+                $($act).next().addClass('active')
+                currentActive()
+            })
+        })
+        function currentActive() {
+            $act = $('figure.active')
+        }
+        function removeActive() {
+            $('figure').removeClass('active')
+        }
+    </script>
+</body>
+</html>
