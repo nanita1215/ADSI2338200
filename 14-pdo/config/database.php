@@ -1,56 +1,54 @@
 <?php
     try {
-        $conx = new PDO("mysql:host=$host;dbname=$name_db", $user, $passwd);
+        $conx = new PDO("mysql:host=$host;dbname=$name_db",$user,$passwd);
         $conx->exec("set names utf8");
-        // #this->conx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connection Successfully";
+        //echo "Connection Successfully!";
     }
     catch(PDOException $e) {
-        echo "Error e la conexión " . $e->getMessage();
+        echo "Connection Error: " . $e->getMessage();
     }
 
-    // CRUD -> pokemons
+    //-- CRUD => Pokemons
 
-function listAllPokemons($conx) {
-    try {
-        $sql = "SELECT p.*, t.name AS nametrainer
-                FROM pokemons AS p, trainers AS t
-                WHERE p.trainer_id = t.id";
-        $stm = $conx->prepare($sql);
-        $stm->execute();
-        return $stm->fetchAll();
-    } catch (PDOException $e) {
-        echo $e->getMEssage();        
+    // List All Pokemons
+    function listAllPokemons($conx) {
+        try {
+            $sql = "SELECT p.*, t.name AS nametrainer 
+                    FROM pokemons AS p, trainers AS t
+                    WHERE p.trainer_id = t.id";
+            $stm = $conx->prepare($sql);
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
-}
 
-// Show pokemon
-function showPokemon($conx, $id) {
-    try {
-        $sql = "SELECT p.*, t.name AS nametrainer 
-        FROM pokemons AS p, trainer AS t
-        WHERE p.id = :id AND p.trainer_id = t.id";
-        $stm = $conx->prepare($sql);
-        $stm = bindparam(":id", $id);
-        $stm->execute();
-        return $stm->fetchAll();
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }    
-}
+    // Show Pokemon
+    function showPokemon($conx, $id) {
+        try {
+            $sql = "SELECT p.*, t.name AS nametrainer 
+                    FROM pokemons AS p, trainers AS t
+                    WHERE p.id = :id AND p.trainer_id = t.id";
+            $stm = $conx->prepare($sql);
+            $stm->bindparam(":id", $id);
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
-// TRainers
+    // Trainers
 
-// List All Trainers
-
-function listAllTrainers($conx) {
-    try {
-        $sql = "SELECT * FROM trainers";
-        $stm = $conx->prepare($sql);
-        $stm->execute();
-        return $stm->fetchAll();
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }    
-}
-
+    // List All Trainers
+    function listAllTrainers($conx) {
+        try {
+            $sql = "SELECT * FROM trainers";
+            $stm = $conx->prepare($sql);
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
