@@ -1,0 +1,112 @@
+/* The Modal (background) */
+
+#cf7_widget_elementor_contact_form_control_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    right: 0;
+    bottom: 0;
+}
+  
+/* Modal Content */
+.cf7-widget-elementor-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0px;
+    border: 1px solid #888;
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+.cf7-widget-elementor-modal-iframe{
+    width: 100%;
+    height: 100%;
+}
+  
+/* The Close Button */
+.cf7-widget-elementor-modal-close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    background: #000;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    padding: 0 0 5px 6px;
+    color: #ffffff;
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+}
+
+.cf7-widget-elementor-modal-close:hover,
+.cf7-widget-elementor-modal-close:focus {
+    color: rgb(248, 241, 241);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 26px;
+}
+
+.cf7-widget-elementor-modal-hide-adminmenu{
+    display: none;
+}
+
+/* loader start*/
+
+.cf7-widget-elementor-modal-content-loader.loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+  
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+}
+
+/* loader end */

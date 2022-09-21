@@ -1,0 +1,125 @@
+/* void cf7 admin css */
+
+.void-cf7-review{
+	background : #FFFFFF ;
+	padding : 10px;
+	margin-top : 40px;
+	margin-bottom: 10px;
+	line-height: 1.5;
+	font-size: 16px;
+	border-left: 5px solid #006799;
+	-webkit-box-shadow: 1px 1px 1px 1px #d3d3d3;
+	box-shadow: 1px 1px 1px 1px #d3d3d3;
+}
+.void-cf7-review-btn{
+	padding-top: 5px;
+}
+.void-cf7-review-done{
+	float: right;
+	text-decoration: none;
+}
+
+/* notice css start */
+.cf7-widget-promotion-notice{
+	background: linear-gradient(to right, #4E40F1 0%, #ffccff 100%);
+	border-left-color: linear-gradient(to bottom, #3F2BE2 20%, #0066ff 45%);
+}
+.cf7-widget-promotion-notice .notice-dismiss:before{
+	font-size: 22px;
+}
+.cf7-widget-message-inner {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.cf7-widget-message-icon,
+.cf7-widget-message-icon > img{
+	max-height: 200px;
+	width: auto;
+}
+.cf7-widget-message-content{
+	padding: 0 20px;
+}
+.cf7-widget-message-content p{
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+	color: #000;
+}
+.cf7-widget-message-action{
+	text-align: center;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    margin-left: auto;
+}
+.cf7-widget-message-action .cf7-widget-button{
+	background-color: #d30c5c;
+    color: #fff;
+    border-color: #7c1337;
+    -webkit-box-shadow: 0 1px 0 #7c1337;
+    box-shadow: 0 1px 0 #7c1337;
+    padding: 10px 60px;
+    height: auto;
+    line-height: 20px;
+	text-transform: capitalize;
+	text-decoration: none;
+	border-radius: 5px;
+	margin: 5px;
+	font-size: 16px;
+}
+.cf7-widget-message-action .cf7-widget-button:hover{
+	font-size: 18px;
+}
+
+.cf7-widget-message-action .cf7-widget-never-show{
+	color: #D0A7FB;
+	margin: 20px 20px 0 20px;
+}
+
+.cf7-widget-message-action .cf7-widget-never-show:hover{
+	color: #D0A7FB;
+}
+/* notice css end */
+
+/* data track notice css start*/
+
+.void-cf7-widget-data-track-notice p{
+	display: inline-block;
+}
+
+.void-cf7-non-sensitive {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+	color: #00a0d2;
+}
+
+.void-cf7-non-sensitive .void-cf7-non-sensitive-tooltip {
+	visibility: hidden;
+	width: 300px;
+	background-color: #00a0d2;
+	color: #fff;
+	text-align: left;
+	border-radius: 6px;
+	padding: 10px;
+
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	top: 100%;
+	left: 50%;
+	margin-left: -60px;
+}
+
+.void-cf7-non-sensitive-tooltip li{
+	list-style: inside;
+	padding: 0 0 10px 0;
+}
+
+.void-cf7-non-sensitive:hover .void-cf7-non-sensitive-tooltip {
+	visibility: visible;
+}
+
+/* data track notice css end*/
