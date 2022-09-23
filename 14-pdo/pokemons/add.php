@@ -1,18 +1,6 @@
-<?php require 'config/app.php' ?>
-<?php include('config/database.php') ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web App Pokemons</title>
-    <link rel="stylesheet" href="public/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/fontawesome.min.css">
-    <link rel="stylesheet" href="public/css/fonts.css">
-</head>
-<body>
+<?php $title = 'Add pokemon'?>
+<?php include_once('includes/header.inc');?>
+<!-- header include -->
     <main class="container">
         <section class="row">
             <div class="col-md-6 offset-md-3 my-5">
@@ -99,15 +87,44 @@
                         </button>
                     </div>
 				</form>
+                <?php
+                    if($_POST){
+                        // var_dump($_POST);
+                        // echo "<hr>";
+                        // var_dump($_FILES);
+
+                        $name = $_POST['name'];
+                        $type = $_POST['type'];
+                        $strength = $_POST['strength'];
+                        $stamina = $_POST['stamina'];
+                        $speed = $_POST['speed'];
+                        $accuracy = $_POST['accuracy'];
+                        $trainer_id = $_POST['trainer_id'];
+
+                        // upload image
+                        $path = "public/images/";
+                        $image = $path.time().".".pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                        
+                        if(addPokemon($conx,$name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id)){
+                            move_uploaded_file($_FILES['image']['tmp_name'], $image);
+                            echo "<script>
+                            window.location.replace('index.php')
+                            </script>";
+                            $_SESSION['message'] = "Pokemon: $name was added!";
+                        }else {
+                            $_SESSION['error'] = "Pokemon: $name already exist!";
+                        }
+                    }
+                ?>
                 
             </div>
         </section>
         <?php $conx = null; ?>
     </main>
-    <script src="public/js/jquery-3.6.0.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
-    <script src="public/js/sweetalert2.js"></script>
+    <!-- scripts include -->
+    <?php include ('includes/scripts.inc')?>
+    <!--  -->
+
     <script>
         $(document).ready(function () {
             $('.btn-upload').click(function() {
@@ -120,7 +137,20 @@
                 }
                 reader.readAsDataURL(this.files[0]);
             })
+
+            // Alerta de error
+            <?php if(isset($_SESSION['error'])):?>
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'error',
+                        title: '<?=$_SESSION['error']?>',
+                        showConfirmButton: false,
+                        timer:2000
+                })    
+            <?php endif?>
+            <?php unset($_SESSION['error'])?>
         })
+        
     </script>
 </body>
 </html>
