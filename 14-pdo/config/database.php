@@ -10,11 +10,12 @@
 
     //-- CRUD => Pokemons
 
-    // insert pokemons
-    function addPokemon($conx,$name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id){
+    // Insert Pokemon
+    function addPokemon($conx, $name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id) {
         try {
-            $result = false;
-            $sql = "INSERT INTO pokemons (name, type, strength, stamina, speed, accuracy, image, trainer_id) VALUES(:name, :type, :strength, :stamina, :speed, :accuracy, :image, :trainer_id)";
+            $sql = "INSERT INTO pokemons (name, type, strength, stamina, speed, accuracy,
+                    image, trainer_id) VALUES (:name, :type, :strength, :stamina, :speed, 
+                    :accuracy, :image, :trainer_id)";
             $stm = $conx->prepare($sql);
             $stm->bindparam(":name", $name);
             $stm->bindparam(":type", $type);
@@ -24,25 +25,30 @@
             $stm->bindparam(":accuracy", $accuracy);
             $stm->bindparam(":image", $image);
             $stm->bindparam(":trainer_id", $trainer_id);
-            if($stm->execute()){
-                $result = true;
+            if($stm->execute()) {
+                return true;
+            } else {
+                return false;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        return $result;
-    };
+
+    }
 
     // Update Pokemon
-    function updatePokemon($conx,$id, $name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id){
-
+    function updatePokemon($conx, $id, $name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id) {
         try {
-            $result = false;
-            if($image != null){
-                $sql = "UPDATE pokemons SET name = :name, type = :type, strength = :strength, stamina = :stamina, speed = :speed, accuracy = :accuracy, image = :image, trainer_id = :trainer_id WHERE id = :id";
-            }else {
-                $sql = "UPDATE pokemons SET name = :name, type = :type, strength = :strength, stamina = :stamina, speed = :speed, accuracy = :accuracy, trainer_id = :trainer_id WHERE id = :id";
+            if($image != null) {
+                $sql = "UPDATE pokemons SET name = :name, type = :type, strength = :strength, 
+                        stamina = :stamina, speed = :speed, accuracy = :accuracy, image = :image, 
+                        trainer_id = :trainer_id WHERE id = :id ";
+            } else {
+                $sql = "UPDATE pokemons SET name = :name, type = :type, strength = :strength, 
+                        stamina = :stamina, speed = :speed, accuracy = :accuracy, 
+                        trainer_id = :trainer_id WHERE id = :id ";
             }
+                
             $stm = $conx->prepare($sql);
             $stm->bindparam(":id", $id);
             $stm->bindparam(":name", $name);
@@ -51,45 +57,29 @@
             $stm->bindparam(":stamina", $stamina);
             $stm->bindparam(":speed", $speed);
             $stm->bindparam(":accuracy", $accuracy);
-            $stm->bindparam(":trainer_id", $trainer_id);
-            
-            if($image != null){
+            if($image != null) {
                 $stm->bindparam(":image", $image);
             }
             $stm->bindparam(":trainer_id", $trainer_id);
-
-            if($stm->execute()){
-                $result = true;
+            if($stm->execute()) {
+                return true;
+            } else {
+                return false;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        return $result;
-    };
 
-    // Delete pokemons
-    function deletePokemon($conx,$id){
-        $result = false;
-        try {
-            $sql = "DELETE FROM pokemons WHERE id = :id";
-            $stm = $conx->prepare($sql);
-            $stm->bindparam(":id", $id);
-            $stm->execute();
-            if($stm){
-                $result = true;
-            }
-        }catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-        return $result;
-    };
+    }
+
 
     // List All Pokemons
     function listAllPokemons($conx) {
         try {
             $sql = "SELECT p.*, t.name AS nametrainer 
                     FROM pokemons AS p, trainers AS t
-                    WHERE p.trainer_id = t.id ORDER BY p.id ASC";
+                    WHERE p.trainer_id = t.id
+                    ORDER BY p.id ASC";
             $stm = $conx->prepare($sql);
             $stm->execute();
             return $stm->fetchAll();
@@ -113,28 +103,49 @@
         }
     }
 
-    // Trainers
-    function login($conx,$email,$pass){
-        $result = false;
+
+    // Delete Pokemon
+    function deletePokemon($conx, $id) {
         try {
-            $sql = "SELECT * FROM trainers WHERE email = :email AND password = :pass LIMIT 1";
+            $sql = "DELETE FROM pokemons WHERE id = :id";
+            $stm = $conx->prepare($sql);
+            $stm->bindparam(":id", $id);
+            if($stm->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    // Trainers
+
+    // Login Trainer
+    function login($conx, $email, $pass) {
+        try {
+            $sql = "SELECT * FROM trainers 
+                    WHERE email = :email
+                    AND password = :pass
+                    LIMIT 1";
             $stm = $conx->prepare($sql);
             $stm->bindparam(":email", $email);
             $stm->bindparam(":pass", $pass);
             $stm->execute();
-            if($stm->rowCount() > 0){
+            if($stm->rowCount() > 0) {
                 $trainer = $stm->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['tid'] = $trainer['id'];
-                $_SESSION['temail']= $trainer['email'];
-                $_SESSION['tphoto']= $trainer['photo'];
-                $result = true;
+                $_SESSION['tid']    = $trainer['id'];
+                $_SESSION['temail'] = $trainer['email'];
+                $_SESSION['tphoto'] = $trainer['photo'];
+                return true;
+            } else {
+                return false;
             }
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        return $result;
-    };
-
+    }
 
     // List All Trainers
     function listAllTrainers($conx) {

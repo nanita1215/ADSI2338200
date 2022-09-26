@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2022 a las 15:19:34
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Servidor: localhost
+-- Tiempo de generación: 23-09-2022 a las 15:18:46
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.3.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -63,10 +64,10 @@ CREATE TABLE `pokemons` (
 --
 
 INSERT INTO `pokemons` (`id`, `name`, `type`, `strength`, `stamina`, `speed`, `accuracy`, `image`, `trainer_id`) VALUES
-(1, 'pikachu', 'Electric', 90, 80, 96, 79, 'public/images/pokeball.png', 1),
-(2, 'Guru', 'Fire', 50, 23, 44, 0, 'public/images/1663343058.jpg', 1),
-(3, 'bulbasaour', 'Grass', 80, 88, 70, 75, 'public/images/pokeball.png', 1),
-(4, 'squirtle', 'Water', 70, 90, 75, 90, 'public/images/pokeball.png', 2),
+(1, 'pikachu', 'Electric', 90, 80, 96, 79, 'public/images/1663342522.png', 1),
+(2, 'charmander', 'Fire', 95, 78, 80, 82, 'public/images/1663342476.png', 1),
+(3, 'bulbasaour', 'Grass', 80, 88, 70, 75, 'public/images/1663342398.png', 1),
+(4, 'squirtle', 'Water', 70, 90, 75, 90, 'public/images/1663342493.png', 2),
 (5, 'Snorlax', 'Normal', 180, 320, 50, 180, 'public/images/pokeball.png', 1),
 (6, 'Vaporeon', 'Water', 186, 260, 90, 168, 'public/images/pokeball.png', 2),
 (7, 'Lapras', 'Water', 111, 255, 100, 168, 'public/images/pokeball.png', 1),
@@ -83,10 +84,7 @@ INSERT INTO `pokemons` (`id`, `name`, `type`, `strength`, `stamina`, `speed`, `a
 (18, 'Pidgey', 'Normal', 818, 80, 95, 90, 'public/images/pokeball.png', 1),
 (19, 'Gastly', 'Ghost', 750, 60, 60, 82, 'public/images/pokeball.png', 4),
 (20, 'Rattata', 'Normal', 810, 60, 65, 22, 'public/images/pokeball.png', 1),
-(21, 'charmando', 'Dragon', 55, 55, 55, 55, 'public/images/pokeball.png', 1),
-(24, 'Eevee', 'Normal', 22, 22, 22, 22, 'public/images/1663334535.jpg', 1),
-(25, 'Giratina', 'Dragon', 100, 100, 100, 100, 'public/images/1663336071.jpg', 1),
-(29, 'esteban', 'Normal', 20, 20, 25, 25, 'public/images/1663936792.jpg', 2);
+(21, 'Piraniot', 'Water', 12, 50, 60, 10, 'public/images/1663342614.png', 2);
 
 -- --------------------------------------------------------
 
@@ -134,7 +132,7 @@ CREATE TABLE `view_pokemons` (
 --
 DROP TABLE IF EXISTS `view_pokemons`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pokemons`  AS SELECT `trainers`.`name` AS `name_trainer`, `gyms`.`name` AS `name_gym`, count(`pokemons`.`id`) AS `num_pokemons` FROM ((`trainers` left join `gyms` on(`trainers`.`gym_id` = `gyms`.`id`)) left join `pokemons` on(`pokemons`.`trainer_id` = `trainers`.`id`)) GROUP BY `trainers`.`id``id`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pokemons`  AS  select `trainers`.`name` AS `name_trainer`,`gyms`.`name` AS `name_gym`,count(`pokemons`.`id`) AS `num_pokemons` from ((`trainers` left join `gyms` on(`trainers`.`gym_id` = `gyms`.`id`)) left join `pokemons` on(`pokemons`.`trainer_id` = `trainers`.`id`)) group by `trainers`.`id` ;
 
 --
 -- Índices para tablas volcadas
@@ -177,7 +175,7 @@ ALTER TABLE `gyms`
 -- AUTO_INCREMENT de la tabla `pokemons`
 --
 ALTER TABLE `pokemons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `trainers`

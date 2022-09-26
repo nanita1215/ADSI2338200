@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Lorem"?></title>
+    <title><?="Filters"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fonts.css">
 </head>
@@ -21,7 +21,7 @@
                     <a class="nav-link" aria-current="page" href="index.php">&larr; Main Menu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">10- Lorem</a>
+                    <a class="nav-link active" aria-current="page" href="#">33- Filters</a>
                 </li>
             </ul>
             </div>
@@ -31,8 +31,57 @@
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <?php 
-                    echo "<h1 class='mt-5'>Lorem</h1><hr>";
+                    echo "<h1 class='mt-5'>Filters</h1><hr>";
                 ?>
+                <form action="" method="POST">
+					<div class="mb-3">
+						<input type="number" class="form-control" name="age" placeholder="Enter you Age">
+					</div>
+					<div class="mb-3">
+						<input type="email" class="form-control" name="email" placeholder="Enter your Email">
+					</div>
+					<div class="mb-3">
+						<input type="url" class="form-control" name="url" placeholder="Enter your URL">
+					</div>
+					<div class="mb-3">
+						<input type="submit" value="Apply Filters" class="btn btn-success">
+					</div>
+				</form>
+				<?php 
+					if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+						// AGE - - - - - - - - - - - - - - - - -
+						$age = $_REQUEST['age'];
+						$ops = array('options' => 
+							   array('min_range' => 18, 
+							   	     'max_range' => 23
+							   	)
+							);
+						if (!filter_var($age, FILTER_VALIDATE_INT, $ops)) {
+							echo '<div class="alert alert-danger">
+									You Cannot Participate in WSI!
+								  </div>';
+						} else {
+							echo '<div class="alert alert-success">
+									You Can Participate in WSI!
+								  </div>';
+						}
+						// EMAIL - - - - - - - - - - - - - - - - -
+						if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
+							echo '<div class="alert alert-danger">
+									The Email is not valid!
+								  </div>';
+						} else {
+							echo '<div class="alert alert-success">
+									The Email is valid!
+								  </div>';
+						}
+						// URL - - - - - - - - - - - - - - - - -
+						$url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL);
+						echo '<div class="alert alert-success">
+							The URL disinfected is: '.$url.'
+							  </div>';
+					}
+				?>
             </div>
         </div>
     </main>

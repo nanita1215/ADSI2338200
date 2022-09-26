@@ -1,8 +1,15 @@
 <?php
     include 'config/app.php';
 
-    unset($_SESSION['tid'],$_SESSION['tid'],$_SESSION['tid']);
+    unset($_SESSION['tid']);
+    unset($_SESSION['temail']);
+    unset($_SESSION['tphoto']);
 
-    if(session_destroy()){
-        header("location: index.php");
+    if (session_destroy()) {
+        echo "<script>
+                window.location.replace('index.php')
+             </script>";
     }
+
+
+

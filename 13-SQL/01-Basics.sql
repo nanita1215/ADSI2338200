@@ -1,226 +1,129 @@
--- Show all pokemons
-SELECT * FROM pokemons;
+-- To access local Data Base (MySQL) in a web browser:
+-- http://localhost/phpmyadmin
 
--- Show a column name of pokemon
-SELECT name FROM pokemons;
+-- To access local Data Base (MySQL) in command line (MAC):
+-- cd /Application/XAMPP/bin/
+-- ./mysql --version
+-- ./mysql -u root -p
 
--- Show many columns
-SELECT name, speed FROM pokemons;
+-- To access local Data Base (MySQL) in command line (Windows):
+-- Open Control Panel XAMPP / Click on "Shell"
+-- mysql --version
+-- mysql -u root -p
 
--- Show values distincts
-SELECT DISTINCT type FROM pokemons;
+-- Show version MySQL:
+SELECT version();
 
--- WHERE: Show only type registers
-SELECT * 
-FROM pokemons 
-WHERE type = 'Water';
+-- Show All Data Bases:
+SHOW databases;
 
--- OR
-SELECT * 
-FROM pokemons 
-WHERE type = 'Water' 
-OR type = 'Electric';
+-- Create a Data Base
+CREATE DATABASE adsi2338200;
 
--- More than >
-SELECT *
-FROM pokemons
-WHERE strength > 1000;
+-- Delete a Data Base
+DROP DATABASE adsi2338200;
 
--- Different <>
-SELECT *
-FROM pokemons
-WHERE type <> 'Water';
+-- Connect a Data Base
+CONNECT adsi2338200;
 
--- AND
-SELECT *
-FROM pokemons
-WHERE type = 'Water'
-AND speed > 80;
+-- Use a Data Base
+USE adsi2338200;
 
--- BETWEEN
-SELECT *
-FROM pokemons
-WHERE stamina 
-BETWEEN 200
-AND 300;
+-- Show All tables
+SHOW tables;
 
-SELECT *
-FROM pokemons
-WHERE speed 
-BETWEEN 90
-AND 100;
+-- Create Table
+CREATE TABLE gyms (
+    id INT AUTO_INCREMENT,
+    VARCHAR(32) NOT NULL UNIQUE,
+    PRIMARY KEY(id)
+);
 
--- ORDER BY: Ascendant
-SELECT * 
-FROM pokemons
-ORDER BY strength;
+CREATE TABLE trainers (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(32) NOT NULL,
+    level INT NOT NULL DEFAULT 1,
+    gym_id INT NOT NULL,
+    FOREIGN KEY(gym_id) REFERENCES gyms(id),
+    PRIMARY KEY(id)
+);
 
-SELECT * 
-FROM pokemons
-ORDER BY strength 
-ASC;
+CREATE TABLE pokemons (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(32) NOT NULL UNIQUE,
+    type VARCHAR(32) NOT NULL,
+    strength INT NOT NULL,
+    stamina INT NOT NULL,
+    speed INT NOT NULL,
+    accuracy INT NOT NULL,
+    trainer_id INT NOT NULL,
+    FOREIGN KEY(trainer_id) REFERENCES trainers(id),
+    PRIMARY KEY(id)
+);
 
--- ORDER BY: Descendant
-SELECT * 
-FROM pokemons 
-ORDER BY strength 
-DESC;
+-- Another Way (Create table missing a field)
+CREATE table pokemons (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(32) NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    strength INT NOT NULL,
+    stamina INT NOT NULL,
+    speed INT NOT NULL,
+    accuracy INT NOT NULL,
+    PRIMARY KEY(id)
+);
+-- Add Column
+ALTER TABLE pokemons 
+ADD COLUMN trainer_id INT NOT NULL
+AFTER accuracy;
 
-SELECT *
-FROM pokemons
-WHERE speed > 100
-ORDER BY speed DESC;
+-- Delete Column
+ALTER TABLE pokemons 
+DROP COLUMN trainer_id;
 
--- LIMIT 
-SELECT *
-FROM pokemons
-LIMIT 10;
+-- Describe Tabla
+DESCRIBE pokemons;
 
--- OFFSET
-SELECT *  
-FROM pokemons 
-LIMIT 5 
-OFFSET 10;
+-- Delete a Table
+DROP TABLE pokemons;
 
-SELECT * 
-FROM pokemons 
-LIMIT 10, 5;
+-- Delete all data storaged in a Table
+TRUNCATE TABLE pokemons;
+-- Another way
+DELETE * FROM pokemons;
 
--- LIKE: Search
--- Show all records init with 'W'
-SELECT *
-FROM pokemons
-WHERE type
-LIKE "W%";
+-- Fill Data (Tables)
+INSERT INTO gyms VALUES (DEFAULT, 'palette');
+INSERT INTO trainers VALUES (DEFAULT, 'Ash Ketchum', DEFAULT, 1);
 
--- Show all results that end with 'c'
-SELECT *
-FROM pokemons
-WHERE type
-LIKE "%c";
-
--- Show all results that contains 'ma'
-SELECT *
-FROM pokemons
-WHERE name
-LIKE "%ma%";
-
--- Show result 'Pikachu'
-SELECT *
-FROM pokemons
-WHERE name
-LIKE "P_k_c_u";
-
--- Show all results that not contains 'ma'
-SELECT *
-FROM pokemons
-WHERE name
-NOT LIKE "%ma%";
-
--- Show results with many values using 'IN'
-SELECT *
-FROM pokemons
-WHERE type
-IN ('Fire', 'Electric');
-
--- Alias
-SELECT t.name AS name_trainer, 
-	   p.name AS name_pokemon, 
-	   p.type AS type_pokemon
-FROM trainers AS t, pokemons AS p
-WHERE t.id = p.trainer_id;
-
-SELECT t.name AS name_trainer, 
-       p.name AS name_pokemon, 
-       p.type AS type_pokemon
-FROM trainers AS t, pokemons AS p
-WHERE t.id = p.trainer_id
-ORDER BY t.name DESC;
-
-SELECT t.name AS name_trainer, 
-p.name AS name_pokemon, 
-p.type AS type_pokemon
-FROM trainers AS t, pokemons AS p
-WHERE t.id = p.trainer_id 
-AND p.type = "Water" OR p.type = "Fire" 
-ORDER BY t.name DESC;
-
-SELECT COUNT(p.id) AS number_pokemons
-FROM pokemons AS p, trainers AS t
-WHERE t.id = p.trainer_id
-AND t.id = 1;
-
-SELECT t.name AS name_trainer, COUNT(p.id) AS number_pokemons
-FROM pokemons AS p, trainers AS t
-WHERE t.id = p.trainer_id
-GROUP BY t.name;
-
--- Three tables 
-SELECT t.name AS name_trainer, 
-	   p.name AS name_pokemon, 
-	   g.name AS name_gym
-FROM trainers AS t, pokemons AS p, gyms AS g
-WHERE t.id = p.trainer_id
-AND t.gym_id = g.id;
-
--- inner join
-SELECT trainers.name AS name_trainer, gyms.name AS name_gym, 
-pokemons.name AS name_pokemon
-FROM trainers
-INNER JOIN gyms
-ON trainers.gym_id = gyms.id
-INNER JOIN pokemons
-ON pokemons.trainer_id = trainers.id
-ORDER BY trainers.name;
+INSERT INTO pokemons VALUES ( DEFAULT, 'pikachu', 'Electric', 90, 80, 96, 79, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'charmander', 'Fire', 95, 78, 80, 82, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'bulbasaour', 'Grass', 80, 88, 70, 75, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'squirtle', 'Water', 70, 90, 75, 90, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Snorlax', 'Normal', 180, 320, 50, 180, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Vaporeon', 'Water', 186, 260, 90, 168, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Lapras', 'Water', 111, 255, 100, 168, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Blastoise', 'Water', 720, 158, 70, 222, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Golem', 'Water', 500, 160, 80, 198, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Dragonite', 'Dragon', 900, 250, 120, 182, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Exeggutor', 'Grass', 596, 190, 90, 232, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Omaster', 'Rock', 1500, 140, 112, 202, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Muk', 'Poison', 1070, 210, 112, 180, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Onix', 'Rock', 662, 70, 80, 90, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Poliwag', 'Water', 815, 80, 70, 108, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Mankey', 'Water', 563, 80, 70, 122, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Magnemite', 'Electric', 750, 50, 40, 128, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Pidgey', 'Normal', 818, 80, 95, 90, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Gastly', 'Ghost', 750, 60, 60, 82, 1);
+INSERT INTO pokemons VALUES ( DEFAULT, 'Rattata', 'Normal', 810, 60, 65, 22, 1);
 
 
--- left join
-SELECT trainers.name AS name_trainer, gyms.name AS name_gym, 
-COUNT(pokemons.id) AS num_pokemons
-FROM trainers
-LEFT JOIN gyms
-ON trainers.gym_id = gyms.id
-LEFT JOIN pokemons
-ON pokemons.trainer_id = trainers.id
-GROUP BY trainers.id;
+-- Create security copy (Backup):
+./mysqldump -u root adsi2338200 > /Users/ofaczero/Desktop/backup.sql
 
+-- Recover security copy (Backup): 
+CREATE DATABASE adsi2338200;
+./mysql -u root adsi2338200 < /Users/ofaczero/Desktop/backup.sql
 
--- right join
-SELECT trainers.name AS name_trainer, gyms.name AS name_gym, 
-pokemons.name AS name_pokemon
-FROM trainers
-RIGHT JOIN gyms
-ON trainers.gym_id = gyms.id AND trainers.id = 1
-RIGHT JOIN pokemons
-ON pokemons.trainer_id = trainers.id;
-
--- join
-SELECT trainers.name AS name_trainer, gyms.name AS name_gym, 
-pokemons.name AS name_pokemon
-FROM trainers
-JOIN gyms
-ON trainers.gym_id = gyms.id AND trainers.id = 1
-JOIN pokemons
-ON pokemons.trainer_id = trainers.id
-ORDER BY trainers.name;
-
--- UNION (3 Tables data)
-SELECT name FROM trainers
-UNION
-SELECT name FROM gyms
-UNION
-SELECT name FROM pokemons;
-
--- VIEWS
-CREATE VIEW view_pokemons AS
-SELECT trainers.name AS name_trainer, gyms.name AS name_gym, 
-COUNT(pokemons.id) AS num_pokemons
-FROM trainers
-LEFT JOIN gyms
-ON trainers.gym_id = gyms.id
-LEFT JOIN pokemons
-ON pokemons.trainer_id = trainers.id
-GROUP BY trainers.id;
-
--- Show View
-SELECT * FROM view_pokemons;
+-- Insert data in another table
+ INSERT INTO pokemons_bk SELECT * FROM pokemons;

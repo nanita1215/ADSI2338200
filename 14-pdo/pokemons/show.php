@@ -1,6 +1,6 @@
-<?php $title = 'Show pokemon'?>
-<?php include_once('includes/header.inc');?>
-<!-- header include -->
+    <?php $title = 'Show Pokemon' ?>
+    <?php include 'includes/header.inc' ?>
+    <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-8 offset-md-2 my-5">
@@ -71,8 +71,8 @@
         </section>
         <?php $conx = null; ?>
     </main>
-     <!-- scripts include -->
-     <?php include ('includes/scripts.inc')?>
+    <!--  -->
+    <?php include 'includes/scripts.inc' ?>
     <!--  -->
     <script>
         $(document).ready(function () {

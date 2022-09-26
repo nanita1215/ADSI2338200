@@ -1,6 +1,6 @@
-<?php $title = 'Add pokemon'?>
-<?php include_once('includes/header.inc');?>
-<!-- header include -->
+    <?php $title = 'Add Pokemon' ?>
+    <?php include 'includes/header.inc' ?>
+    <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-6 offset-md-3 my-5">
@@ -88,48 +88,47 @@
                     </div>
 				</form>
                 <?php
-                    if($_POST){
-                        // var_dump($_POST);
-                        // echo "<hr>";
-                        // var_dump($_FILES);
-
-                        $name = $_POST['name'];
-                        $type = $_POST['type'];
-                        $strength = $_POST['strength'];
-                        $stamina = $_POST['stamina'];
-                        $speed = $_POST['speed'];
-                        $accuracy = $_POST['accuracy'];
+                    if($_POST) {
+                        //var_dump($_POST);
+                        //echo "<hr>";
+                        //var_dump($_FILES);
+                        $name       = $_POST['name'];
+                        $type       = $_POST['type'];
+                        $strength   = $_POST['strength'];
+                        $stamina    = $_POST['stamina'];
+                        $speed      = $_POST['speed'];
+                        $accuracy   = $_POST['accuracy'];
                         $trainer_id = $_POST['trainer_id'];
-
-                        // upload image
-                        $path = "public/images/";
+                        // Upload Image
+                        $path  = "public/images/";
                         $image = $path.time().".".pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                         
-                        if(addPokemon($conx,$name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id)){
+                        if(addPokemon($conx, $name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id)) {
                             move_uploaded_file($_FILES['image']['tmp_name'], $image);
+                            $_SESSION['message'] = "Pokemon : $name was added!";
                             echo "<script>
-                            window.location.replace('index.php')
-                            </script>";
-                            $_SESSION['message'] = "Pokemon: $name was added!";
-                        }else {
-                            $_SESSION['error'] = "Pokemon: $name already exist!";
+                                    window.location.replace('index.php')
+                                  </script>";
+                        } else {
+                            $_SESSION['error'] = "Pokemon Name: $name already exist!";
                         }
+
                     }
                 ?>
-                
             </div>
         </section>
         <?php $conx = null; ?>
     </main>
-    <!-- scripts include -->
-    <?php include ('includes/scripts.inc')?>
     <!--  -->
-
+    <?php include 'includes/scripts.inc' ?>
+    <!--  -->
     <script>
         $(document).ready(function () {
+            // - - - - - - - - - - - - - 
             $('.btn-upload').click(function() {
                 $('#image').click();
             });
+            // - - - - - - - - - - - - - 
             $('#image').change(function(event) {
                 let reader = new FileReader()
                 reader.onload = function(event) {
@@ -137,20 +136,18 @@
                 }
                 reader.readAsDataURL(this.files[0]);
             })
-
-            // Alerta de error
-            <?php if(isset($_SESSION['error'])):?>
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'error',
-                        title: '<?=$_SESSION['error']?>',
-                        showConfirmButton: false,
-                        timer:2000
-                })    
-            <?php endif?>
-            <?php unset($_SESSION['error'])?>
+            // - - - - - - - - - - - - - 
+            <?php if(isset($_SESSION['error'])): ?>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: '<?php echo $_SESSION['error'] ?>',
+                showConfirmButton: false,
+                timer: 2500
+            })
+            <?php endif ?>
+            <?php unset($_SESSION['error']) ?>
         })
-        
     </script>
 </body>
 </html>

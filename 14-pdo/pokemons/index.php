@@ -1,6 +1,8 @@
-<?php $title = 'All pokemons'?>
-<?php include_once('includes/header.inc');?>
-<!-- header include -->
+    <?php $title = 'List All Pokemons' ?>
+    <?php require '../config/app.php' ?>
+    <?php include '../config/database.php'  ?>
+    <?php include '../includes/header.inc' ?>
+    <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-8 offset-md-2 my-5">
@@ -33,7 +35,7 @@
                                 <td><?php echo $pokemon['name'] ?></td>
                                 <td class="d-none d-sm-table-cell"><span class="badge bg-dark"><?php echo $pokemon['type'] ?></span></td>
                                 <td>
-                                    <img src="<?= $pokemon['image']?>" width="40px">
+                                    <img src="../<?php echo $pokemon['image'] ?>" width="40px">
                                 </td>
                                 <td class="d-none d-sm-table-cell"><?php echo $pokemon['nametrainer'] ?></td>
                                 <td>
@@ -44,7 +46,7 @@
                                         <ul class="dropdown-menu dropdown-menu-dark">
                                             <li><a class="dropdown-item" href="show.php?id=<?php echo $pokemon['id'] ?>"><i class="fa fa-search"></i> Show</a></li>
                                             <li><a class="dropdown-item" href="edit.php?id=<?php echo $pokemon['id'] ?>"><i class="fa fa-pen"></i> Edit</a></li>
-                                            <li><a class="dropdown-item bg-danger btn-delete" href="" data-id="<?= $pokemon['id']?>"><i class="fa fa-trash"></i> Delete</a></li>
+                                            <li><a class="dropdown-item bg-danger btn-delete" data-id="<?php echo $pokemon['id'] ?>" href="javascript:;"><i class="fa fa-trash"></i> Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -58,29 +60,23 @@
         </section>
         <?php $conx = null; ?>
     </main>
-    <!-- scripts include -->
-    <?php include ('includes/scripts.inc')?>
+    <!--  -->
+    <?php include '../includes/scripts.inc' ?>
     <!--  -->
     <script>
         $(document).ready(function () {
-            // Swal.fire(
-            //         'Good job!',
-            //         'Everything is OK!',
-            //         'success'
-            // )
-            
-            <?php if(isset($_SESSION['message'])):?>
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: '<?=$_SESSION['message']?>',
-                        showconfirmButton: false,
-                        timer:2000
-                })    
-            <?php endif?>
-            <?php unset($_SESSION['message'])?>
-
-            $('.btn-delete').click(function(e){
+            <?php if(isset($_SESSION['message'])): ?>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '<?php echo $_SESSION['message'] ?>',
+                showConfirmButton: false,
+                timer: 2500
+            })
+            <?php endif ?>
+            <?php unset($_SESSION['message']) ?>
+            // - - - - - - - - - - -
+            $('.btn-delete').click(function (e) {
                 e.preventDefault()
                 $id = $(this).attr('data-id')
                 Swal.fire({
@@ -88,30 +84,17 @@
                     text: "You won't be able to revert this!",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: "Yes, delete it!"
+                    confirmButtonColor: '#212529',
+                    cancelButtonColor: '#dc3545',
+                    confirmButtonText: 'Yes, delete it!'
                     }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.replace('delete.php?id='+$id)   
-                        
-                    }
-                    })
-                Swal.fire({
-                    title: 'Are You sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: "Yes, delete it!"
-                }).then((result)=>{
-                    if(result.isConfirmed){
-                        window.location.replace('delete.php?id='+$id)
+                        window.location.replace('delete.php?id=' + $id)
                     }
                 })
             })
-        });
+            // - - - - - - - - - -
+        })
     </script>
 </body>
 </html>
