@@ -4,14 +4,13 @@
     <?php include '../includes/header.inc' ?>
     <?php include '../includes/navbar.inc' ?>
     <?php include '../includes/security.inc' ?>
-    <?php include '../includes/protect-admin.inc' ?>
     <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-8 offset-md-2 my-5">
                 <h1 class="text-center">
                     <i class="fa fa-paw"></i>
-                    Pokemons
+                    My Pokemons
                 </h1>
                 <hr>
                 <a href="add.php" class="btn btn-lg btn-outline-success">
@@ -31,7 +30,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php $pokemons = listAllPokemons($conx) ?>
+                            <?php $pokemons = listAllMyPokemons($conx, $_SESSION['tid']) ?>
                             <?php foreach($pokemons as $pokemon): ?>
                             <tr>
                                 <td><?php echo $pokemon['id'] ?></td>

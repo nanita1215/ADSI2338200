@@ -3,6 +3,7 @@
     <?php include 'config/database.php'  ?>
     <?php include 'includes/header.inc' ?>
     <?php include 'includes/navbar.inc' ?>
+    <?php include 'includes/security.inc' ?>
     <!--  -->
     <main class="container">
         <section class="row">
@@ -14,17 +15,17 @@
                 <hr>
 
                 <div class="row mt-5">
-                  <div class="col-md-4 col-xs-6 mb-2">
+                  <div class="col-md-6 col-xs-6 mb-2">
                     <div class="card bg-dark text-light">
                       <div class="card-body">
                         <h3 class="card-title">
                             <i class="fa fa-paw fa-2x"></i>
-                            Pokemons
+                            My Pokemons
                         </h3>
                         <p class="card-text mt-4">
-                            Administrate all information about pokemons 
+                            Administrate all info about my own pokemons 
                         </p>
-                        <a href="pokemons/index.php" class="btn btn-danger form-control">
+                        <a href="pokemons/mypokemons.php" class="btn btn-danger form-control">
                             <i class="fa fa-circle-chevron-right"></i>
                             Enter
                         </a>
@@ -32,17 +33,17 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 col-xs-6 mb-2">
+                  <div class="col-md-6 col-xs-6 mb-2">
                     <div class="card bg-dark text-light">
                       <div class="card-body">
                         <h3 class="card-title">
-                            <i class="fa fa-users fa-2x"></i>
-                            Trainers
+                            <i class="fa fa-user fa-2x"></i>
+                            My Account
                         </h3>
                         <p class="card-text mt-4">
-                            Administrate all information about trainers 
+                            Administrate all information about me 
                         </p>
-                        <a href="trainers/index.php" class="btn btn-danger form-control">
+                        <a href="trainers/myaccount.php" class="btn btn-danger form-control">
                             <i class="fa fa-circle-chevron-right"></i>
                             Enter
                         </a>
@@ -50,23 +51,6 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 col-xs-6">
-                    <div class="card bg-dark text-light">
-                      <div class="card-body">
-                        <h3 class="card-title">
-                            <i class="fa fa-landmark fa-2x"></i>
-                            Gyms
-                        </h3>
-                        <p class="card-text mt-4">
-                            Administrate all information about gyms 
-                        </p>
-                        <a href="gyms/index.php" class="btn btn-danger form-control">
-                            <i class="fa fa-circle-chevron-right"></i>
-                            Enter
-                        </a>
-                      </div>
-                    </div>
-                  </div>
 
 
             </div>
@@ -78,7 +62,17 @@
     <!--  -->
     <script>
         $(document).ready(function () {
-
+            <?php if(isset($_SESSION['message'])): ?>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '<?php echo $_SESSION['message'] ?>',
+                showConfirmButton: false,
+                timer: 2500
+            })
+            <?php endif ?>
+            <?php unset($_SESSION['message']) ?>
+            // - - - - - - - - - - -
         })
     </script>
 </body>

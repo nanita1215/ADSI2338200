@@ -1,4 +1,4 @@
-    <?php $title = 'Add Pokemon' ?>
+    <?php $title = 'Add Trainer' ?>
     <?php require '../config/app.php' ?>
     <?php include '../config/database.php'  ?>
     <?php include '../includes/header.inc' ?>
@@ -10,17 +10,17 @@
             <div class="col-md-6 offset-md-3 my-5">
                 <a href="index.php" class="btn btn-outline-dark">
                     <i class="fa fa-arrow-left"></i>
-                    Back to All Pokemons
+                    Back to All Trainers
                 </a>
                 <hr>
                 <h1 class="text-center">
                     <i class="fa fa-plus"></i>
-                    Add Pokemon
+                    Add Trainer
                 </h1>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3 text-center">
                         <figure class="figure">
-                            <img src="../public/images/pokeball.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
+                            <img src="../public/images/trainer.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
                         </figure>
                     </div>
                     <div class="mb-3">
@@ -32,54 +32,35 @@
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name of Pokemon" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name of Trainer" required>
                     </div>
                     <div class="mb-3">
-                        <label for="type" class="form-label">Type:</label>
-                        <select name="type" id="type" class="form-select">
-                            <option value="">Select a Type...</option>
-                            <option value="Dragon">Dragon</option>
-                            <option value="Electric">Electric</option>
-                            <option value="Fire">Fire</option>
-                            <option value="Ghost">Ghost</option>
-                            <option value="Grass">Grass</option>
-                            <option value="Ground">Ground</option>
-                            <option value="Normal">Normal</option>
-                            <option value="Poison">Poison</option>
-                            <option value="Rock">Rock</option>
-                            <option value="Water">Water</option>
+                        <label for="level" class="form-label">Level:</label>
+                        <select name="level" id="level" class="form-select" required>
+                            <option value="">Select a Level...</option>
+                            <?php for($i = 1; $i <= 5; $i++): ?>
+                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <?php endfor ?>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="strength" class="form-label">Strength:</label>
-                        <input type="number" class="form-control" id="strength" name="strength" placeholder="Strength" required>
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
                     </div>
                     <div class="mb-3">
-                        <label for="stamina" class="form-label">Stamina:</label>
-                        <input type="number" class="form-control" id="stamina" name="stamina" placeholder="Stamina" required>
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Secret" required>
                     </div>
                     <div class="mb-3">
-                        <label for="speed" class="form-label">Speed:</label>
-                        <input type="number" class="form-control" id="speed" name="speed" placeholder="Speed" required>
+                        <label for="gym_id" class="form-label">Gym:</label>
+                        <select name="gym_id" id="gym_id" class="form-select">
+                            <option value="">Select a Gym...</option>
+                            <?php $gyms = listAllGyms($conx) ?>
+                            <?php foreach($gyms as $gym): ?>
+                                <option value="<?php echo $gym['id'] ?>"><?php echo $gym['name'] ?></option>
+                            <?php endforeach ?>
+                        </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="accuracy" class="form-label">Accuracy:</label>
-                        <input type="number" class="form-control" id="accuracy" name="accuracy" placeholder="Accuracy" required>
-                    </div>
-                    <?php if ($_SESSION['trole'] == 'Admin'): ?>
-                        <div class="mb-3">
-                            <label for="trainer_id" class="form-label">Trainer:</label>
-                            <select name="trainer_id" id="trainer_id" class="form-select">
-                                <option value="">Select a Trainer...</option>
-                                <?php $trainers = listAllTrainers($conx) ?>
-                                <?php foreach($trainers as $trainer): ?>
-                                    <option value="<?php echo $trainer['id'] ?>"><?php echo $trainer['name'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                         </div>
-                    <?php else: ?>
-                        <input type="hidden" name="trainer_id" value="<?php echo $_SESSION['tid'] ?>">
-                    <?php endif ?>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-success btn-lg form-control">
                             <i class="fa fa-save"></i>
@@ -96,25 +77,24 @@
                         //var_dump($_POST);
                         //echo "<hr>";
                         //var_dump($_FILES);
-                        $name       = $_POST['name'];
-                        $type       = $_POST['type'];
-                        $strength   = $_POST['strength'];
-                        $stamina    = $_POST['stamina'];
-                        $speed      = $_POST['speed'];
-                        $accuracy   = $_POST['accuracy'];
-                        $trainer_id = $_POST['trainer_id'];
+                        $name     = $_POST['name'];
+                        $level    = $_POST['level'];
+                        $email    = $_POST['email'];
+                        $password = md5($_POST['password']);
+                        $gym_id    = $_POST['gym_id'];
+
                         // Upload Image
                         $path  = "../public/images/";
                         $image = $path.time().".".pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                         
-                        if(addPokemon($conx, $name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id)) {
+                        if(addTrainer($conx, $name, $level, $email, $image, $password, $gym_id)) {
                             move_uploaded_file($_FILES['image']['tmp_name'], $image);
-                            $_SESSION['message'] = "Pokemon : $name was added!";
+                            $_SESSION['message'] = "Trainer : $name was added!";
                             echo "<script>
                                     window.location.replace('index.php')
                                   </script>";
                         } else {
-                            $_SESSION['error'] = "Pokemon Name: $name already exist!";
+                            $_SESSION['error'] = "Trainer Name: $name already exist!";
                         }
 
                     }

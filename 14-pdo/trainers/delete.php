@@ -4,8 +4,8 @@
 <?php
     if ($_GET) {
         $id = $_GET['id'];
-        if(deletePokemon($conx, $id)) {
-            $_SESSION['message'] = "Pokemon was deleted!";
+        if(deleteTrainer($conx, $id)) {
+            $_SESSION['message'] = "Trainer was deleted!";
             echo "<script>
                     window.location.replace('index.php')
                   </script>";
