@@ -104,7 +104,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="04-colaboration.php" class="bg-black
+                                        <a href="04-collaboration.php" class="bg-black
                                                             bg-opacity-40
                                                             w-96
                                                             p-4
