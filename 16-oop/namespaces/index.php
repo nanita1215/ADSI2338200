@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template</title>
-    <script src="/public/js/tailwind.3.2.1.js"></script>
+    <script src="../public/js/tailwind.3.2.1.js"></script>
 </head>
             <body class="bg-gradient-to-t
                             from-indigo-900
@@ -51,33 +51,28 @@
                                 rounded
                                 " >
 
+                                <ul class="p-2 flex flex-col gap-4">
                                 <?php
 
-                                trait Hello {
-                                    public function sayHello($name) {
-                                        echo "<li class= 'mb-2 p-4 ring-1 ring-white/50 rounded'> <b>Welcome></b> ".$name."</li>";
-                                    }
-                                }
-                                trait Adsi {
-                                    public function sayAdsi($code) {
-                                        echo "<li class= 'mb-2 p-4 ring-1 ring-white/50 rounded'> <b>Program></b> ".$code."</li>";
-                                    }
-                                }
+                                include 'electric/Pokemon.php';
+                                include 'fire/Pokemon.php';
+                                include 'water/Pokemon.php';
 
-                                class Department {
-                                    use Hello, Adsi;
-                                    public function sayDepartment($dep) {
-                                        echo "<li class= 'mb-2 p-4 ring-1 ring-white/50 rounded'> <b>Department></b> ".$dep."</li>";
+                                use \electric\Pokemon as Pke;
+                                use \fire\Pokemon as Pkf;
+                                use \water\Pokemon as Pkw;
 
-                                    }
-                                }
+                                $pk = new Pke ('Pikachu', 'Yellow');
+                                echo $pk->getInfoPokemon();
 
-                                $hl = new Department;
-                                $hl->sayHello('Jeremias Springfield');
-                                $hl->sayAdsi(2338200);
-                                $hl->sayDepartment('Caldas');       
-                                
+                                $pk = new Pkf ('Charmander', 'Orange');
+                                echo $pk->getInfoPokemon();
+
+                                $pk = new Pkw ('Squirtle', 'Aqua');
+                                echo $pk->getInfoPokemon();
+
                                 ?>
+                                </ul>
                 </section>
             </main>
             
