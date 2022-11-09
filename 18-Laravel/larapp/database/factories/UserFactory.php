@@ -16,6 +16,8 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+
+        // reto 
         $gender = '';
         $name = '';
 
