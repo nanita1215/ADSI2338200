@@ -31,6 +31,11 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('fullname', 'name');
+            $table->dropColumn(['phone', 'birthdate', 'gender', 'address', 'photo', 'role', 'active']);
+
+           
+        });
     }
 }
