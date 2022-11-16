@@ -14,4 +14,10 @@ class Category extends Model
         'image',
         'description'
     ];
+
+    // Relationships
+
+    public function Game(){
+        return $this->hasMan('App\Models\Game');
+    }
 }
