@@ -47,6 +47,15 @@ Route::get('challenge', function () {
     dd($results);
 });
 
+route::get('locale/{lang}', function(Request $request) {
+    session()->put('locale', $request->lang);
+    return redirect()->back();
+});
+
+route::get('examplesblade', function(){
+    return view('examples');    
+});
+
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');

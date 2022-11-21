@@ -11,7 +11,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                       </svg>
                       
-                    {{ __('Login') }}
+                    {{ __('general.login-title') }}
+                    
                 </header>
 
                 <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login') }}">
@@ -19,7 +20,7 @@
 
                     <div class="flex flex-wrap">
                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            {{ __('E-Mail Address') }}:
+                            {{ __('general.label-email') }}:
                         </label>
 
                         <input id="email" type="email"
@@ -35,7 +36,7 @@
 
                     <div class="flex flex-wrap">
                         <label for="password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            {{ __('Password') }}:
+                            {{ __('general.label-Password') }}:
                         </label>
 
                         <input id="password" type="password"
@@ -53,13 +54,13 @@
                         <label class="inline-flex items-center text-sm text-gray-700" for="remember">
                             <input type="checkbox" name="remember" id="remember" class="form-checkbox"
                                 {{ old('remember') ? 'checked' : '' }}>
-                            <span class="ml-2">{{ __('Remember Me') }}</span>
+                            <span class="ml-2">{{ __('general.text-rememberme') }}</span>
                         </label>
 
                         @if (Route::has('password.request'))
                         <a class="text-sm text-blue-500 hover:text-blue-700 whitespace-no-wrap no-underline hover:underline ml-auto"
                             href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('general.link-forgot') }}
                         </a>
                         @endif
                     </div>
@@ -67,7 +68,7 @@
                     <div class="flex flex-wrap">
                         <button type="submit"
                         class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-900 hover:bg-blue-700 hover:scale-x-50 sm:py-4">
-                            {{ __('Login') }}
+                            {{ __('general.btn-login') }}
                         </button>
 
                         @if (Route::has('register'))
@@ -75,7 +76,7 @@
                             {{ __("Don't have an account?") }}
                             <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('register') }}">
                                 
-                                {{ __('Register') }}
+                                {{ __('general.btn-register') }}
                             </a>
                         </p>
                         @endif

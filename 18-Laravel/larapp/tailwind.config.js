@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {}
+    colors: {
+      'larapp: #614883';
+    }
   },
   variants: {},
   plugins: [

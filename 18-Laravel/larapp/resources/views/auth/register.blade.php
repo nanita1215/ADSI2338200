@@ -6,11 +6,7 @@
         <div class="w-full">
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-                <header class="font-normal bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md text-2xl flex gap-2 justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-                      </svg>
-                      
+                <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
                     {{ __('Register') }}
                 </header>
 
@@ -19,14 +15,14 @@
                     @csrf
 
                     <div class="flex flex-wrap">
-                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            {{ __('Name') }}:
+                        <label for="fullname" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('FullName') }} @lang('general.label-fullname'):
                         </label>
 
-                        <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror"
-                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input id="fullname" type="text" class="form-input w-full @error('fullname')  border-red-500 @enderror"
+                            name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
 
-                        @error('name')
+                        @error('fullname')
                         <p class="text-red-500 text-xs italic mt-4">
                             {{ $message }}
                         </p>
@@ -40,9 +36,75 @@
 
                         <input id="email" type="email"
                             class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email">
+                            value="{{ old('email') }}" required>
 
                         @error('email')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('Phone') }}:
+                        </label>
+
+                        <input id="phone" type="number"
+                            class="form-input w-full @error('phone') border-red-500 @enderror" name="phone"
+                            value="{{ old('phone') }}" required>
+
+                        @error('phone')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <label for="birthdate" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('Birthdate') }}:
+                        </label>
+
+                        <input id="birthdate" type="date"
+                            class="form-input w-full @error('birthdate') border-red-500 @enderror" name="birthdate"
+                            value="{{ old('birthdate') }}" required>
+
+                        @error('birthdate')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <label for="gender" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('gender') }}:
+                        </label>
+
+                        <select name="gender" id="gender" class="form-select w-full @error('password') border-red-500 @enderror">
+                            <option value="" disabled>Select Gender ...</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+
+                        @error('gender')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <label for="address" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('Address') }}:
+                        </label>
+
+                        <input id="address" type="text"
+                            class="form-input w-full @error('address') border-red-500 @enderror" name="address"
+                            value="{{ old('address') }}" required>
+
+                        @error('address')
                         <p class="text-red-500 text-xs italic mt-4">
                             {{ $message }}
                         </p>
