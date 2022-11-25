@@ -20,6 +20,49 @@
                 <p class="text-gray-700">
                     You are logged in!
                 </p>
+
+
+                <div class="w-full p-6 flex lg:flex-col items-center gap-8 my-6">
+                    {{--  --}}
+                    <div class="bg-white rounded-lg shadow2 lg:flex lg:max w-lg">
+                        <img src="{{ asset('images/users.svg')}}" class="w-1/1 lg:w-1/2 rounded-l-2xl">
+                        <div class="p-6 flex gap-4 flex-col">
+                            <h2 class="mb-2 text-2xl flex gap-2 items-center font-bold text-[#614883]">                              
+                                users
+                                </h2>
+                                <p class="text-[#614883]">Admin users</p>
+                                <a href="{{url('users')}}" class="p-4 bg-[#614883] text-white text-center rounded-md md">
+                                    Admin
+                                </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow2 lg:flex lg:max w-lg">
+                        <img src="{{ asset('images/category.svg')}}" class="w-1/1 lg:w-1/2 rounded-l-2xl">
+                        <div class="p-6 flex gap-4 flex-col">
+                            <h2 class="mb-2 text-2xl flex gap-2 items-center font-bold text-[#614883]">
+                                Category
+                                </h2>
+                                <p class="text-[#614883]">Admin users</p>
+                                <a href="{{url('category')}}" class="p-4 bg-[#614883] text-white text-center rounded-md md">
+                                    Admin
+                                </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow2 lg:flex lg:max w-lg">
+                        <img src="{{ asset('images/games.svg')}}" class="w-1/1 lg:w-1/2 rounded-l-2xl">
+                        <div class="p-6 flex gap-4 flex-col">
+                            <h2 class="mb-2 text-2xl flex gap-2 items-center font-bold text-[#614883]">                                 
+                                Games
+                                </h2>
+                                <p class="text-[#614883]">Admin users</p>
+                                <a href="{{url('games')}}" class="p-4 bg-[#614883] text-white text-center rounded-md md">
+                                    Admin
+                                </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

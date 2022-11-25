@@ -29,6 +29,10 @@
                           </svg>
                         {{ config('app.name', 'Larapp') }}
                     </a>
+                    @Auth()
+                    <a href="{{ url('home')}}" class="sm:flex no-underline text-white hidden">
+                        Dashboard
+                    </a>
                 </div>
                 <nav class="space-x-4 text-gray-300 text-sm sm:text-base flex gap-4">
                     @guest
@@ -64,10 +68,11 @@
                                 {{ __('general.register-title') }}</a>
                         @endif
                     @else
-                        <span>{{ Auth::user()->name }}</span>
+                    <img src="{{ asset(Auth::user()->photo )}}" class="w-10">
+                        <span>{{ Auth::user()->fullname }}</span>
 
                         <a href="{{ route('logout') }}"
-                           class="no-underline hover:underline"
+                           class="no-underline bg-black/50 py-1 px-4 rounded-full hover:scale-110 hover:bg-black/70 transition"
                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
